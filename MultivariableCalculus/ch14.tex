@@ -1,0 +1,133 @@
+\setcounter{chapter}{13}
+\chapter{Vector Functions}
+
+\section{Vector Functions and Space Curves}
+A \textbf{vector-valued function}, or \textbf{vector function} is simply a function whose domain is a set of real numbers and whose range is a set of vectors.
+If $f(t)$. $g(t)$, $r(t)$ are the components of the vector $r(t)$, then f, g, and h, are real valued functions called the \textbf{component function} of \textbf{r} and we can write
+$$r(t) = \ev{f(t), g(t), h(t)} = f(t)^\prime\ihat + g(t)^\prime\jhat + h(t)^\prime\khat$$
+If $r(t) = \ev{f(t), g(t), h(t)}$, then $$\lim_{t\rightarrow a}r(t) = \ev{\lim_{t\rightarrow a}f(t), \lim_{t\rightarrow a}g(t), \lim_{t\rightarrow a}h(t)} $$ provided the limits of the component functions exist.
+
+\subsection*{Example}
+Sketch the curve whose vector equation is $$r(t) = \cos{t}\ihat + \sin{t}\jhat + t\khat$$
+\subsection*{Solution}
+The parametric equations for this curve are $$x = \cos{t}\qquad y = \sin{t}\qquad z = t$$ The figure shown below is known as a \textbf{helix}.
+\includegraphics[scale = .5]{pic1}
+
+\section{Derivatives and Integrals of Vector Functions}
+The \textbf{derivative $r^\prime$} of a vector function r is defined as $$\frac{dx}{dt} = r^\prime(t) = \lim_{h\rightarrow t}\frac{r(t+h) - r(t)}{h}$$
+The \textbf{tangent line} to $C$ at $P$ is defined to be the line throguh $P$ parallel to the tangent vector $r^\prime(t)$. It is defined as 
+$$T(t) = \frac{r^\prime(t)}{|r'(t)|}$$
+The following theorem gives us a conveninet method for computing the derivative vector function of r; just differentiate each component of r.\\
+If $r(t) = \ev{f(t), g(t), h(t)}$ where $f$, $g$, and $h$ are differentiable functions, then 
+$$r^\prime(t) = \ev{f^\prime(t), g^\prime(t), h^\prime(t)} = f^\prime(t)\ihat + g^\prime(t)\jhat + h^\prime(t)\khat$$
+
+\subsection*{Example}
+Find parametric equations for the tangent line to the helix with parametric equations $$x = 2\cos{t}\qquad y = \sin{t}\qquad z = t$$ at the point $(0, 1, \pi/2)$
+\subsection*{Solution}
+The vector equation of the helix is $r(t) = \ev{2cos{t}, sin{t}, t}$, so $$r^\prime(t) = \ev{-2sin{t}, cos{t}, 1}$$ 
+The parameter value corresponding to the point is $\pi/2$, so the tangent vector there is $r^\prime(\pi/2) = \ev{-2, 0, 1}$. As a result, its parametric equations are 
+$$x = -2t\qquad y= 1\qquad z = \pi/2 + t$$The \textbf{second derivative} of a vector function r is defined as $r^\prime\prime = (r^\prime)^\prime$. 
+A curve given by a vector function $r(t)$ on an interv al $I$ is called \textbf{smooth} if $r^\prime$ is continuous and $r^\prime(t)\neq 0$.
+\subsection*{Differentiation Rules}
+Suppose $u$ and $v$ are differentiable vector functions, $c$ is a scalar, and $f$ is a real-valued function. Then
+\begin{enumerate}
+    \item $\frac{d}{dt}[u(t) + v(t)] = u^\prime(t) + v^\prime(t)$
+    \item $\frac{d}{dt}[cu(t)] = cu^\prime(t)$
+    \item $\frac{d}{dt}[u(t)[f(t)u(t)] = f^\prime(t)u(t) + f(t)u^\prime(t)$
+    \item $\frac{d}{dt}[u(t)\cdot v(t)] = u^\prime(t)\cdot v(t) + u(t)\cdot v^\prime(t)$
+    \item $\frac{d}{dt}[u(t)\times v(t)] = u^\prime(t)\times v(t) + u(t)\times v^\prime(t)$
+    \item $\frac{d}{dt}[uf(t)] = f^\prime(t)u^\prime(f(t))$ (Chain Rule)
+\end{enumerate}
+
+\subsection*{Integrals}
+The \textbf{definite integral} of a continuous function $r(t)$ can be defined in much the same way as for real-valued functions except that the integral is a vector. We can express the integral of r in terms of the integrals of its component functions $f$, $g$, and $h$.
+$$\int^b_ar(t)dt = \left(\int^b_af(t)dt\ihat\right) + \left(\int^b_ag(t)dt\jhat\right) + \left(\int^b_ah(t)dt\khat\right)$$
+We can extedn the Fundamental Theorem of Calculus to continuous vector functions as follows: $$\int^b_ar(t)dt = R(t)\Big)^b_a = R(b) - R(a)$$
+where $R$ is an antiderivative of $r$. 
+
+\subsection*{Example}
+If $r'(t) = 2\cos{t}\ihat + \sin{t}\jhat + 2t\khat$, then find the antiderivative. 
+\subsection*{Solution}
+$$\int r(t) dt = \left(\int 2\cos{t} dt\right)\ihat + \left(\int \sin{t} dt\right)\jhat + \left(2t dt\right)\khat$$ $$= 2\sin{t}\ihat - \cos{t}\jhat + t^2\khat + C$$
+where C is a vector constant of intergration, and 
+$$\int^{\pi/2}_0 = [2\sin{t}\ihat - \cos{t}\jhat + t^2\khat]^{\pi/2}_0 = 2\ihat + \jhat + \frac{\pi^2}{4}\khat$$
+
+\section{Arc Length and Curvature}
+The length of a space curve can be defined if the curve is traversed exactly once as $t$ iincreases from $a$ to $b$, then it can be shown that its length is 
+$$L = \int^b_a \sqrt{[f^\prime(t)]^2 + [g^\prime(t)]^2 + [h^\prime(t)]^2} dt$$ = $$\int^b_a \sqrt{(\frac{dx}{dt})^2 + (\frac{dy}{dt})^2 + (\frac{dz}{dt})^2}$$
+A more compact form is shown below $$L = \int^b_a |r'(t)| dt$$
+
+\subsection*{Example}
+Find the length of the arc of the circular helix with vector equation $r(t) = \cos{t}\ihat + \sin{t}\jhat + t\khat$ from the point $(1,0,0)$ to the point $(1, 0, 2\pi)$.
+\subsection*{Solution}
+Since $r^\prime(t) = -\sin{t}\ihat + \cos{t}\jhat + \khat$, we have $$|r^\prime(t)| = \sqrt{(-\sin{t})^2 + \cos^2{t} + 1} = \sqrt{2}$$
+The arc from point $(1,0,0)$ to the point $(1, 0, 2\pi)$ is described by the parameter interval $0 \leq t \leq 2\pi$,  and so, we have
+$$L = \int^{2\pi}_0|r^\prime(t)| dt = \int^{2\pi}_0 \sqrt{2} dt = 2\sqrt{2}\pi$$
+\subsection*{Parametrization}
+A single curve $C$ can be represented by more than one vector function. For instance, the twisted cubic $$r_1(t) = \ev{t, t^2, t^3}$$
+could also be represented by the function $$r_2(u) = \ev{e^u, e^{2u}, e^{3u}}$$
+We say that these previous equations are parametrizations of the curve $C$. It also shows that the arc length is independent of the parametrization used. \\
+Now we suppose that $C$ is a piecewise-smooth curve given by a vector function $r(t) = \ev{f(t)\ihat, g(t)\jhat, h(t)\khat}$, $a\leq t\leq b$, and $C$ is tranversed exactly once as $t$ increases from $a$ to $b$. We define its \textbf{arc length function} $s$ by
+$$s(t) = \int^t_a |r^\prime(t)| du = \int^t_a \sqrt{(\frac{dx}{du})^2 + (\frac{dy}{du})^2 + (\frac{dz}{du})^2}$$
+When both sides are differentiated, $$\frac{ds}{dt} = |r^\prime(t)|$$
+It is often useful to \textbf{parametrize a curve with respect to arc length} because arc length arises natrually from the shape of the curve and does not depend on a particular
+coordinate system. The reparametrization can be done in terms of $s$  by substituting for $t$: $r = r(t(s))$. 
+
+\subsection*{Example}
+Reparametrize the helix $r(t) = \cos{t}\ihat + \sin{t}\jhat + t\khat$ with respect to arc length measured from $(1, 0, 0)$ in the direction of increasing $t$.
+\subsection*{Solution}
+The initial point $(1, 0, 0)$ corresponds to the parameter value $t = 0$. From the previous example, we have 
+$$\frac{ds}{dt} = |r^\prime(t)| = \sqrt{2}$$ and so $\qquad s = s(t) = \int^t_0 |r^\prime(u)| du = \int^t_0 \sqrt{2} du = \sqrt{2}t$\\
+Therefore, $t = s/\sqrt{2}$ and the required reparametrization is obtained by substituting for t: $$r(t(s)) = \cos{s/\sqrt{2}}\ihat + \sin{s/\sqrt{2}} + (s/\sqrt{2})\khat$$
+
+\subsection*{Curvature}
+The \textbf{curvature} of a curve is $$\kappa = |\frac{dT}{ds}|$$ where \textbf{T} is the tangent vector. Another way to define the curvature is 
+$$\kappa = \frac{|T^\prime(t)|}{|r^\prime(t)|}$$
+The curvature of the curve given by the vector function \textbf{r} is $$\kappa(t) = \frac{|r^\prime(t)\times r^{\prime\prime}(t)|}{|r^\prime(t)|^3}$$
+
+\subsection*{The Normal and Binomial Vectors}
+The \textbf{principal unit normal vector N(t)} or simply \textbf{unit normal} as $$N(t) = \frac{T^\prime(t)}{|T^\prime(t)|}$$
+The vector $B(t) = T(t)\times N(t)$ is called the \textbf{binormal vector}. It is perpendicular to both $T$ and $N$ and is also a unit vector.
+
+\subsection*{Example}
+Find the unit normal and binormal vectors for the circular helix $$r(t) = \cos{t}\ihat + \sin{t}\jhat + t\khat$$
+\subsection*{Solutiom}
+We first compute the ingredients needed for the unit normal vector: 
+$$r^\prime(t) = -\sin{t}\ihat + \cos{t}\jhat + \khat\qquad |r^\prime(t)| = \sqrt{2}$$
+$$T(t) = \frac{r^\prime(t)}{|r^\prime(t)|} = \frac{1}{\sqrt{2}}(-\sin{t}\ihat + \cos{t}\jhat + \khat)$$
+$$T^\prime(t) = \frac{1}{\sqrt{2}}(-\cos{t}\ihat - \sin{t}\jhat)\qquad |T^\prime(t)| = \frac{1}{\sqrt{2}}$$
+$$N(t) = \frac{T^\prime(t)}{|T^\prime(t)|} = (-\cos{t}\ihat - \sin{t}\jhat) = \ev{-\cos{t}, -\sin{t}, 0}$$
+$$B(t) = T(t)\times N(t) = \frac{1}{\sqrt{2}}\begin{bmatrix}
+    \ihat&\jhat&\khat\\
+    -\sin{t}&\cos{t}&1\\
+    -\cos{t}&-\sin{t}&0
+\end{bmatrix} = \frac{1}{\sqrt{2}}\ev{\sin{t}, -\cos{t}, 1}$$
+
+\section{Motion in Space: Velocity and Acceleration}:
+Suppose that a particle moves through space so its position vector at time $t$ is $r(t)$. For such small values of $h$, the vector 
+$$\frac{r(t+h) - r(t)}{h}$$ gives the average velocity over a time interval of length $h$ and its limit is the \textbf{velocoty vector v(t)} at time $t$:
+$$v(t) = \lim_h\rightarrow 0 \frac{r(t+h) - r(t)}{h} = r^\prime(t)$$
+The \textbf{speed} of the particle at time $t$ is the magnitude of the velocity vector, that is, $|v(t)|$.\\
+As in the case of one-dimensional motion, the \textbf{acceleration} of the particle is defined as the derivative of the velocity: 
+$$a(t) = v^\prime(t) = r^{\prime\prime}(t)$$
+\subsection*{Example}
+The position vector of an object moving in a plane is given by $r(t) = t^3\ihat + t^2\jhat$. Find its velocity, speed, and acceleration when $t = 1$.
+\subsection*{Solution}
+The velocity and acceleration at time $t$ are $$v(t) = r^\prime(t) = 3t^2\ihat + 2t\jhat$$
+$$a(t) = r^{\prime\prime} = 6t\ihat + 2\jhat$$ and the speed is $$|v(t)| = \sqrt{(3t^2)^2 + (2t)^2} = \sqrt{9t^4 + 4t^2}$$
+When $t = 1$, we have $$v(1) = 3\ihat + 2\jhat\qquad a(1) = 6\ihat + 2\jhat\qquad |v(1)| = \sqrt{13}$$
+The parametric equations of a trajectory are $$x = (v_0\cos\alpha)\qquad y = (v_0sin\alpha)t -\frac{1}{2}gt^2$$
+\subsection*{Tangential and Normal Components of Acceleration}
+Proof for equation to relate both tangential and normal acceleration: 
+$$T(t) = \frac{r^\prime(t)}{|r^\prime(t)|} = \frac{v(t)}{|v(t)|} = \frac{\textbf{v}}{v}$$ and so $$\textbf{v} = vT$$
+If we differentiate both sides of this equation with respect to $t$, we get 
+$$a = v^\prime$$ If we use the expression for the curvature, we have $$\kappa = \frac{|T^\prime|}{|r^\prime|} = \frac{|T^\prime|}{v}$$
+Therefore, the equatopn formed is 
+$$a = v^\prime T + \kappa v^2N$$ where $$a_T = v^\prime\qquad a_N = \kappa v^2$$
+\subsection*{Kepler's Laws of Planetary Motion}
+Kepler's Laws:
+\begin{enumerate}
+    \item A planet revolves around the sun in an ellipitical orbit with the sun in one focus.
+    \item The line joining the Sun to a planet sweeps out equal areas in equal times. 
+    \item The square of th period of revolution of a planet is proportional to the cube of the length of the major axis of its orbit.
+\end{enumerate}

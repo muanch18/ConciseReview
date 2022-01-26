@@ -1,0 +1,69 @@
+\documentclass{report}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{tocloft}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{physics}
+\usepackage{multicol}
+\usepackage{esint}
+
+\graphicspath{{MultivariableCalculus/images/}{LinearAlgebra/images/}}
+\cftsetindents{section}{1em}{3em}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\newcommand{\ihat}{\:\boldsymbol{\hat{\textbf{i}}}}
+\newcommand{\jhat}{\:\boldsymbol{\hat{\textbf{j}}}}
+\newcommand{\khat}{\:\boldsymbol{\hat{\textbf{k}}}}
+\newcommand{\compcent}[1]{\vcenter{\hbox{$#1\circ$}}}
+
+
+\newcommand{\comp}{\mathbin{\mathchoice
+  {\compcent\scriptstyle}{\compcent\scriptstyle}
+  {\compcent\scriptscriptstyle}{\compcent\scriptscriptstyle}}}
+
+\begin{document}
+
+\title{\Large{\textbf{MCLA Concice Review}}}
+\author{Anush Musthyala}
+\date{May 2020}
+
+\pagenumbering{roman}
+\maketitle
+\tableofcontents
+
+\clearpage
+\pagenumbering{arabic}
+
+\part{Multivariable Calculus}
+
+\input{"MultivariableCalculus/ch11.tex"}
+\input{"MultivariableCalculus/ch12.tex"}
+\input{"MultivariableCalculus/ch13.tex"}
+\input{"MultivariableCalculus/ch14.tex"}
+\input{"MultivariableCalculus/ch15.tex"}
+\input{"MultivariableCalculus/ch16.tex"}
+\input{"MultivariableCalculus/ch17.tex"}
+\input{"MultivariableCalculus/ch18.tex"}
+\input{"MultivariableCalculus/appendix.tex"}
+
+\part{Linear Algebra}
+
+\input{"LinearAlgebra/ch1.tex"}
+\input{"LinearAlgebra/ch2.tex"}
+\input{"LinearAlgebra/ch3.tex"}
+\input{"LinearAlgebra/ch4.tex"}
+\input{"LinearAlgebra/ch5.tex"}
+\input{"LinearAlgebra/ch6.tex"}
+\input{"LinearAlgebra/ch7.tex"}
+\input{"LinearAlgebra/appendix.tex"}
+
+\end{document}

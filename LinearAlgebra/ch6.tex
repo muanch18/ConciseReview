@@ -1,0 +1,312 @@
+\setcounter{chapter}{5}
+\chapter{Vector Spaces}
+
+\section{Vector Spaces and Subspaces}
+Let $V$ be a set on two operations, called addition and scalar multiplication, have been defined. The \textit{sum} is defined by $u+v$. The scalar multiple of $\textbf{u}$ is defined by c.\\
+If the following axioms hold for all $u$, $v$, and $w$ in \textit{V} and for all scalars c and d, then V is called a \textbf{vector space} and its elements are called vectors.
+\begin{enumerate}
+    \item $u+v$ is in \textit{V}.
+    \item $u+v = v+u$
+    \item $(u+v)+w = u + (v+w)$
+    \item There exists an element \textbf{0} in \textit{V}, called a \textbf{zero vector}, such that \textbf{$u+0 = u$}.
+    \item For each \textbf{u} in \textit{V}, there is an element \textbf{-u} in \textit{V} such that \textbf{u + (-u) = 0}.
+    \item c\textbf{u} is in \textit{V}.
+    \item $c(u+v) = cu + cv$
+    \item $(c+d)u = cu + du$
+    \item c(du) = (cd)u
+    \item 1u = u
+\end{enumerate}
+\subsection*{Properties of Vector Spaces}
+Let \textit{V} be a vector space, \textbf{u} a vector in \textit{V}, and \textit{c} a scalar.
+\begin{enumerate}
+    \item 0u = 0
+    \item c0 = 0
+    \item (-1)u = -u
+    \item If cu = 0, then c = 0 or u = 0
+\end{enumerate}
+\subsection*{Example}
+Show that the set $W$ of all vectors of the form $$\begin{bmatrix}
+    a\\b\\-b\\a
+\end{bmatrix}$$ is a subspace of $\mathbb{R}^4$.
+\subsection*{Solution}
+Let $u$ and $v$ be in W
+$$v = \begin{bmatrix}
+    c\\d\\-d\\c
+\end{bmatrix}$$ Then
+$$u + v = \begin{bmatrix}
+    a+c\\b+d\\-(b+d)\\a+c
+\end{bmatrix}$$
+so u + v is also in W because it has the right form. Similarly, if k is a scalar, then $$ku = \begin{bmatrix}
+    ka\\kb\\-kb\\ka
+\end{bmatrix}$$ so k\textbf{u} is in $W$.\\
+Since W is closed under vector addition and scalar multiplication, W is a subspace of $\mathbb{R}^4$.
+
+\section{Linear Independece, Basis, and Dimension}
+A set of vectors ${v_1, v_2, \dots, v_k}$ in a vector space $V$ is \textbf{linearly dependent} if there are scalars $c_1, c_2, \dots, c_k$ at least one of which is not zero, such that
+$$c_1v_1 + c_2v_2 + \dots + c_kv_k = 0$$
+A set of vectors that is not linearly dependent is said to be \textbf{linearly independent}.\\*
+
+A set of vectors ${v_1, v_2, \dots, v_k}$ in a vector space $V$ is linearly dependent if and only if at least one of the vectors can be expressed as a linear combination of the others.
+
+\subsection*{Example}
+In $\mathfrak{P}^2$, determine whether the set $\{1+x, x+x^2, 1+x^2\}$ is linearly independent.
+
+\subsection*{Solution}
+Let $c_1$, $c_2$, and $c_3$ be scalars such that
+$$c_1(1+x)+c_2(x+x^2)+c_3(1+x^2) = 0$$
+Then $$(c_1 + c_3) + (c_1 + c_2)x + (c_2 + c_3)x^2 = 0$$
+This implies that $$c_1 +\qquad c_3 = 0$$ $$c_1 + c_2\qquad = 0$$ $$\qquad c_2 + c_3 = 0$$
+the solution to which $c_1 = c_2 = c_3 = 0$. It follows that $\{1+x, x+x^2, 1+x^2\}$ is linearly independent.
+
+\subsection*{Basis}
+A subset $\beta$ of a vector space $V$ is a \textbf{basis} for $V$ if 
+\begin{enumerate}
+    \item $\beta spans V$ and 
+    \item $\beta$ is linearly independent.
+\end{enumerate}
+If \textbf{$e_i$} is the \textit{i}th column of the $n\times n$ identity matrix, then $\{e_1, e_2, \dots, e_n\}$ is a basis for $\mathbb{R}^n$ called the \textbf{standard basis}.
+
+\subsection*{Coordinates}
+For every vector $v$ in $V$, there is exactly one way to write $v$ as a linear combination of the basis vectors in $\beta$.
+Let $\beta$ = ${v_1, v_2, \dots, v_n}$ be a basis for a vector space $V$. Let \textbf{v} be a vector in $V$. Then $c_1, c_2, \dots, c_n$ are called the \textbf{coordinates of v with respect to $\beta$} and the column vector\\
+$$[v]_B = \begin{bmatrix}
+    c_1\\c_2\\\vdots\\c_n
+\end{bmatrix}$$ is called the \textbf{coordinate vector of v with respect to $\beta$}.
+
+\subsection*{Dimension}
+Let $\beta = \{v_1, v_2,\dots, v_n\}$ ne a nasis for a vector space $V$.
+\begin{enumerate}
+    \item Any set of more than \textit{n} vectors in $V$ must be linearly dependent.
+    \item Any set of fewer than \textit{n} vectors in $V$ cannot span $V$.
+\end{enumerate}
+\textbf{The Basis Theorem}: If a vector space $V$ has a basis with \textit{n} vectors, then every basis for $V$ has exactly \textit{n} vectors.\\*
+
+A vector space $V$ is called \textbf{finite-dimensional} if it has a basis consitting of finitely many vectors. The \textbf{dimension} of V, denoted by dim $V$, si the number of vectors in a basis for V. The deimension of the zaero vector space is defined to be zero. A vector space that has no finite basis is called \textbf{infite-dimensional}.
+
+Let $V$ be a vector space with $dim V = n$. Then
+\begin{enumerate}[a]
+    \item Any linearly independent set in $V4$ contains at most \textit{n} vectors.
+    \item Any spanning set for $V$ contains at least \textit{n} vectors.
+    \item Any linearly independent set of exactly \textit{n} vectors in $V$ is a basis for $V$. 
+    \item Any spanning set for $V$ consiting of exactly \textit{n} vectors is a basis for $V$.
+    \item Any linearly independent set in $V$ can be extended for a basis in $V$.
+    \item Any spanning set for $V$ can be reduced to a basis for $V$.
+\end{enumerate}
+
+\section*{Change of Basis}
+Let $\beta$ = $\{u_1, \dots, u_n\}$ and $C = \{v_1, \dots, v_n\}$ be bases for a vector space $V$. The $n\times n$ matrix whose columns are the coordinate vectors $[u_1]_C, \dots, [u_n]_C$ of the vectors in $\beta$ with respect to $C$ is denoted by\\ $P_{C\leftarrow \beta}$.\\
+Think of $\beta$ as the "old basis" and $C$ as the "new basis".
+
+Let $\beta$ = $\{u_1, \dots, u_n\}$ and $C = \{v_1, \dots, v_n\}$ be bases for a vector space $V$ and let $P_{C\leftarrow \beta}$ be the change-of-basis matrix from $\beta$ to $C$. Then
+\begin{enumerate}[a]
+    \item $P_{C\leftarrow \beta}[x]_\beta = [x]_C for all x in V$.
+    \item $P_{C\leftarrow \beta}$ is the unique matrix $P$ with the property that $P[x]_\beta = [x]_C for all x in V$
+    \item P is invertible and $(P_{C\leftarrow \beta})^{-1} = P_{\beta \leftarrow C}$
+\end{enumerate}
+\subsection*{Example}
+Find the change of basis matricies $P_{C\leftarrow \beta}$ and $P_{\beta \leftarrow C}$ for the bases $\beta = \{1, x, x^2\}$ and $C = \{1+x, x+x^2, 1+x^2\}$ of $\mathfrak{P}_2$. Then find the coordinate vector of $p(x) = 1+2x-x^2$ with respect to $C$.
+\subsection*{Solution}
+$[1+x]_\beta = \begin{bmatrix}
+    1\\1\\0
+\end{bmatrix}\qquad [x+x^2]_\beta = \begin{bmatrix}
+    0\\1\\1
+\end{bmatrix}\qquad [1+x^2]_\beta = \begin{bmatrix}
+    1\\0\\1
+\end{bmatrix}\qquad P_{\beta \leftarrow C} = \begin{bmatrix}
+    1&0&1\\1&1&0\\0&1&1
+\end{bmatrix}$\\*
+$P_{C\leftarrow \beta} = (P_{\beta \leftarrow C})^{-1} = \begin{bmatrix}
+    \frac{1}{2}&\frac{1}{2}&\frac{-1}{2}\\\frac{-1}{2}&\frac{1}{2}&\frac{1}{2}\\\frac{1}{2}&\frac{-1}{2}&\frac{1}{2}
+\end{bmatrix}$\\*
+$[p(x)]_C = P_{C\leftarrow \beta}[p(x)]_\beta = \begin{bmatrix}
+    \frac{1}{2}&\frac{1}{2}&\frac{-1}{2}\\\frac{-1}{2}&\frac{1}{2}&\frac{1}{2}\\\frac{1}{2}&\frac{-1}{2}&\frac{1}{2}
+\end{bmatrix}\begin{bmatrix}
+    1\\2\\-1
+\end{bmatrix} = \begin{bmatrix}
+    2\\0\\-1
+\end{bmatrix}$\\
+\subsection{The Gauss-Jordan Method for Computing a Change-of-Basis Matrix}
+Let $\beta$ = $\{u_1, \dots, u_n\}$ and $C = \{v_1, \dots, v_n\}$ be bases for the vector space V. Now let $\beta$ = $\{[u_1]_E, \dots, [u_n]_E\}$ and $C = \{[v_1]_E, \dots, [v_n]_E\}$. Then row reduction applied to the $n\times 2n$ augmented matrix [C|B] produces
+$$[C|\beta] = [I|P_{C\leftarrow \beta}]$$
+\subsection*{Example}
+In $M_22$, let $B$ be the basis$\{E_{11}, E_{21}, E_{12}, E_{22}\}$ and let $C$ be the basis, where $\{A, B, C, D\}$
+Find the change-of-basis matrix $P_{C\leftarrow \beta}$ and verify that $[X]_C = P_{C\leftarrow \beta}[X]_\beta$ for $X = \begin{bmatrix}
+    1&2\\3&4
+\end{bmatrix}$
+\subsection*{Solution}
+$B = P_{\epsilon\leftarrow B} = \begin{bmatrix}
+    1&0&0&0\\0&0&1&0\\0&1&0&0\\0&0&0&1
+\end{bmatrix}$ and $C = P_{\epsilon\leftarrow C} = \begin{bmatrix}
+    1&1&1&1\\0&1&1&1\\0&0&1&1\\0&0&0&1
+\end{bmatrix}$
+Row reduction produces \\$P_{C\leftarrow \beta} = \begin{bmatrix}
+    1&0&-1&0\\0&-1&1&0\\0&1&0&-1\\0&0&0&1m
+\end{bmatrix}$
+
+\section{Linear Transformations}
+A \textbf{linear transformation} from a vector space $V$ to a vector space $W$ is a mapping $T: V\rightarrow W$ such that, for all $u$ and $v$ in $V$ and for all scalars c,\\
+\begin{enumerate}
+    \item $T(u+v) = T(u) + T(v)$
+    \item $T(cu) = cT(u)$
+\end{enumerate}
+$T: V\rightarrow W$ is a linear transformation if any only if $T(c_1v_1 + c_2v_2 +\dots+ c_kv_k) = c_1T(v_1) + c_2T(v_2) +\dots + c_kT(v_k)$.
+\subsection*{Example}
+Define $T: M_{nn}\rightarrow M_{nn} by T(A) = A^T.$ Show that $T$ is a linear transformation.
+\subsection*{Solution}
+We check that, for $A$ and $B$ in $M_{nn}$ and scalars c.
+$$T(A+B) = (A+B)^T = A^T + B^T = T(A) + T(B)$$and \qquad $$T(cA) = (cA)^T = cA^T = cT(A)$$ Therefore, $T$ is a linear transformation.\\
+Let $T: V\rightarrow W$ be a linear transformation. Then, \begin{enumerate}
+    \item $T(0) = 0$
+    \item $T(-v) = -T(v)$
+    \item $T(u-v) = T(u) - T(v)$
+\end{enumerate}
+\subsection*{Composition of Linear Transformations}
+If $T: U\rightarrow V$ and $S: V\rightarrow W$ are linear transformations, then the \textbf{composition of S with T} is the mapping $S\comp T$, defined by 
+$$(S\comp T)(u) = S(T(u))$$
+where u is in $U$.
+\subsection*{Inverses of Linear Transformations}
+A linear transformation $T: W\rightarrow V$ is invertible if there is a linear transformation $T^\prime: V\rightarrow W$ such that
+$$T^\prime\comp T = I_V$$ and $$T\comp T^\prime = I_W$$ In this case, $T^\prime is called an inverse for T$
+
+\section{Kernel and Range of a Linear Transformation}
+The \textbf{kernel} of $T$, denoted $ker(T)$, is the set of all vectors in $V$ that are mapped by $T$ to 0 in $W$. That is,
+$$ker(T) = \{v in V: T(v) = 0\}$$
+The \textbf{range} of $T$, denoted $range(T)$, is the set of all vectors in $W$ that are images of vectors in $V$ under $T$. That is, \\
+$range(T) = \{T(v) : v in V\} \\=\{win W: w = T(v) for some v in V\}$\\
+
+\subsection*{Example}
+Find the kernel and range of the differential operator $D: \mathfrak{P}_3\rightarrow\mathfrak{P}_2$ defined by $D(p(x)) = p^\prime(x)$.
+\subsection*{Solution}
+$$ker(D) = \{a+bx+cx^2+dx^3:D(a+bx+cx^2+dx^3) = 0\}$$
+$$\{a+bx+cx^2+dx^3 : b+2cx+3dx^2 = 0\}$$ $$\{a+bx+cx^2+dx^3 : b = c = d =0\}$$ $$= \{a : a in \mathfrak{R}\}$$
+$range(D)$ in all polynomials in $P_2$
+\subsection*{Rank and Nullity}
+The \textbf{rank} of $T$ is the dimension of range of T and is denoted by rank(T). The \textbf{nullity} of $T$ is dimension of the kernel of T and is denoted by nullity(T).
+\subsection*{Example}
+Find the rank and the nullity of the linear transformation $D: \mathfrak{P}_3\rightarrow\mathfrak{P}_2$ defined by $D(p(x)) = p^\prime(x)$.
+\subsection*{Solution}
+rank(D) = dim $\mathfrak{P}_2 = 3$\\
+nullity(D) = dim(ker(D)) = 1\\
+Let $T: V\rightarrow W$ be a linear transformation from a finite-dimensional vector space $V$ into a vector space $W$. Then
+$$rank(T) + nullity (T) = dim V$$
+\subsection*{One-to-One and Onto Linear Transformations}
+A linear transformation $T:V\rightarrow W$ is called \textbf{one-to-one} if T maps distinct vectors in $V$ to distinct vectors in $W$. If range(T) = $W$, then T is called \textbf{onto}.
+\begin{enumerate}[a]
+    \item $T:V\rightarrow W$ is one-to-one of, for all $u$ and $v$ in $V$, $u\neq v$ implies that $T(u)\neq T(v)$.
+    \item $T:V\rightarrow W$ is one-to-one of, for all $u$ and $v$ in $V$, $T(u) =  T(v)$ implies that $u=v$.
+    \item $T:V\rightarrow W$ is onto if, for all $u$ and $v$ in $V$, there is at least one $v$ in $V$ such that $w = T(v)$
+\end{enumerate}
+A linear transformation $T:V\rightarrow W$ is one-to-one if and only if $ker(T) = \{0\}$. 
+
+Let $dim V = dim W = n$. Then a linear transformation $T:V\rightarrow W$ is one-to-one if and only if it is onto.
+
+\subsection*{Isomorphisms of Vector Spaces}
+A linear transformation $T:V\rightarrow W$ is called an \textbf{isomorphism} if it is one-to-one and onto. If $V$ and $W$ are two vector spaces such that there is an isomorphism from $V$ to $W$, then we say $V$ is \textbf{isomorphic} to $W$ and write $V = W$.
+\subsection*{Example}
+Let $W$ be the vector space of all symmetric $2\times 2$ matricies. Show that $W$ is isomorphic to $\mathbb{R}^3$.
+\subsection*{Solution}
+W is represented by the form $\begin{bmatrix}
+    a&b\\b&c
+\end{bmatrix}$, so $dim W = 3$.
+
+\section*{The Matrix of a Linear Transformation}
+Let $V$ and $W$ be two finite-dimensional vector spacfes with bases B and C, respectively, where B = $\{v_1, \dots, v_n\}$. 
+If $T:V\rightarrow W$ is a linear transformation, then the $m\times n$ matrix $A$ defined by\\
+$A = [T(v_1)_C][T(v_2)_C]\dots[T(v_n)_C$
+
+\subsection*{Example}
+Let $T: R^3 \rightarrow R^n$ be the linear transformation defined by
+$$T\begin{bmatrix}
+    x\\y\\z
+\end{bmatrix} = \begin{bmatrix}
+    x-2y\\x+y-3z
+\end{bmatrix}$$ and let $B = \{e_1, e_2, e_3\}$ and $C = \{e_2, e_1\}$ be bases for $R_3$ and $R_2$, respectively. Find the matrix of $T$ with respect to $B$ and $C$.
+\subsection*{Solution}
+$$T(e_1) = T\begin{bmatrix}
+    1\\0\\0
+\end{bmatrix} = \begin{bmatrix}
+    1\\1
+\end{bmatrix}, \qquad T(e_2) = T\begin{bmatrix}
+    0\\1\\0
+\end{bmatrix} = \begin{bmatrix}
+    -2\\1
+\end{bmatrix}, \qquad T(e_3) = T\begin{bmatrix}
+    0\\0\\1
+\end{bmatrix} = \begin{bmatrix}
+    0\\-3
+\end{bmatrix}$$
+
+$$e_2+e_1 = a\begin{bmatrix}
+    0\\1
+\end{bmatrix} + b\begin{bmatrix}
+    1\\0
+\end{bmatrix} = \begin{bmatrix}
+    1\\1
+\end{bmatrix}\qquad [T(e_1)]_C = \begin{bmatrix}
+    1\\1
+\end{bmatrix}$$
+
+$$e_2+e_1 = a\begin{bmatrix}
+    0\\1
+\end{bmatrix} + b\begin{bmatrix}
+    1\\0
+\end{bmatrix} = \begin{bmatrix}
+    -2\\1
+\end{bmatrix}\qquad [T(e_2)]_C = \begin{bmatrix}
+    1\\-2
+\end{bmatrix}$$
+
+$$e_3 + e_1 = a\begin{bmatrix}
+    0\\1
+\end{bmatrix} + b\begin{bmatrix}
+    1\\0
+\end{bmatrix} = \begin{bmatrix}
+    0\\-3
+\end{bmatrix}\qquad [T(e_2)]_C = \begin{bmatrix}
+    -3\\0
+\end{bmatrix}$$
+
+$$A = [T(e_1)]_C[T(e_2)]_C[T(e_3)]_C = \begin{bmatrix}
+    1&1&-3\\1&-2&0
+\end{bmatrix}$$
+$$A[v]_B = [T(v)]_C\qquad v_B = \begin{bmatrix}
+    1\\3\\-2
+\end{bmatrix}$$
+$$[T(v)]_C = \begin{bmatrix}
+    -5\\10
+\end{bmatrix}_C = \begin{bmatrix}
+    10\\-5
+\end{bmatrix}$$
+$$\begin{bmatrix}
+    1&1&-3\\1&-2&0
+\end{bmatrix}\begin{bmatrix}
+    1\\3\\-2
+\end{bmatrix} = \begin{bmatrix}
+    10\\-5
+\end{bmatrix}$$
+
+\subsection*{Matricies of Composite and Inverse Linear Transformations}
+Let $U$, $V$, and $W$ be finite-dimensional vector spaces with bases B, C, and D, respectively. A linear transformation $T:U\rightarrow V$ and $S:V\rightarrow W$ be linear transformation. Then
+$$[S\comp T]_{D\leftarrow B} = [S]_{D\leftarrow C}[T]_{C\leftarrow B}$$
+
+\subsection*{Example}
+The linear transformation $T: R^2 \rightarrow \mathfrak{P}_1$ defined by $T\begin{bmatrix}
+    a\\b
+\end{bmatrix} = a+ (a+b)x$ were shown to be one to one and onto and hence invertible. Find $T^-1$.
+
+\section{Applications}
+\subsection*{Homogeneous Libear Differential Equations}
+Let S be the solution space of $y^{\prime\prime} + ay^\prime + by = 0$\\
+and let $\lambda_1$ and $\Lambda_2$ be the roots of the characteristic equation $\lambda^2 + a\lambda + b = 0$
+\begin{enumerate}[a]
+    \item If $\lambda_1\neq\lambda_2$, then $\{e^{\lambda_1t}, e^{\lambda_2}t\}$ is a basis for S. 
+    \item If $\lambda_1\neq\lambda_2$, then $\{e^{\lambda_1t}, te^{\lambda_1}t\}$ is a basis for S.
+\end{enumerate}
+Therefore, the solutions are $$y = c_1e^{\lambda_1t} + c_2e^{\lambda_2t} and y = c_1e^{\lambda_1t} + c_2te^{\lambda_1t}$$
+\subsection*{Example}
+Find all solutions of $$y^{\prime\prime} - 5y^\prime + 6y = 0$$
+\subsection*{Solution}
+Make the Equation in terms of lambda.
+$$y^{\prime\prime} - 5y^\prime + 6y = 0\rightarrow\lambda^2 + 5\lambda + 6 = 0$$
+$$(\lambda - 2)(\lambda - 3)= 0\qquad \lambda = 2,3$$
+Basis is $\{e^{2t}, e^{3t}\}\qquad y = c_1e^{2t} + c_2e^{3t}$

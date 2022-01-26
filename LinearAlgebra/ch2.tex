@@ -1,0 +1,116 @@
+\setcounter{chapter}{1}
+\chapter{Systems of Linear Equations}
+
+\section{Introduction to Systems of Linear Equations}
+Recall that the general equation of a line in $\mathbb{R}^2$ is of the form
+$$ax+by = c$$ and the general equation of a plane $\mathbb{R}^3$ is of the form
+$$ax+by+cz = d$$ Equations of this form called \textbf{linear equations}.\\
+
+A \textbf{linear equation} in the \textit{n} variables $x_1, x_2, \dots, x_n$ is an equation that can be written in the form
+$$a_1x_1+a_2x_2+\dots+a_nx_n = b$$ where the \textbf{coefficient} and the \textbf{constant term} b are constants.
+
+\subsection*{Example}
+Solve the system
+$$x - y - z = 2$$
+$$\qquad y+ + 3z = 5$$
+$$\qquad\qquad 5z = 10$$
+
+\subsection*{Solution}
+Using the bottom equation, we get $z = 2$, and then plug it into the middle equation. From $y+6 = -5\rightarrow y = -1$. From the first equation, $x = 3$.
+
+\section{Direct Methods for Solving Linear Systems}
+The \textbf{coefficient matrix} contains the coefficients of the variables, and the \textbf{augmented matrix} is the coefficient matrix augmented by an extra column containing the constant terms.
+A matrix is in \textbf{row echelon form} if it satisfies the following properties:
+\begin{enumerate}
+    \item Any rows consisting entirely of zeroes are at the bottom.
+    \item In each nonzero row, the first nonzero entry(called the \textbf{leading entry}) is in a column to the left of any leading entries below it. 
+\end{enumerate}
+
+\subsection*{Gaussian Elimination}
+When row reduction is applied to the augmented matrix of a system of a linear equations, we create an equivalent system that can be solved by back substitution. The entire process is known as \textbf{Gaussian elimination}.
+\begin{enumerate}
+    \item Write the augmented matrix of the system of linear equations.
+    \item Use elementary row operations to reduce the augmented matrix to row echelon form. 
+    \item Using back subsitution, solve the equivalent system that corresponds to the row-reduced matrix.
+\end{enumerate}
+The \textbf{rank} of a matrix is the number of nonzero rows in its row echelon form.
+\subsection*{Example}
+Solve the system:
+$$x_1 - x_2 + 2x_3 = 3$$
+$$x_1 + 2x_2 - x_3 = -3$$
+$$\qquad 2x_2 - 2x_3 = 1$$
+\subsection*{Solution}
+
+\subsection*{Gauss-Jordan Elimination}
+Steps for this: \begin{enumerate}
+    \item Write the augmented matrix of the system of linear equations.
+    \item Use elementary row operations to reduce the augmented matrix to row echelon form.
+    \item If the resulting system is consistent, solve for the leading variables in terms of any remaining free variables.
+\end{enumerate}
+A matrix is in \textbf{reduced row echelon form}  if it satisfies the following properties:
+\begin{enumerate}
+    \item It is in row echelon form
+    \item The leading entry in each nonzero row is a 1(called a leading 1).
+    \item Each column containing a leading 1 has zeroes everywhere else.
+\end{enumerate}
+\subsection*{Example}
+Determine whether the lines $x = p + su$ and $x = q+tv$ intersect and, ifso find their point of intersection when
+$$p = \begin{bmatrix}
+    1\\0\\-1
+\end{bmatrix}, q = \begin{bmatrix}
+    0\\2\\1
+\end{bmatrix}, u = \begin{bmatrix}
+    1\\1\\1
+\end{bmatrix}, and v = \begin{bmatrix}
+    3\\-1\\-1
+\end{bmatrix}$$
+\subsection*{Solution}
+$x = p+su = q+tv$, From this, we find out that $s = \frac{5}{4}, t = \frac{3}{4}$. The point of intersection is therefore
+$$\begin{bmatrix}
+    x\\y\\z
+\end{bmatrix} = \begin{bmatrix}
+    1\\0\\-1
+\end{bmatrix}+\frac{5}{4}\begin{bmatrix}
+    1\\1\\1
+\end{bmatrix} = \begin{bmatrix}
+    \frac{9}{4}\\\frac{5}{4}\\\frac{1}{4}
+\end{bmatrix}$$
+A system of linear equations is called \textbf{homogeneous} if the constant term in each equation is zero.
+
+\section{Spanning Sets and Linear Independence}
+Is the vector $\begin{bmatrix}
+    1\\2\\3
+\end{bmatrix}$ a linear combination of the vectors $\begin{bmatrix}
+    1\\0\\3
+\end{bmatrix}$ and $\begin{bmatrix}
+    -1\\1\\3
+\end{bmatrix}$
+\subsection*{Solution}
+We want to find scalars $x$ and $y$ such that\\ 
+x$\begin{bmatrix}
+    1\\0\\3
+\end{bmatrix} + y\begin{bmatrix}
+    -1\\1\\-3
+\end{bmatrix} = \begin{bmatrix}
+    1\\2\\3
+\end{bmatrix}$.\\ Expanding, we obtain the system
+$$x-y = 1$$ $$y = 2$$ $$3x-3y = 3$$ Whose augmented matrix is $$\begin{bmatrix}
+    1&0&3\\0&1&2\\)0&0&0
+\end{bmatrix}$$. So the solution is $x=3$, $y=2$.
+If $S = \{v_1, v_2, \dots, v_k\}$ is a set of vectors in $\mathbb{R}^n$, then the set of all linear combinations is called the \textbf{span} of $v_1, v_2, \dots, v_k$ and is denoted by $span(v_1, v_2, \dots, v_k)$. If $span(S) = R^n$, then $S$ is called a \textbf{spanning set} for $\mathbb{R}^n$.
+
+\section{Applications}
+The combustion of ammonia $(NH_3)$ in oxygen produces nitrogen $(N_2)$ and water. Find a balanced chemical equation for this reaction.
+$wNH_3 + xO_2\rightarrow yN_2 + zH_2O$\\
+Nitrogen: $w = 2y$\\
+Hydrogen: $3w = 2z$\\
+Oxygen: $2x = z$\\
+
+$$\begin{bmatrix}
+    1&0&-2&0&0\\3&0&0&-2&0\\0&2&0&-1&0
+\end{bmatrix}$$ rref$\rightarrow$ $$\begin{bmatrix}
+    1&0&0&\frac{-2}{3}&0\\0&1&0&\frac{-1}{2}&0\\0&0&1&\frac{-1}{3}&0
+\end{bmatrix}$$
+$$w = \frac{2}{3}z, x = \frac{1}{2}z, y = \frac{1}{3}z$$
+$$w = 4, x = 3, y = 2, z = 6$$
+$$4NH_3+3O_2\rightarrow 2N_2 + 6H_2O$$

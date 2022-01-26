@@ -1,0 +1,159 @@
+\setcounter{chapter}{16}
+\chapter{Vector Calculus}
+
+\section{Vector Fields}
+Let $D$ be a set in $\mathbb{R}^2$ (a plane region). A \textbf{vector field} on $\mathbb{R}^2$ is a function $\textbf{F}$ that assigns to each point $(x,y)$
+in $D$ a two-dimensional vector $\textbf{F}(x,y)$. Since \textbf{F} is a two dimensional vector, we can write it in terms of its \textbf{component} functions $P$ and $Q$ as follows:
+$$\textbf{F}(x,y) = P(x,y)\ihat + Q(x,y)\jhat = \ev{P(x,y), Q(x, y)}$$or, for short, $$\textbf{F} = P\ihat + Q\jhat$$
+Let $E$ be a set in $\mathbb{R}^3$ (a plane region). A \textbf{vector field} on $\mathbb{R}^3$ is a function $\textbf{F}$ that assigns to each point $(x,y,z)$
+in $E$ a two-dimensional vector $\textbf{F}(x,y,z)$. 
+
+\subsection*{Example}
+Suppose an electric charge $Q$ is located at the origin. According to Coulomb's Law, the electric force $\textbf{F}x$ exerted by this charge on a charge $q$ located at a point
+$(x,y,z)$ with position vector $\textbf{x} = \ev{x,y,z}$ is $$\textbf{F}x = \frac{\epsilon qQ}{|\vec{x}|^3}\vec{x}$$
+The force is repulsive for like charges ($qQ > 0$) and attractive for unlike charges ($qQ < 0$). This vector field is an example of a \textbf{force field}.
+
+\subsection*{Gradient Fields}
+If $f$ is a scalar function of three variables, its gradient is a vector field on $\mathbb{R}^2$ given by 
+$$\nabla f(x,y,z) = f_x(x,y,z)\ihat + f_y(x,y,z)\jhat + f_z(x,y,z)\khat$$
+
+\subsection*{Example}
+Find the gradient vector field of $f(x,y) = x^2y - y^3$. Plot the gradient vector field together with a contour map of $f$.
+\subsection*{Solution}
+The gradient vector field is given by $$\nabla f(x,y) = \frac{\partial f}{\partial x}\ihat + \frac{\partial f}{\partial y}\jhat = 2xy\ihat + (x^2 - 3y^2)\jhat$$
+
+A vector field $\textbf{F}$ is called a \textbf{conservative vector field} if it is the gradient of some scalar function, that is, if there exists a function $f$ such that \textbf{F} = 
+$\nabla f$. In this situation, $f$ is called a potential function for \textbf{F}.
+
+\section{Line Integrals}
+If $f$ is defined on a smooth curve $C$, then the \textbf{line integral of $f$ along $C$} is $$\int_Cf(x,y)ds = \lim_{n\rightarrow\infty}\sum^n_{i=1}f(x^*_i, y^*_i)\Delta s_i$$if the limit exists.
+Since $f$ is defined as a continuous function, the following formula can be used to evaluate the line integral:
+$$\int_Cf(x,y)ds = \int^b_af(x(t), y(t))\sqrt{(\frac{dx}{dt})^2 + (\frac{dy}{dt})^2} dt$$
+
+\subsection*{Example}
+Evaluate $\int_C (2+x^2y) ds$, where $C$ is the upper half of the unit cirlce $x^2 + y^2 = 1$.
+\subsection*{Solution}
+We first need parametric equations to represent $C$. Recall that the unit circle can be parametrized by means of the equation 
+$$x = \cos{t}\qquad y = \sin{t}$$ and the upper half of the circle is represented by the parameter interval $0\leq t\leq\pi$. Therefore, 
+$$\int_C (2+x^2y) ds = \int^\pi_0(2+\cos^2{t}\sin{t})\sqrt{(\frac{dx}{dt})^2 + (\frac{dy}{dt})^2} dt$$
+$$= \int^\pi_0(2+\cos^2{t}\sin{t})\sqrt{\sin^2{t} + \cos^2{t}} dt$$
+$$= \int^\pi_0(2+\cos^2{t}\sin{t}) dt = \left[2t - \frac{\cos^3{t}}{3}\right]^\pi_0$$ $$2\pi + \frac{2}{3}$$
+
+The \textbf{line integrals of $f$ along $C$ with respect to $x$ and $y$} are obtained by replacing $\Delta s_i$ with either $\Delta x_i$ or $\Delta y_i$.
+The \textbf{line integral with respect to arc length} can be written also in respect to x and y as shown below:
+$$\int_Cf(x,y)dx = \int^b_a f(x(t), y(t))x^\prime t dt$$
+$$\int_Cf(x,y)dy = \int^b_a f(x(t), y(t))y^\prime t dt$$
+
+The parametrization of a line segment follows the formula below: $$r(t) = (1-t)r_0\qquad 0\leq t\leq 1$$
+
+\subsection*{Example}
+Evaluate $\int_Cy^2 dx + x dy$, where (a) $C = C_1$ is the line segment from $(-5,-3)$ to $(0,2)$ and (b) $C = C_2$ is the arc of the parabola $x = 4 - y^2$ from $(-5,-3)$ to $(0,2)$.
+\textbf{Solution} (a)A parametric representiation for the line segment is $$x = 5t-5\qquad y= 5t-3\qquad 0\leq t\leq 1$$
+Use the parametrization of a line segment formula with $r_0 = \ev{-5, -3}$ and $r_1 = \ev{0,2}$. Then $dx = 5 dt$, $dy = 5 dt$, and 
+$$\int_Cy^2 dx + x dy = \int^1_0(5t-3)^2(5 dt) + (5t-5)(5 dt)$$ $$= 5\int^1_0(25t^2-25t+4)$$ 
+$$= 5\left[\frac{25t^3}{3} - \frac{25t^2}{2} + 4t\right]^1_0 = -\frac{5}{6}$$
+(b) Since the parabola is given as a function of $y$, let's take $y$ as the parameter and write $C_2$ as 
+$$x = 4-y^2\qquad y = y\qquad -3\leq y\leq 2$$ Then $dx = -2y dy$, and we have
+$$\int_Cy^2 dx + x dy = \int^2_{-3}y^2(-2y)dy + (4-y^2)dy$$ $$= \int^2_{-3}(-2y^3 - y^2 + 4)$$
+$$= \left[-\frac{y^4}{4} - \frac{y^3}{3} + 4y\right]^2_{-3} = 40\frac{5}{6}$$
+
+If $f$ is a function of three variables that is continuous on some region containing $C$, then we define the \textbf{line integral of $f$ along $C$} as
+$$\int_Cf(x,y,z)ds = \int^b_a f(x(t), y(t), z(t))\sqrt{(\frac{dx}{dt})^2 + (\frac{dy}{dt})^2 + (\frac{dz}{dt})^2}$$
+
+\subsection*{Example}
+Evaluate $\int_Cy\sin{z} ds$, where $C$ is the circular helix given by the equation $x = \cos{t}$, $y = \sin{t}$, $z = t$, $0\leq t\leq 2\pi$. 
+\textbf{Solution} Using the line integral of $f$ along $C$ with respect to $y$
+$$\int_Cy\sin{z} ds = \int^{2\pi}_0(\sin{t})\sin{t}\sqrt{(\frac{dx}{dt})^2 + (\frac{dy}{dt})^2 + (\frac{dz}{dt})^2}$$
+$$= \int^{2\pi}_0(\sin{t})\sin{t}\sqrt{\sin^2{t} + \cos^2{t} + 1} dt$$
+$$= \sqrt{2}\int^{2\pi}_0\frac{1}{2}(1 - \cos{2t})dt = \frac{\sqrt{2}}{2}\left[t-\frac{1}{2}\sin{2t}\right]^{2\pi}_0 = \sqrt{2}\pi$$
+
+\subsection*{Line Integrals in Vector Fields}
+Let $\textbf{F}$ be a continuous vector field defined on a smooth curve $C$ given by a vector function $r(t)$, $a\leq t\leq b$. Then the \textbf{line integral of $F$ along $C$} is 
+$$\int_C\textbf{F}\cdot dr = \int^b_a\textbf{F}(r(t))\cdot r^\prime(t) = \int_CF\cdot T ds$$
+\subsection*{Example}
+Find the work done by the force field $\textbf{F}(x,y) = x^2\ihat - xy\jhat$ in moving a particle along the quarter-cirrcle $r(t) = \cos{t}\ihat + \sin{t}\jhat$. $0\leq t\leq\pi/2$
+\textbf{Solution} Since $x = \cos{t}$ and $y = \sin{t}$, we have $$F(r(t)) = \cos^2{t}\ihat - \cos{t}\sin{t}\jhat$$ $$r^\prime(t) = -\sin{t}\ihat + \cos{t}\jhat$$
+Therefore, the work done is $$\int_C\textbf{F}\cdot dr = \int^{\pi/2}_0F(r(t))\cdot r^\prime(t) = \int^{\pi/2}_0(-2\cos^2{t}\sin{t})dt$$
+$$= 2\left[\frac{\cos^3{t}}{3}\right]^{\pi/2}_0 = -\frac{2}{3}$$
+The connection between lien integrals of vector fields and line integrals of scalar fields can be noted with the connection below:
+$$\int_C\textbf{F}\cdot dr = \int_CP dx + Q dy + R dz\qquad where F = P\ihat + Q\jhat + R\khat$$
+
+\section{The Fundamental Theorem for Line Integrals}
+Let $C$ be a smooth curve given by the vector function $r(t)$, $a\leq t\leq b$. Let $f$ be a differentiable function of two or three variable whose gradient vector $\nabla f$ is continuous on $C$. Then
+$$\int_C \nabla f = f(r(b)) - f(r(a))$$
+
+\subsection*{Independence of Path}
+Suppose $C_1$ and $C_2$ are two piecewise-smooth curves(which are called \textbf{paths}) that have the same initial point $A$ and terminal point $B$. 
+$$\int_{C_1} \nabla f\cdot dr = \int_{C_2}\nabla f\cdot dr$$
+$F$ is a continuous vector field with domain $D$, we say that the line integral $\int_c F\cdot dr$ is \textbf{independent of path} if $\int_{C_1}F\cdot dr = \int_{C_2}F\cdot dr$ for any two paths with the
+The \textit{conversative} vector field depends only on the initial point and terminal point of a curve, and $\int_{C_2}F\cdot dr = 0$f for every closed path $C$ in $D$.\\*
+
+If $F(x,y) = P(x,y)\ihat + Q(x,y)\jhat$ is a conservative vector field, where $P$ and $Q$ have continuous first-order partial derviatives on a domain $D$, then throughoout D we have 
+$$\frac{\partial P}{\partial y} = \frac{\partial Q}{\partial x}$$\\*
+
+A \textbf{simple curve} is a curve that doesn't intersect itself anywhere between its endpoints (where $r(a) = r(b)$). A \textbf{simply-connected region} is the plane in which every simple closed curve in $D$ encloses only points that are in $D$.
+The theorem mentioned before can be used to see if a function is conservative. If the equation is met, then we can say $F$ is conservative 
+
+\subsection*{Example}
+Determine whether or not the vector field $$F(x,y) = (x - y)\ihat + (x - 2)\jhat$$ is conservative.
+\textbf{Solution} Let $P(x,y) = (x-y)$ and $Q(x,y) = (x - 2)$. Then
+$$\frac{\partial P}{\partial y} = -1\qquad \frac{\partial Q}{\partial x} = 1$$ Since $\partial P/\partial y\neq \partial Q/\partial x$, $F$ is not conservative.
+
+If F is defined to be conservative, we can write $F = \nabla f$. The \textbf{potential energy} of an object at a point is defined as $F = -\nabla P$. An equation relating work and potential energy is shown below
+$$W = \int_CF\cdot dr = -\int_C\nabla P\cdot dr$$
+
+\section{Green's Theorem}
+Let $C$ be a positively oriented, piecewise-smooth, simple closed curve in the plane and let $D$ be the region bounded by $C$. If $P$ and $Q$ have continuous partial derviatives on an open region that contains $D$, then 
+$$\int_C P dx + Q dy = \iint_D \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right) \,dA$$
+\subsection*{Example}
+Find $\oint_C (3y-e^{\sin{x}}) dx + (7x  +\sqrt{y^4+1}) dy$ where $C$ is the circle $x^2 + y^2 = 9$.
+\subsubsection*{Solution} The region $D$ bounded by $C$ is the disk $x^2 + y^2\leq 9$, so let's change to polar coordinates after applying Green's Theorem:
+$\oint_C (3y-e^{\sin{x}}) dx + (7x  +\sqrt{y^4+1}) dy$ 
+$$= \iint_D\left[\frac{\partial}{\partial x}(7x  +\sqrt{y^4+1}) - \frac{\partial}{\partial y}(3y-e^{\sin{x}})\right]$$
+$$= \int^{2\pi}_0\int^3_0(7 - 3)rdrd\theta$$ $$= 4\int^{2\pi}_0\int^3_0rdr = 36\pi$$
+Green's Theorem gives the following forumlas for the area of $D$:
+$$A = \oint_Cx dy = -\oint_C y dx = \frac{1}{2}\oint_C x dy - y dx$$
+
+\section{Curl and Divergence}
+\subsection*{Curl}
+If $F = P\ihat + Q\jhat + R\khat$ is a vector field on $\mathbb{R}^3$ and the partial derivatives of $P, Q, and R$ all exist, then the \textbf{curl} of \textbf{R} is the vector field on $\mathbb{R}^3$ defined by 
+$$curl F = \left(\frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z}\right)\ihat + \left(\frac{\partial P}{\partial z} - \frac{\partial R}{\partial x}\right)\jhat + \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right)\khat$$
+The easiest way to remember this formula is of the symbolic expression $$curl \textbf{F} = \nabla\times\textbf{F}$$
+If f is a function of three variables that has continuous second-rorder partial deriviates, $$curl(\nabla f) = 0$$
+\subsection*{Example}
+If $F(x,y,z) = xz\ihat + xyz\jhat - y^2k\khat$, find curl \textbf{F}.
+\subsubsection*{Solution} Using the equation, we have
+$$curl\textbf{F} = \nabla\times\textbf{F} = \begin{vmatrix}
+    \ihat&\jhat&\khat\\
+    \frac{\partial}{\partial x}&\frac{\partial}{\partial y}&\frac{\partial}{\partial z}\\
+    xz&xyz&-y^2
+\end{vmatrix}$$
+$$= \left[\frac{\partial}{\partial y}(-y^2) - \frac{\partial}{\partial z}(xyz)\right]\ihat - \left[\frac{\partial}{\partial x}(-y^2) - \frac{\partial}{\partial z}(xz)\right]\jhat$$
+$$+ \left[\frac{\partial}{\partial x}(xyz) - \frac{\partial}{\partial y}(xz)\right]\khat$$ $$= (-2y - xy)\ihat - (0 - x)\jhat + (yz - 0)\khat$$
+$$= -y(2 + x)\ihat + x\jhat + yz\khat$$
+
+\subsection*{Divergence}
+If $P\ihat + Q\jhat + R\khat$ is a vector field on $\mathbb{R}^3$ and $\partial P/\partial x$, $\partial Q/\partial y$, and $\partial R/\partial z$ exist, then the \textbf{divergence of F} is the function of three variables defined by
+$$div \textbf{F} = \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z}$$
+A more condensed form is $div \textbf{F} = \nabla\cdot\textbf{F}$
+\subsection*{Example}
+If $F(x,y,z) = xz\ihat + xyz\jhat - y^2\khat$, find div \textbf{F}.
+\subsubsection*{Solution} By the definition of divergence, we have 
+$$div \textbf{F} = \nabla\cdot\textbf{F} = \frac{\partial}{\partial x}(xz) + \frac{\partial}{\partial y}(xyz) + \frac{\partial}{\partial z}(-y^2)$$
+$$= z+ xz$$
+If $F = P\ihat + Q\jhat + R\khat$ is a vector field on $\mathbb{R}^3$ and $P$, $Q$, and $R$ have continuous second-order partial derivatives, then 
+$$div (curl\textbf{F} = 0)$$
+\subsection{Vector Forms of Green's Theorem}
+\begin{enumerate}
+    \item $\int_C\textbf{F}\cdot dr = \iint_D(curl F)\cdot k\,dA$
+    \item $\int_C F\cdot n ds = \iint_D div \textbf{F}(x,y)\,dA$
+\end{enumerate}
+
+\section{Parametric Surfaces and Their Areas}
+We can describe a surface by a vector function $r(u,v)$ of two parameters $u$ and $v$. $$r(u,v) = x(u,v)\ihat + y(u,v)\jhat + z(u,v)\khat$$
+$x$, $y$, $z$ are the component functions of \textbf{r}. The set of component functions and $(u,v)$ varies throughout $D$, is called \textbf{parametric surface S} and the component functions are called the \textbf{parametric equations}.
+If we keep $v$ constant by putting $v = v_0$, we get a curve $C_2$ given by $r(u, v_0)$ that lies on $S$. This is called a \textbf{grid curve}.
+\subsection*{Example}
+Find a parametric representation for the cylinder $$x^2 + y^2 = 4\qquad 0\leq z\leq 1$$
+\subsubsection*{Solution} The cylinder has a simple representation $r=2$ in cylindrical coordinates, so we choose as a parameters $\theta$ and $z$ in cylindrical coordinates. Then the parametric equations of the cylinder are 
+$$x = 2\cos{\theta}\qquad y = 2\sin{\theta}\qquad z = z$$ where $0\leq\theta\leq 2\pi$ and $0\leq z\leq 1$

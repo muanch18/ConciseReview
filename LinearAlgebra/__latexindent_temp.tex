@@ -1,0 +1,234 @@
+\setcounter{chapter}{6}
+\chapter{Distance and Approximation}
+
+\section{Inner Product Spaces}
+We can define the dot product $u \bullet v$ of vectors $\vec{u}$ and $\vec{v}$ in $\mathbb{R}^n$. 
+An \textbf{inner product} on a vector space V is an operation that assigns to every pair of vectors $\vec{u}$ and $\vec{v}$ in V a real number $<u,v>$ such 
+that the following properties hold for all vectors $\vec{u}$, $\vec{v}$, and $\vec{w}$ in $V$ and all scalars c.\\
+
+A vector space with an inner product is called an inner product space. $<u,v>$
+
+\subsection{Properties of Inner Products}
+Let $u$, $v$, and $w$ be vectors in an inner product space $V$ and let $c$ be a scalar.
+\begin{enumerate}
+    \item $<u+v, w> = <u,w> + <v,w>$
+    \item $<u, cv> = c<u, v>$
+    \item $<u, 0> = <0, v> = 0$
+\end{enumerate}
+
+\subsection{Length, Distance, and Orthogonality}
+Let $u$ and $v$ be vectors in an inner product space $V$.
+\begin{enumerate}
+    \item The \textbf{length} (or \textbf{norm}) of $v$ is $||v|| = \sqrt{<v,v>}$
+    \item The \textbf{distance} between $u$ and $v$ is $d(u,v) = ||u - v||$.
+    \item $u$ and $v$ are \textbf{orthogonal} if $<u, v> = $. 
+\end{enumerate}
+\subsection*{Example}
+Consider the inner product on $\mathfrak{L}[0,1]$. If $f(x) = x$ and $g(x) = 3x-2$, find\\
+(a)$||f||$ (b)$d(f,g)$ (c) $<f,g>$
+\subsection*{Solution}
+\begin{enumerate}
+    \item $$<f,f> = \int_{0}^{1} f^2(x) dx = \int_{0}^{1} x^2 dx = \frac{x^3}{3}\Big|^1_0 = \frac{1}{3}$$ so $||f|| = \sqrt{<f,f>} = \frac{1}{\sqrt{3}}$
+    \item $d(f,g) = ||f-g|| = \sqrt{<f-g, f-g>}$ and $$f(x) - g(x) = x - (3x-2) = 2-2x$$ we have $$<f-g,f-g> = \int_{0}^{1}(f(x)-g(x))^2 dx = 4[x - x^2 + \frac{x^3}{3}]^1_0 = \frac{4}{3}$$ $$d(f,g) = \sqrt{\frac{4}{3}} = \frac{2}{\sqrt{3}}$$
+    \item $<f,g> = \int_{0}^{1}f(x)g(x) dx = \int_{0}^{1} (3x^2 - 2x) dx = [x^3-x^2]^1_0 = 0$
+\end{enumerate}
+Thus, f and g are orthogonal.
+\subsection{Pythagoras' Theorem}
+Let $u$ and $v$ be vectors in an inner product space $V$. Then $u$ and $v$ are orthogonal if and only if
+$$||u+v||^2 = ||u||^2 + ||v||^2$$
+
+\subsection{Legendre Polynomials}
+Construct an orthogonal basis for $\mathscr{P}$ with respect to the inner product
+$$<f,g>= \int_{-1}^{1} f(x)g(x)dx$$
+
+Let $$x_1 = 1$, $x_2 = x$, $x_3 = x^2$$ 
+We begin by setting $v_1 = x_1 = 1$. Next we compute\\
+$$<v_1, v_1>$  = $\int_{-1}^{1} dx = x \Big|_{-1}^{1}$$ and $$<v_1, x_2> = \int_{-1}^{1} x dx = \frac{x^2}{2} \Big|_{-1}^{1} = 0$$
+Therefore, 
+$$v_2 = x_2 - \frac{<v_1, x_2>}{<v_1, v_1>}v_1 = x$$
+To find $v_3$, we first compute
+$$<v_1, x_3> = \int_{-1}^{1} x^2 dx = \frac{x^3}{3} \Big|_{-1}^{1} = \frac{2}{3}$$
+$$<v_2, x_3> = \int_{-1}^{1} x^3 dx = \frac{x^4}{4} \Big|_{-1}^{1} = 0$$
+$$<v_2, v_2> = \int_{-1}^{1} x^2 dx = \frac{2}{3}$$
+Then,
+$$v_3 = x_3 - \frac{<v_1, x_3>}{<v_1, v_1>}v_1 - \frac{<v_2, x_3>}{<v_2, v_2>}v_2 = x^2 - \frac{\frac{2}{3}}{2}(1) - \frac{0}{\frac{2}{3}}(x) = x^2 - \frac{1}{3}$$
+The polynomials $1$, $x$, $x^2 - \frac{1}{3}$ are the first three \textbf{Legendre Polynomials}.
+\subsection{Cauchy-Schwarz and Triangle inequalities}
+Let $u$ and $v$ be vectors in an inner product space $V$. Then\\
+Cauchy-Schwarz: $|<u,v>| \leq ||u|| ||v||$\\
+Triangle: $||u+v|| \leq ||u|| + ||v||$
+
+\section{Norms and Distance Functions}
+A norm on a vector space $V$ is a mapping that associates with each vector $\vec{v}$ a real number $||v||$, called the \textbf{norm} of v, 
+such that the following properties are satisfied for all vectors $\vec{u}$ and $\vec{v}$ and all scalars $c$:
+\begin{enumerate}
+    \item $||v|| \geq 0$, and $||v|| = 0$ if any only if $v = 0$.
+    \item $||cv|| = |c|||v||$
+    \item $||u+v|| \leq ||u|| + ||v||$
+\end{enumerate}
+A vector space with a norm is called a \textbf{normed linear space}.
+
+\subsection{Vector Norms}
+\begin{enumerate}
+    \item The \textbf{Sum Norm} is the sum of the absolute values of its components. $||v_s|| = |v_1| + \dots + |v_n|$
+    \item The \textbf{Max Norm} is the largest number along the absolute values of its components. $||v_m|| = max(|v_1|, \dots, |v_n|)$
+    \item The \textbf{Euclidean Norm} is the value of the distance between the two vectors. 
+\end{enumerate}
+\subsection*{Example}
+Let $u$ = $$\begin{bmatrix}
+    3 \\-2
+\end{bmatrix}$ and $v$ = $\begin{bmatrix}
+    -1\\1
+\end{bmatrix}$$ Compute $d(u,v)$ relative to (a) the Euclidean norm, (b) the sum norm, and (c) the max norm.
+\subsection*{Solution}
+Each calculation requires knowing that $u - v$ = $$\begin{bmatrix}
+    4\\-3
+\end{bmatrix}$$
+\begin{enumerate}
+    \item $d_E(u,v)$ = $||u-v||_E = \sqrt{4^2 + (-3)^2} = \sqrt{25} = 5$
+    \item $d_S(u,v)$ = $||u-v||_S = |4| + |-3| = 7$
+    \item $d_m(u,v)$ = $||u-v||_m = max[|4|, |-3|] = 4$
+\end{enumerate}
+
+\subsection{Matrix Norms}
+A \textbf{Matrix Norm} on $M_{nn}$ is a mapping that associates with each matrix $A$, called the norm of $A$, and satisfies the following properties.
+\begin{enumerate}
+    \item $||A|| \geq 0$ and $||A|| = 0$ if any only if $A=O$.
+    \item $||cA|| = |c|||A||$
+    \item $||A+B|| \leq ||A||+||B||$
+    \item $||AB|| \leq ||A|| ||B||$
+\end{enumerate}
+\subsection{Condition Number of a Matrix}
+A matrix $A$ is ill-conditioned if small changes in its entries can produce large changes in the solutions of $A\textbf{x} = \textbf{b}$.
+The relative error of measured the condition number is defined as 
+$\frac{||\Delta x||}{||x^\prime||}\leq cond(A)\frac{||\Delta A||}{||A||}$
+\section{Least Squares Approximation}
+\textbf{The Best Approximation Theorem}
+If $W$ is a subscape of a normed linear space $V$ and if $v$ is a vector in $V$, then the best approximation to $v$ in $W$ such that
+    $$||v-\vec{v}|| < ||v-w||$$
+for every vector $w$ in $W$ different from $\vec{v}$.\\
+\textbf{The Least Squares Theorem}
+Let $A$ be an $m\times n$ and let \textbf{b} be in $\mathbb{R}^n$. Then $A\textbf{x} = \textbf{b}$ always has at least one least squares solution. Moreover,
+\begin{enumerate}
+    \item $\bar{x}$ is a least square solution of $A\textbf{x} = \textbf{b}$ if any only if $\bar{x}$ is a solution of the normal equations $A^TA\bar{x} = A^T\textbf{b}$.
+    \item $A$ has linearly independent coloumns if any only if $A^TA$ is invertible. In this case, the least squares solution is unique and is given by $\bar{x} = (A^TA)^{-1} A^T\textbf{b}$.
+\end{enumerate}
+
+\textbf{Least Squares via the QR Factorization}
+$\bar{x} = R^{-1}Q^T\textbf{b}$
+
+\textbf{Orthogonal Projection} can be written as a byproduct of the least squares method. 
+$proj_w(v) = A(A^TA)^{-1}A^T\textbf{v}$
+\subsection{Penrose Conditions}
+The \textbf{pseudoinverse} of $A$ is defined by $A^+ = (A^TA)^{-1}A^T$.
+Note that if A is $m\times n$, then $A^+$ is $n\times m$.
+The \textbf{Penrose Conditions} for A are as follow
+\begin{enumerate}
+    \item $AA^+A = A$
+    \item $A^+AA^+ = A^+$
+    \item $AA^+$ and $A^+A$ are symmetric.
+\end{enumerate}
+
+\section{The Singular Value Decomposition}
+
+\subsection{Singular Values of a Matrix}
+If $A$ is an $m\times n$, the \textbf{singular values} of $A$ are the square roots of the eigenvalues of $A^TA$ and are denoted by $\sigma_1,\dots, \sigma_n$.
+\subsection{Singular Value Decomposition}
+Let $A$ be an $m\times n$ with singular values $\sigma_1,\dots, \sigma_n$ and $\sigma_{r+1} = \sigma_{r+2} = \dots = \sigma_n = 0$. Then there exist an $m\times m$ orthogonal matrix $U$, 
+an $n\times n$ orthogonal matrix $V$, and an $m\times n$ matrix sigma such that
+$$A = U\sum V^T$$
+
+\subsection*{Example}
+Find a singular value deconomposition for the following matrix. 
+$\begin{bmatrix}
+    1 & 1 & 0\\0&0&1
+\end{bmatrix}$
+\subsection*{Solution}
+$$A^TA = \begin{bmatrix}
+    1&1&0\\1&1&0\\0&0&1
+\end{bmatrix}$$ and find that its eigenvalues are $\lambda_1 = 2$, $\lambda_2 = 1$, and $\lambda_3 = 0$, with corresponding eigenvectors
+$$\begin{bmatrix}
+    1\\1\\0
+\end{bmatrix}
+\begin{bmatrix}
+    0\\0\\1
+\end{bmatrix} 
+\begin{bmatrix}
+    -1\\1\\0
+\end{bmatrix}$$. Since these vectors are orthogonal, we normalize them to obtain
+$$\begin{bmatrix}
+    1/\sqrt{2}\\1/\sqrt{2}\\0
+\end{bmatrix}
+\begin{bmatrix}
+    0\\0\\1
+\end{bmatrix} 
+\begin{bmatrix}
+    -1/\sqrt{2}\\1/\sqrt{2}\\0
+\end{bmatrix}$$. The singular values of A are $\sigma_1 = \sqrt{2}$, $\sigma_2 = \sqrt{1} = 1$, and $\sigma_3 = 0$. Thus, 
+$$V = \begin{bmatrix}
+    1/\sqrt{2}&0&-1/\sqrt{2}\\1/\sqrt{2}&0&1/\sqrt{2}\\0&1&0
+\end{bmatrix}$ and $\sum = \begin{bmatrix}
+    \sqrt{2}&0&0\\0&1&0
+\end{bmatrix}$$
+To find $U$, we compute
+$$u_1 = \frac{1}{\sigma_1}Av_1 = \frac{1}{\sqrt{2}}\begin{bmatrix}
+    1&1&0\\0&0&1
+\end{bmatrix} \begin{bmatrix}
+    1/\sqrt{2}\\1/\sqrt{2}\\0
+\end{bmatrix} = \begin{bmatrix}
+    1\\0
+\end{bmatrix}$$ and 
+$$u_2 = \frac{1}{\sigma_2}Av_2 = \begin{bmatrix}
+    0\\1
+\end{bmatrix}$$
+These vectors form an orthonormal basiss, so we have $$U = \begin{bmatrix}
+    1&0\\0&1
+\end{bmatrix}$$
+This yields the SVD where $A = U\sum V^T$.\\
+\textbf{The Outer Product Form of the SVD}
+$$a = \sigma_1 u_1v^T_1+\dots+\sigma_r u_rv^T_r$$
+\textbf{Byproduct of Penrose Conditions}
+$A^+ = V\sum^+U^T$ where $\sum^+$ is the $n\times m$ matrix $\begin{bmatrix}
+    D^{-1}&O\\O&O
+\end{bmatrix}$ \\
+\textbf{The Fundamental Theorem of Invertible Matricies: Final Version}
+\begin{enumerate}
+    \item $A$ is invertible.
+    \item $Ax = b$ has a unique solution for every \textbf{b} in $\mathbb{R}^n$.
+    \item $Ax = 0$ has only the trivial solution.
+    \item The reduced row echelon form of $A$ is $I_n$.
+    \item $A$ is a product of elementary matricies.
+    \item $\mathbb{R}ank(A) = n$
+    \item $nullity(A) = 0$
+    \item The column vectors of $A$ are linearly independent.
+    \item The column vectors of $A$ span $\mathbb{R}^n$.
+    \item The column vectors of $a$ form a basis for $\mathbb{R}^n$.
+    \item The row vectors of $A$ are linearly independent.
+    \item The row vectors of $A$ span $\mathbb{R}^n$.
+    \item The row vectors of $a$ form a basis for $\mathbb{R}^n$.
+    \item $det A \neq 0$
+    \item $0$ is not an eigenvalue of $A$.
+    \item $T$ is invertible.
+    \item $T$ is one-to-one.
+    \item $T$ is onto.
+    \item $ker(T) = {0}$
+    \item $\mathbb{R}ange(T) = W$
+    \item $0$ is not a singular value of $A$.
+\end{enumerate}
+
+\section{Applications}
+\subsection*{Example}
+Find the best linear approximation to $f(x) = e^x$ on the interval $[-1, 1]$.
+\subsection*{Solution}
+$<f,g> = \int_{-1}^{1} f(x)g(x) dx$. A basis for $\mathscr{P}_1[-1,1]$ is given by ${1,x}$. \\
+Since $<1,x> = \int_{-1}{1} x dx = 0$, this is an orthogonal basis, so the best approximation to $f$ in $W$ is
+$$g(x) = proj_W(e^x) = \frac{<1,e^x>}{<1,1>}1 + \frac{<x,e^x>}{<x,x>}x$$
+$$= \frac{\int_{-1}^{1}1\bullet e^x dx}{\int_{-1}^{1}1\bullet 1 dx} + \frac{\int_{-1}^{1}xe^x dx}{\int_{-1}^{1}x^2 dx}x$$
+$$= \frac{e-e^{-1}}{2} + \frac{2e^{-1}}{\frac{2}{3}}x \approx 1.18 + 1.10x$$
+\subsection*{Example}
+Find the fourth-order Fourier approximation to $f(x) = x$ on $ [-\pi, \pi]$
+\subsection*{Solution}
+$$a_0 = \frac{1}{2\pi}\int_{-\pi}^{\pi} x dx = \frac{1}{2\pi}[\frac{x^2}{2}]^\pi_{-\pi} = 0$$
+$$a_k = \frac{1}{\pi}\int_{-\pi}^{\pi} xcoskx dx = \frac{1}{\pi}[\frac{x}{k}sinkx + \frac{1}{k^2}coskx]^\pi_{-\pi} = 0$$
+$$b_k = \frac{1}{\pi}\int_{-\pi}^{\pi} x sinkx dx = \frac{1}{\pi}[\frac{-x}{k}cos kx + \frac{1}{k^2}sinkx]^\pi_{-\pi}$$
+$$= \frac{2(-1)^{k+1}}{k}$$

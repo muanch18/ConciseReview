@@ -1,0 +1,128 @@
+\setcounter{chapter}{12}
+\chapter{Vectors and the Geometry of Space}
+
+\section{Three-Dimensional Coordinate System}
+The three $xy$, $yz$, and $xz$ axes are called \textbf{octants}. 
+
+The distance $|P_1P_2|$ between the points $P_1(x,y,z)$ and $P_2(x,y,z)$ is 
+$$|P_1P_2| = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2  + (z_2 - z_1)^2}$$
+
+An equation of a sphere with center $C(h, k, l)$ and radius $r$ is 
+$$(x - h)^2 + (y - k)^2 + (z - l)^2 = r^2$$ In particular, if the center of the origin $O$, then an equation of the sphere is
+$$x^2 + y^2 + z^2 = r^2$$
+%\subsection*{Example}
+
+\section{Vectors}
+If $\vec{u}$ and $\vec{v}$ are vectors positioned so the initial point of $\vec{v}$ is at the terminal point of $\vec{u}$, then the \textbf{sum $u + v$} is the vector from the initial point of $\vec{u}$ to the terminal point of $\vec{v}$.
+Vectors have twwo components: \textit{magnitude} and \textit{direction}.
+
+\textbf{Scalar Multiplication}: If $c$ is a scalar and \textbf{v} is a vector, then the \textbf{scalar multiple} $c\textbf{v}$ is the vector whose length is $|c|$ times the length of $\textbf{v}$ and whose direction is the same as $\textbf{v}$ if $c > 0$
+and is opposite to $\vec{v}$ if $c < 0$, If $c = 0$ or $v = 0$, then $c\textbf{v} = 0$.
+
+\subsection*{Components}
+The components of a vector $\vec{a}$ and you can write $$a = \ev{a_1, a_2}\qquad or a = \ev{a_1, a_2, a_3}$$
+Given the points $A(x_1, y_1, z_1)$ and $B(x_2, y_2, z_2)$, the vector $\vec{a}$ with representation $\vec{AB}$ is
+$$a = \ev{x_2 - x_1, y_2, - y_1, z_2 - z_1}$$
+The length of the three-dimensional vector $a = \ev{a_1, a_2, a_3}$ is $$|a| = a^2_1 + a^2_2 + a^2_3$$
+\textbf{Properties of Vectors} If $\vec{a}$, $\vec{b}$, and $\vec{c}$ are vectors in $V_n$ and $c$ and $d$ are scalars, then
+\begin{enumerate}
+    \item $a + b = b + a$
+    \item $a + (b + c) = (a + b) + c$
+    \item $a + 0 = a$
+    \item $a + (-a) = 0$
+    \item $c(a + b) = c\vec{a} + c\vec{b}$
+    \item $(c + d)\vec{a} = c\vec{a} + d\vec{a}$
+    \item $(cd)\vec{a} = c(\vec{a})$
+    \item $1\vec{a} = \vec{a}$
+\end{enumerate}
+Any vector in $V_3$ can be expressed in terms of the \textbf{standard basis vectors i, j}, and \textbf{k}. For instance, 
+$$\ev{1,-2,6} = \ihat - 2\jhat + 6\khat$$
+
+\subsection*{Special Vectors}
+\begin{enumerate}
+    \item \textbf{Null Vector}: $\vec{0}$ has a magnitude of zero, and NO direction.
+    \item \textbf{Unit Vector}: vector with magnitude one. The formula is as follows $$ \hat{a} = \frac{\vec{a}}{|\vec{a}|}$$
+\end{enumerate}
+
+For Parallel vectors, look for a common scalar to the three components of the initial vector. 
+
+\subsection*{Vector Spaces}
+$\mathbb{R}$ is the real line - the set of all real numbers. $$ $$ $\mathbb{R}^2$ is the set of all ordered pairs of real numbers. $$ $$
+$\mathbb{R}$ is the set of all ordered triples of real numbers. $$ $$ $\mathbb{R}^n$ is the set of all ordered $n$-triples of real $n$ numbers.
+
+
+\section{The Dot Product}
+If $a = \ev{a_1, a_2, a_3}$ and $b = \ev{b_1, b_2, b_3}$, then the \textbf{dot product} of $\vec{a}$ and $\vec{b}$ is the number $a\cdot b$ given by 
+$$a\cdot b = a_1b_1 + a_2b_2 + a_3b_3$$
+\textbf{Properties of the Dot Product}
+If $\vec{a}$, $\vec{b}$, and $\vec{c}$ are vectors in $V_3$ and $c$ is a scalar, then
+\begin{enumerate}
+    \item $a\cdot a = |a|^2$
+    \item $a\cdot b = b\cdot a$
+    \item $a\cdot (b + c) = a\cdot b + a\cdot c$
+    \item $(c\vec{a})\cdot b = c(\vec{a}\cdot \vec{b}) = \vec{a}\cdot (c\vec{b})$
+    \item $0\cdot a = 0$
+\end{enumerate}
+If $\theta$ is the angle between the vectors $\vec{a}$ and $\vec{b}$, then
+$$\cos{\theta} = \frac{a\cdot b}{|a||b|}$$
+Two vectors $\vec{a}$ and $\vec{b}$ are orthogonal if and only if $a\cdot b = 0$
+
+\subsection*{Projections}
+Scalar projection of $\vec{b}$ onto $\vec{a}$:$\qquad comp_ab = \frac{a\cdot b}{|a|}$
+Vector projection of $\vec{b}$ onto $\vec{a}$:$\qquad proj_ab = \left(\frac{\vec{a}\cdot\vec{b}}{|\vec{a}|}\frac{\vec{a}}{|\vec{a}|}\right)$
+
+\subsection*{Example}
+Find the scalar projection and vector projection of $b = \ev{1, 1, 2}$ onto $a = \ev{-2,3,1}$.
+Since $|a| = \sqrt{{-2}^2 + 3^2 + 1^2} = \sqrt{14}$, the scalar projection of $\vec{b}$ onto $\vec{a}$ is 
+$$comp_ab = \frac{\vec{a}\cdot\vec{b}}{|\vec{a}|} = \frac{(-2)(1) + 3(1) + 1(2)}{\sqrt{14}} = \frac{3}{\sqrt{14}}$$
+The vector projection is $$proj_ab = \frac{3}{\sqrt{14}}\frac{\vec{a}}{|\vec{a}|} = \frac{3}{14}a = \ev{-\frac{3}{7}, \frac{9}{14}, \frac{3}{14}}$$
+
+\section{The Cross Product}
+The \textbf{cross product $a\times b$} of two vectors $\vec{a}$ and $\vec{b}$ is a vector.
+If $a = \ev{a_1, a_2, a_3}$ and $b = \ev{b_1, b_2, b_3}$, then the \textbf{cross product} of $\vec{a}$ and $\vec{b}$ is the vector
+$$a\times b = \ev{a_2b_3 - a_3b_2, a_3b_1 - a_1b_3, a_1b_2 - a_2b_1}$$
+If $a = \ev{1, 3, 4}$ and $b = \ev{2, 7, -5}$, then 
+$$a\times b = \begin{vmatrix}
+    \ihat&\jhat&\khat\\1&3&4\\2&7&-5
+\end{vmatrix}$$
+$$= \begin{vmatrix}
+    3&4\\7&-5
+\end{vmatrix}\ihat - \begin{vmatrix}
+    1&4\\2&-5
+\end{vmatrix}\jhat + \begin{vmatrix}
+    1&3\\2&7
+\end{vmatrix}\khat$$ 
+$$= (-15-28)\ihat - (-5 - 8)\jhat + (7 - 6)khat = -43\ihat + 13\jhat + \khat$$
+Two nonzero vectors $\vec{a}$ and $\vec{b}$ are parallel if and only if $$a\times b = 0$$\\
+\textbf{Properties of cross product}
+\begin{enumerate}
+    \item $a\times b = -b\times a$
+    \item $(c\vec{a})\vec{b} = c(\vec{a}\times\vec{b}) = \vec{a}\times (c\vec{b})$
+    \item $a\times(b + c) = a\times b + a\times c$
+    \item $(a + b)\times c = a\times c + b\times c$
+    \item $a\cdot (b\times c) = (a\times b)\cdot c$
+    \item $a\times (b\times c) = (a\cdot c)b - (a\cdot b)c$
+\end{enumerate} 
+
+\section{Equations of Lines and Planes}
+There is a scalar $t$ such that $$r = r_0 + tv$$. Therefore, the \textbf{parametric equations} we have $$x = x_0 + at\qquad y = y_0 + bt\qquad z = z_0 + ct$$.
+Another way of describing a line $L$; if $a$, $b$, or $c$ is 0, we can solve each of these equations for $t$ and obtain 
+$$\frac{x - x_0}{a} = \frac{y - y_0)}{b} = \frac{z - z_0}{c}$$
+The line segment from $r_0$ to $r_1$ is given by the vector equation
+$$r(t) = (1-t)r_0 + tr_1\qquad 0\leq t\leq 1$$
+
+\subsection*{Planes}
+The normal vector $\vec{n}$ is orthogonal to every vector in the given plane. In particular, $n$ is orthogonal to $r - r_0$ and so we have
+$$n\cdot(r - r_0) = 0$$ The \textbf{scalar equation of the plane through} $P_0(x_0, y_0, z_0)$ \textbf{with normal vector} $n = \ev{a,b,c}$
+Another way we can rewrite the equation: $$ax + by + cz + d = 0$$
+Thus the formula for distance $D$:
+$$D = \frac{|ax_1 + by_1 + cz_1 + d|}{\sqrt{a^2 + b^2 + c^2}}$$
+
+\subsection*{Example}
+Find the distance between the parallel planes $10x + 2y - 2z = 5$ and $5x + y - z = 1$
+\subsubsection*{Solution} Note that the planes are parallel because their normal vectors $\ev{10, 2, -2}$ and $\ev{5, 1, -1}$ are parallel.
+
+
+
+
+

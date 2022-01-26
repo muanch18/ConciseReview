@@ -1,0 +1,186 @@
+\setcounter{chapter}{3}
+\chapter{Eigenvalues and Eigenvectors}
+
+\section{Introduction to Eigenvalues and Eigenvectors}
+Let $A$ be an $n\times n$ matrix. A scalar $\lambda$ is called an \textbf{eigenvalue} of $A$ if there is a nonzero vector x such that $Ax = \lambda x$. Such a vector x is called an \textbf{eigenvector} of $A$ corresponding to $\lambda$.
+
+The \textbf{eigenspace} of $\lambda$ is denoted by $E_\lambda$ and is the collection of all eigenvectors corresponding to each other.
+
+\subsection*{Example}
+Show that $\lambda = 6$ is an eigenvalue of $A = \begin{bmatrix}
+    7&1&-2\\-3&3&6\\2&2&2
+\end{bmatrix}$ and find a basis for its eigenspace. 
+\subsection*{Solution}
+$A - 6I = \begin{bmatrix}
+    1&1&-2\\-3&-3&7\\2&2&-4
+\end{bmatrix}$\\ Row reduction produces $$\begin{bmatrix}
+    1&1&-2\\0&0&0\\0&0&0
+\end{bmatrix}$$ from which we can see that the null space of this is nonzero. Hence, 6 is an eigenvalue of $A$, and the eigenvectors corresponding to this eigenvalue satisfy $x_1+x_2-2x_3 = 0$. It follows that
+$$E_6 = \{\begin{bmatrix}
+    -x_2+2x_3\\x_2\\x_3
+\end{bmatrix}\} = \{x_2\begin{bmatrix}
+    -1\\1\\0
+\end{bmatrix} + x_3\begin{bmatrix}
+    2\\0\\1
+\end{bmatrix}\} = span\{\begin{bmatrix}
+    -1\\1\\0
+\end{bmatrix}, \begin{bmatrix}
+    2\\0\\1
+\end{bmatrix}\}$$
+
+\section{Determinants}
+Let $A = \begin{bmatrix}
+    a_{11}&a_{12}&a_{13}\\a_{21}&a_{22}&a_{23}\\a_{31}&a_{32}&a_{33}
+\end{bmatrix}$. Then the \textbf{determinant} of $A$ is the scalar\\
+$det A = |A| = a_{11}\begin{vmatrix}
+    a_{22}&a_{23}\\a_{32}&a_{33}
+\end{vmatrix} - a_{12}\begin{vmatrix}
+    a_{21}&a_{23}\\a_{31}&a_{33}
+\end{vmatrix} + a_{13}\begin{vmatrix}
+    a_{21}&a_{22}\\a{31}&a_{32}
+\end{vmatrix}$. This equation can also be wrote as 
+$$\sum^3_{j=1} (-1)^{1+j}a_{1j}detA_{1j}$$
+
+\subsection*{The Laplace Expansion Theorem}
+The determinant of an $n\times n$ matrix $A$ = $a_{ij}$, where $n\geq 2$ can be computed as
+$$det A = a_{i1}C_{i1}+\dots+a_{in}C_{in} \\= \sum^n_{i=1}a_{ij}C_{ij}$$
+(which is the \textbf{cofactor expansion along the ith row}) and also as
+$$det A = a_{1j}C_{1j}+\dots+a_{nj}C_{nk} \\= \sum^n_{j=1}a_{ij}C_{ij}$$
+(the \textbf{cofactor expansion along the jth column})
+\subsection*{Example}
+Compute the determinant of the matrix
+$$A = \begin{bmatrix}
+    5&-3&2\\1&0&2\\2&-1&3
+\end{bmatrix}$$ by (a) cofactor expansion along the third row and (b) cofactor expansion along the second column
+\subsection*{Solution}
+(a) We compute $$det A = a_{31}C_{31} + a_{32}C_{32} + a_{33}C_{33}$$
+$$= 2\begin{vmatrix}
+    -3&2\\0&2
+\end{vmatrix} - (-1)\begin{vmatrix}
+    5&2\\1&2
+\end{vmatrix} + 3\begin{vmatrix}
+    5&3\\1&0
+\end{vmatrix} = 5$$
+(b) In this case, we have 
+$$det A = a_{12}C_{12} + a_{22}C_{22} + a_{32}C_{32}$$
+$$= -(-3)\begin{vmatrix}
+    1&2\\2&3
+\end{vmatrix} + 0\begin{vmatrix}
+    5&2\\2&3
+\end{vmatrix} - (-1)\begin{vmatrix}
+    5&2\\1&2
+\end{vmatrix} = 5$$
+
+\subsection*{Cramer's Rule and the Adjoint}
+Let $A$ be an invertibel $n\times n $ matrix and let \textbf{b} be a vector in $R^n$. Then the unique solution \textbf{x} of the system Ax = b is given by
+$$x_i = \frac{det(A_i(b))}{det A}\qquad for i = 1, \dots, n$$
+\subsection*{Example}
+Use Cramer's Rule to solve the system
+$$x_1 + 2x_2 = 2$$ $$-x_1+4x_2 = 1$$
+\subsection*{Solution}
+We compute 
+$$det A = \begin{vmatrix}
+    1&2\\-1&4
+\end{vmatrix} = 6,\qquad det(A_1(b)) = \begin{vmatrix}
+    2&2\\1&4
+\end{vmatrix} = 6, and \qquad det(A_2(b)) = \begin{vmatrix}
+    1&2\\-1&1
+\end{vmatrix} = 3$$ By Cramer's Rule,
+$$x_1 = \frac{det(A_1(b))}{det A} = \frac{6}{6} = 1 and x_2 = \frac{det(A_2(b))}{det A} = \frac{3}{6} = \frac{1}{2}$$
+The matrix $$[C_{ji}] = [C_{ij}]^T = \begin{bmatrix}
+    C_{11}&C_{21}&\dots&C_{n1}\\
+    C_{12}&C_{22}&\dots&C_{n2}\\
+    \vdots&\vdots&\ddots&\vdots\\
+    C_{1n}&C_{2n}&\dots&C_{nn}
+\end{bmatrix}$$ is called the \textbf{adjoint} of A and is denoted by adj A. 
+
+\section{Eigenvalues and Eigenvectors of $n\times n$ matricies}
+The eigenvalues of a square matrix $A$ are precisely the solutions $\lambda$ of the equation
+$$det(A-\lambda I) = 0$$
+Let A be an $n\times n$ matrix.
+\begin{enumerate}
+    \item Compute the characteristic polynomial $det(A-\lambda I) of A$.
+    \item Find the eigenvalues of $A$ by solving the characteristic equation $det(A-\lambda I) = 0 for \lambda$.
+    \item For each eigenvalue $\lambda$, find the null space of the matrix $A-\lambda I$. This is the eigenspace $E_\lambda$, the nonzero vectors of which are the eigenvectors of $A$ corresponding to $\lambda$.
+    \item Find a basis for each eigenspace.
+\end{enumerate}
+Refer back to Section 4.1 for an example.
+\textbf{Theorem}: The eigenvalues of a triangular matrix are the entries on its main diagonal.
+
+\section{Similarity and Diagonalization}
+Let $A$ and $B$ be $n\times n$ matricies. We say that $A$ \textbf{is similar to} $B$ if there is an invertible $n\times n$ matrix $P$ such that $P^{-1}AP = B$. If $A$ is similar to $B$, we write $A\sim B$.\\
+
+Let $A$ and $B$ be $n\times n$ matricies with $A\sim B$. Then
+\begin{enumerate}[a]
+    \item $det A = det B$
+    \item $A$ is invertible if and only if $B$ is invertible
+    \item $A$ and $B$ have the same rank.
+    \item $A$ and $B$ have the same characteristic polynomial.
+    \item $A$ and $B$ have the same eigenvalues.
+\end{enumerate}
+\subsection*{Example}
+Let $A = \begin{bmatrix}
+    1&2\\0&-1
+\end{bmatrix}$ and $B = \begin{bmatrix}
+    1&0\\-2&-1
+\end{bmatrix}.$ 
+\subsection*{Solution}
+Then $A\sim B$, since 
+$$\begin{bmatrix}
+    1&2\\0&-1
+\end{bmatrix}\begin{bmatrix}
+    1&-1\\1&1
+\end{bmatrix} = \begin{bmatrix}
+    3&1\\-1&-1
+\end{bmatrix} = \begin{bmatrix}
+    1&-1\\1&1
+\end{bmatrix}\begin{bmatrix}
+    1&0\\-2&-1
+\end{bmatrix}$$ Thus, $AP = PB$. 
+
+\subsection*{Diagonalization}
+An $n\times n$ matrix is $A$ is diagonalizable if there is a diagonal matrix $D$ such that $A$ is similar to $D$, that is, if there is an invertble matrix P such that $P^{-1}AP = D$.
+
+\subsection*{Example}
+Find if $A = \begin{bmatrix}
+    1&3\\2&2
+\end{bmatrix}$ is diagonalizable.
+\subsection*{Solution}
+$AP = PD$, From this, since $P = \begin{bmatrix}
+    1&3\\1&-2
+\end{bmatrix}$ and $D = \begin{bmatrix}
+    4&0\\0&-1
+\end{bmatrix}$, A is diagonalizable.
+\textbf{The Diagonalization Theorem}
+Let $A$ be an $n\times n$ matrix whose distinct eigenvalues are $\lambda_2, \dots, \lambda_k$. The following statements are equivalent.
+\begin{enumerate}[a]
+    \item $A$ is diagonalizable.
+    \item The union $\beta$ of the bases of the eigenspaces of $A$ contains $n$ vectors.
+    \item The algebraic multiplicity of each eigenvalue equals its geometric multiplicity.
+\end{enumerate}
+
+\subsection*{Gerschgorin's Disk Theorem}
+Let $A = [a_{ij}]$ be a real or complex $n\times n$ matrix. Then every eigenvalue of $A$ is contained within a Gerschgorin disk.
+Let $r_i$ denote the sum of the absolute values of the off-diagonal entries in the \textit{ith} row of $A$; that is, $r_i = \sum_{j\neq i}|a_{ij}|$. The \textbf{ith Gerschgorin disk} is the circular disk $D_i$ in the complex plane with center $a_{ii}$ and radius $r_i$. That is,
+$$D_i = \{z in \mathfrak{C}:|z-a_{ii}| \leq r_i\}$$
+
+\subsection*{Example}
+Sketch the Gerschgorin disks and the eigenvalues for the following matrix. $$A = \begin{bmatrix}
+    2&1\\2&-3
+\end{bmatrix}$$
+\subsection*{Solution}
+The Gerschgorin disk is centered at 2 with radii 1. The characteristic polynomial of $A$ is $\lambda^2+\lambda - 8$
+
+\subsection*{The Perron-Frobenius Theorem}
+Let $A$ be an irreducible nonnegative $n\times n$ matrix. Then A has a real eigenvalue $\lambda$ with the following properties:
+\begin{enumerate}[a]
+    \item $\lambda_1 > 0$
+    \item $\lambda_1$ has a corresponding positive eigenvector.
+    \item $\lambda$ has any other eigenvalue of $A$, then $|\lambda| \leq \lambda_1$. If A is primitive, then this inequality is strict. 
+    \item $\lambda$ is an eigenvalue of A such that $|\lambda| = \lambda_1$, then $\lambda$ is a complex root of the equation$\lambda^n = \lambda^n_1 = 0$
+    \item $\lambda_1$ has algebraic multiplicity 1.
+\end{enumerate}
+
+
+
+

@@ -1,0 +1,67 @@
+\setcounter{chapter}{0}
+\chapter{Vectors}
+
+\section{The Geometry and Algebra of Vectors}
+Vector: a directed line segment that cooresponds to a displacement from one point $A$ to another point $B$. \\
+Vector Addition: $u+v = [u_1+v_1, u_2+v_2]$
+\subsection*{Example}
+If $u = [3,-1]$ and $v = [1.4]$, compute $u+v$.
+\subsection*{Solution}
+$$u+v = [3+1, -1+4] = [4,3]$$
+\textbf{Scalar Multiplication}: $cv = c[v_1, v_2]$
+\subsection*{Example}
+If $v = [2, -4]$, compute $2v$, $\frac{1}{2}v$ and $-2v$
+\subsection*{Solution}
+$$2v = [2(-2), 2(4)] = [-4.8]$$
+$$\frac{1}{2}v = [\frac{1}{2}(2), \frac{1}{2}-4] = [1,-2]$$
+$$-2v = [-2(2), -2(-4)] = [-4, 8]$$
+\subsection*{Algebraic Properties of Vectors in $\mathbb{R}^n$}
+Let $u$, $v$, and $w$ be vectors in $\mathbb{R}^n$ and let c and d be scalars. Then
+\begin{enumerate}
+    \item $u+v = v+u$
+    \item $(u+v)+w = u + (v+w)$
+    \item $u+0 = u$
+    \item $u + (-u) = 0$
+    \item $c(u+v) = cu + cv$
+    \item $(c+d)u = cu + du$
+    \item $c(du) = (cd)u$
+    \item $1u = u$
+\end{enumerate}
+\section{Length and Angle: The Dot Product}
+If $$\vec{u} = \begin{bmatrix}
+    u_1\\u_2\\\dots\\u_n
+\end{bmatrix}$$ and $$\vec{v} = \begin{bmatrix}
+    v_1\\v_2\\\dots\\v_n
+\end{bmatrix}$$
+then the dot product of $u\cdot v = u_1v_1+u_2v_2 + \dots + u_nv_n$
+\subsection*{Example}
+Compute $u\cdot v$ when
+$$\vec{u} = \begin{bmatrix}
+    1\\2\\-3
+\end{bmatrix}$$ and $$\vec{v} = \begin{bmatrix}
+    -3\\5\\2
+\end{bmatrix}$$
+$$u\cdot v = 1\cdot(-3 + 2(5) + (-3)2 = 1)$$\\*
+Let $u$, $v$, and $w$ be vectors in $\mathbb{R}^n$ and let c be a scalar. Then\begin{enumerate}
+    \item $u\cdot v = v\cdot u$
+    \item $(u\cdot v)\cdot w = u\cdot(v\cdot w)$
+    \item $(cu)\cdot v = c(u\cdot v)$
+    \item $u\cdot u \geq 0$ and $u\cdot u = 0$ if any only if $u=0$.
+\end{enumerate}
+The length of vector $v$ in $\mathbb{R}^n$ is the nonnegative scalar $||v||$ defined by
+$$||v|| = \sqrt{\vec{v}\cdot \vec{v}} = \sqrt{(v_1)^2 + (v_2)^2 + \dots + (v_n)^2}$$
+\textbf{Theorem}: Let v be a vector in $\mathbb{R}^n$ and let c be a scalar. Then\\
+\begin{enumerate}
+    \item $||v|| = 0$ if and only if $v=0$.
+    \item $||cv|| = |c|||v||$
+\end{enumerate}
+\textbf{Cauchy-Schwarz Inequality}: For all vectors $u$ and $v$, $||u\cdot v|| \leq ||u||||v||$
+\textbf{Triangle Inequality}: $||u+v||\leq ||u|| + ||v||$
+For nonzero vectors $u$ and $v$ in $\mathbb{R}^n$, 
+$$cos \theta = \frac{\vec{u}\cdot \vec{v}}{||\vec{u}|| ||\vec{v}||}$$
+$$proj_u(\vec{v}) = (\frac{\vec{u}\cdot \vec{v}}{\vec{u}\cdot \vec{u}})\vec{u}$$
+
+\section{Lines and Planes}
+$$d(B, l) = \frac{|ax_0 +by_0 - c|}{\sqrt{a^2+b^2}}$$
+$$d(B, P) = \frac{|ax_0 +by_0 - cz_0 - d|}{\sqrt{a^2+b^2+c^2}}$$
+

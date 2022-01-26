@@ -1,0 +1,268 @@
+\setcounter{chapter}{4}
+\chapter{Orthogonality}
+
+\section{Orthogonal and Orthonormal Sets of Vectors}
+A set of vectors in $\mathbb{R}^n>$ is called an \textbf{orthogonal set} if all pairs of distinct vectors in the set are orthogonal.
+If ${v_1, v_2, \dots, v_k}$ is an orthogonal set of nonzero vectors in $\mathbb{R}^n$, then these vectors are linearly independent.\\
+
+A  set of vectors in $\mathbb{R}^n$ is an northonormal set if it is an \textbf{orthogonal set} of unit vectors. An \textbf{orthonormal basis} for a subspace $W$ is a basis of $W$. 
+
+\subsection*{Orthogonal Marticies}
+The columns of $m\times n$ matrix $Q$ form an orthonormal set if any only if
+$$Q^TQ = I_n$$
+
+An $n\times n$ matrix $Q$ whose column form an orthonormal set is called an \textbf{orthogonal matrix}.\\
+\textbf{Theorem}: A square matrix $Q$ is orthogonal if and only if $Q^{-1} = Q^T$.
+
+\subsection*{Example}
+Show that the follow matrix is orthogonal
+$$A = \begin{bmatrix}
+    0&1\\1&0
+\end{bmatrix}$$
+\subsection*{Solution}
+$$A^{-1} = A^T = \begin{bmatrix}
+    0&1\\1&0
+\end{bmatrix}$$
+
+\subsection*{Properties of an orthogonal matrix}
+\begin{enumerate}
+    \item $Q^{-1} is orthogonal$
+    \item $det Q \pm 1$
+    \item If $\lambda$ has an eigenvalue of $Q$, then $|\lambda| = 1$.
+    \item If $Q_1$ and $Q_2$ are orthogonal $n\times n$ matricies, then so is $Q_1Q_2$.
+\end{enumerate}
+
+\section{Orthogonal Complements and Orthogonal Projections}
+\subsection*{Properties of an Orthogonal Complement}
+Let $W$ be a subspace of $\mathbb{R}^n$.
+\begin{enumerate}
+    \item $W^\perp$ is a subspace of $\mathbb{R}^n.$
+    \item $(W^\perp)^\perp = W$
+    \item $W\cap W^\perp = {0}$
+    \item If $W = span{w_1,\dots, w_k}$, then v is in $W^\perp$.
+\end{enumerate}
+\subsection*{Orthogonal Projections}
+Let $W$ be a subspace of $\mathbb{R}^n$ and let ${u_1,\dots,u_k}$ be orthogonal basis for $W$. For any vector $\vec{v}$ in $\mathbb{R}^n$, the \textbf{the orthogonal project of v onto W} is given by
+
+$$proj_W(v) = (\frac{u_1\cdot v}{u_1\cdot u_1})u_1 + \dots + (\frac{u_k\cdot v}{u_k\cdot u_k})u_k$$
+
+The \textbf{component of v orthogonal to W} is the vector
+$$perp_W(v) = v - proj_W(v)$$
+
+\subsection*{Example}
+Let $v = \begin{bmatrix}
+    3\\5\\2
+\end{bmatrix}$ and an orthogonal basis for $W$ be \{$\begin{bmatrix}
+    0\\1\\1
+\end{bmatrix}$, $\begin{bmatrix}
+    1\\-1\\1
+\end{bmatrix}$\}. Find the orthogonal project of v onto W and the component of v orthogonal to W.
+\subsection*{Solution}
+$$proj_W(v) = (\frac{u_1\cdot v}{u_1\cdot u_1})u_1 + \dots + (\frac{u_k\cdot v}{u_k\cdot u_k})u_k$$
+$$u_1\cdot v = 7\qquad u_2\cdot v = 0\qquad u_1\cdot u_1 = 2\qquad u_2\cdot u_2 = 3$$
+$$proj_W(v) = \frac{7}{2}\begin{bmatrix}
+    0\\1\\1
+\end{bmatrix} - 0\begin{bmatrix}
+    1\\-\\1
+\end{bmatrix} = \begin{bmatrix}
+    0\\\frac{7}{2}\\frac{7}{2}
+\end{bmatrix}$$
+$$perp_W(v) = v - proj_W(v) = \begin{bmatrix}
+    3\\5\\2
+\end{bmatrix} - \begin{bmatrix}
+    0\\\frac{7}{2}\\frac{7}{2}
+\end{bmatrix} = \begin{bmatrix}
+    3\\\frac{3}{2}\\\frac{-3}{2}
+\end{bmatrix}$$
+\subsection*{The Orthogonal Decomposition Theorem}
+Let $W$ be a subspace of $\mathbb{R}^n$ and let $v$ be a vector in $\mathbb{R}^n$. Then there are unique vectors $w$ in $W$ and $\textbf{w}^\perp$ in $W^\perp$ such that
+$$v = w + w^\perp$$
+
+If $W$ is a subspace of $\mathbb{R}^n$, then $dim W + dim W^\perp = n$
+
+\textbf{The Rank Theorem}: If $A$ is an $m\times n$ matrix, then
+$$rank(A) + nullity(A) = n$$
+
+\section{The Gram-Schmidt Process and the QR Factorization}
+\subsection{The Gram-Schmidt Process}
+Let ${x_1,\dots, x_K}$ be a basis for a subspace of $W$ of $\mathbb{R}^n$ and define the following.
+$$v_1 = x_1\qquad W_1 = span(x_1)$$
+$$v_2 = x_2 - (\frac{v_1\cdot x_2}{v_1\cdot v_1})v_1\qquad W_2 = span(x_1, x_2)$$
+$$v_3 = x_3 - (\frac{v_1\cdot x_3}{v_1\cdot v_1})v_1 - (\frac{v_2\cdot x_3}{v_2\cdot v_2})v_2\qquad W_3 = span(x_1, x_2, x_3)$$
+$$\vdots$$
+$$v_k = x_k - (\frac{v_1\cdot x_k}{v_1\cdot v_1}v_1) - (\frac{v_2\cdot x_k}{v_2\cdot v_2})v_2 - \dots - (\frac{v_{k-1}\cdot x_k}{v_{k-1}\cdot v_{k-1}}v_{k-1})\qquad W_k = span(x_1, \dots, x_k)$$
+
+\subsection*{Example}
+Apply the Gram-Schmidt Process to construct an orthonormal basis for the subspace $W = span(x_1, x_2, x_3) of R^4$, where $x_1 = \begin{bmatrix}
+    1\\-1\\-1
+\end{bmatrix}, x_2 = \begin{bmatrix}
+    2\\1\\0
+\end{bmatrix}, x_3 = \begin{bmatrix}
+    2\\2\\1
+\end{bmatrix}$
+\subsection*{Solution}
+We begin by setting $v_1 = x_1$.
+$$v_1 = x_1 = \begin{bmatrix} \qquad v_1\cdot x_2 = 1
+    1\\-1\\1
+\end{bmatrix} \qquad v_1\cdot v_1 = 3$$
+Next, we compute the component of $x_2$ orthogonal to $W_1$.
+$$v_2 = x_2 - (\frac{v_1\cdot x_2}{v_1\cdot v_1})v_1 = \begin{bmatrix}
+    2\\1\\0
+\end{bmatrix} - \frac{1}{3}\begin{bmatrix}
+    1\\-1\\-1
+\end{bmatrix} = \begin{bmatrix}
+    \frac{5}{3}\\\frac{4}{3}\\\frac{1}{3}
+\end{bmatrix}$$
+$$v_1\cdot x_3 = -1\qquad v_2\cdot x_3 = \frac{19}{3}\qquad v_2\cdot v_2 = \frac{14}{3}$$
+$$v_3 = x_3 - (\frac{v_1\cdot x_3}{v_1\cdot v_1})v_1 - (\frac{v_2\cdot x_3)}{v_2\cdot v_2})v_2$$
+$$= \begin{bmatrix}
+    2\\2\\1
+\end{bmatrix} + \frac{1}{3}\begin{bmatrix}
+    1\\-1\\-1
+\end{bmatrix} - \frac{19}{14}\begin{bmatrix}
+    \frac{5}{3}\\\frac{4}{3}\\\frac{1}{3}
+\end{bmatrix} = \begin{bmatrix}
+    \frac{1}{14}\\\frac{-1}{7}\\frac{3}{14}
+\end{bmatrix}$$
+$\{\begin{bmatrix}
+    1\\-1\\1
+\end{bmatrix}, \begin{bmatrix}
+    \frac{5}{3}\\\frac{4}{3}\\\frac{1}{3}
+\end{bmatrix}, \begin{bmatrix}
+    \frac{1}{14}\\\frac{-1}{7}\\\frac{3}{14}
+\end{bmatrix}\}$ is an orthogonal basis for $W$.
+
+\subsection*{QR Factorization}
+Let $A$ be an $m\times n$ matrix with linearly independent columns. Then $A$ can be factored as $A = QR$, where $Q$ is a $m\times n$ matrix with orthonormal columns and $R$ is an invertible upper triangular matrix.
+\subsection*{Example}
+Find a $QR$ factorization of $$A = \begin{bmatrix}
+    1&\frac{5}{3}&\frac{1}{14}\\-1&\frac{4}{3}&\frac{-1}{7}\\-1&\frac{1}{3}&\frac{3}{14}
+\end{bmatrix}$$
+\subsection*{Solution}
+Since the columns of $A$ are the vectors from the prevoius example, an orthogonal basis for $col(A)$ is
+$$v_1 = \begin{bmatrix}
+    1\\-1\\-1
+\end{bmatrix}\qquad v_2 = \begin{bmatrix}
+    \frac{5}{3}\\\frac{4}{3}\\\frac{1}{3}
+\end{bmatrix}\qquad v_3 = \begin{bmatrix}
+    \frac{1}{14}\\\frac{-1}{7}\\frac{3}{14}
+\end{bmatrix}$$
+To obtain an orthogonal basis, we normalize each vector.
+$$q_1 = \frac{v_1}{||v_1||} = \frac{1}{\sqrt{3}}\begin{bmatrix}
+    1\\-1\\-1
+\end{bmatrix} = \begin{bmatrix}
+    \frac{1}{\sqrt{3}}\\-\frac{1}{\sqrt{3}}\\-\frac{1}{\sqrt{3}}
+\end{bmatrix}\qquad Q = [q_1, q_2, q_3]$$
+$$q_2 = \frac{v_2}{||v_2||} = \frac{\sqrt{3}}{\sqrt{14}}\begin{bmatrix}
+    \frac{5}{3}\\\frac{4}{3}\\\frac{1}{3}
+\end{bmatrix}\qquad = \begin{bmatrix}
+    \frac{1}{\sqrt{3}}&\frac{5}{3}\frac{\sqrt{3}}{\sqrt{14}}&\frac{1}{14\sqrt{14}}\\
+    \frac{-1}{\sqrt{3}}&\frac{4}{3}\frac{\sqrt{3}}{\sqrt{14}}&\frac{1}{-7\sqrt{14}}\\
+    \frac{-1}{\sqrt{3}}&\frac{1}{3}\frac{\sqrt{3}}{\sqrt{14}}&\frac{3}{14\sqrt{14}}\\
+\end{bmatrix}$$
+$$q_3 = \frac{v_3}{||v_3||} = \frac{1}{\sqrt{14}}\begin{bmatrix}
+    \frac{1}{14}\\\frac{-1}{7}\\frac{3}{14}
+\end{bmatrix}$$
+$$R = Q^TA$$
+$$= \begin{bmatrix}
+    \frac{1}{\sqrt{3}}&\frac{5}{3}\frac{\sqrt{3}}{\sqrt{14}}&\frac{1}{14\sqrt{14}}\\
+    \frac{-1}{\sqrt{3}}&\frac{4}{3}\frac{\sqrt{3}}{\sqrt{14}}&\frac{1}{-7\sqrt{14}}\\
+    \frac{-1}{\sqrt{3}}&\frac{1}{3}\frac{\sqrt{3}}{\sqrt{14}}&\frac{3}{14\sqrt{14}}\\
+\end{bmatrix}\begin{bmatrix}
+    1&\frac{5}{3}&\frac{1}{14}\\-1&\frac{4}{3}&\frac{-1}{7}\\-1&\frac{1}{3}&\frac{3}{14}
+\end{bmatrix} = \begin{bmatrix}
+    \frac{3}{\sqrt{3}}&0&0\\
+    0&\frac{14}{3}\frac{\sqrt{3}}{\sqrt{14}}&0\\
+    0&0&\frac{3}{14\sqrt{14}}
+\end{bmatrix}$$
+
+\section{Orthogonal Diagonalization of Symmetric Matricies}
+A square matrix $A$ is \textbf{orthogonally diagonalizable} if there is an orthogonal matrix $Q$ and a diagonal matrix $D$ such that $Q^TAQ = D$.
+If $A$ is orthogonally diagonalizable, then $A$ is symmetric.
+
+\subsection*{The Spectral Theorem and Spectral Decomposition}
+Let $A$ be an $n\times n$ real matrix. Then $A$ is symmetric if and only if it is orthogonally diagonalizable.
+The \textbf{spectral decomposition} of $A$ or sometimes referred to as the \textbf{projection form of the spectral theorem} is
+$$A = \lambda_1q_1q^T_1 + \lambda_2q_2q^T_2 + \dots + \lambda_nq_nq^T_n$$
+
+\subsection*{Example}
+Given $A = \begin{bmatrix}
+    4&1\\1&4
+\end{bmatrix}. $\begin{enumerate}
+    \item Orthogonally diagonalizable the matrix $A$.
+    \item Find the spectral decomposition of the matrix $A$.
+\end{enumerate}
+
+\subsection*{Solution}
+$$det(A-\lambda I) = det\begin{bmatrix}
+    4&1\\1&4
+\end{bmatrix} = (\lambda - 5)(\lambda - 3) = 0$$
+
+$$\lambda = 3, 5 \rightarrow D = \begin{bmatrix}
+    5&0\\0&3
+\end{bmatrix}$$
+$$(A-5I)v_1 = 0\qquad v_1 = \begin{bmatrix}
+    1\\1
+\end{bmatrix}\qquad q_1 = \frac{1}{\sqrt{2}}\begin{bmatrix}
+    1\\-1
+\end{bmatrix}$$
+$$(A-3I)v_2 = 0\qquad v_2 = \begin{bmatrix}
+    1\\-1
+\end{bmatrix}\qquad q_2 = \frac{1}{\sqrt{2}}\begin{bmatrix}
+    1\\-1
+\end{bmatrix}$$
+$$Q = [q_1, q_2] = \frac{1}{2}\begin{bmatrix}
+    1&1\\1&-1
+\end{bmatrix}\qquad D = Q^TAQ = \begin{bmatrix}
+    5&0\\0&3
+\end{bmatrix}$$
+$$A = \lambda_1q_1q^T_1 + \lambda_2q_2q^T_2 = 5\begin{bmatrix}
+    \frac{1}{2}&\frac{1}{2}\\\frac{1}{2}&\frac{1}{2}
+\end{bmatrix} + 3\begin{bmatrix}
+    \frac{1}{2}&\frac{1}{-2}\\\frac{-1}{2}&\frac{1}{2}
+\end{bmatrix}$$
+
+\section{Applications}
+\subsection*{Quadratic Forms}
+A quadratic form in $n$ variables is a function of the form
+$$f(x) = x^TAx$$
+where A is a symmetric $n\times n$ matrix and $x$ is in $\mathbb{R}^n$.\\
+We can represent quadratic forms using matricies as follows:
+$$ax^2 + by^2 + cxy = \begin{bmatrix}
+    x&y
+\end{bmatrix}\begin{bmatrix}
+    a&\frac{c}{2}\\\frac{c}{2}&b
+\end{bmatrix}\begin{bmatrix}
+    x\\y
+\end{bmatrix}$$
+
+\subsection*{Example}
+What is the quadratic form associated with matrix $A = \begin{bmatrix}
+    2&-3\\-3&5
+\end{bmatrix}$
+\subsection*{Solution}
+Let $$x = \begin{bmatrix}
+    x_1\\x_2
+\end{bmatrix}\qquad A = \begin{bmatrix}
+    2&-3\\-3&5
+\end{bmatrix}\qquad a=2,b=5,c=-6$$
+$$f(x) = x^TAx = \begin{bmatrix}
+    x_1&x_2
+\end{bmatrix}\begin{bmatrix}
+    2&-3\\-3&5
+\end{bmatrix}\begin{bmatrix}
+    x_1\\x_2
+\end{bmatrix} = 2(x_1)^2 + 5(x_2)^2 - 6x_1x_2$$
+
+\subsection*{Example}
+$f(x_1, x_2, x_3) = 2(x_1)^2 - (x_2)^2 + 5(x_3)^2 + 6x_1x_2 - 3x_1x_3$
+\subsection*{Solution}
+$$A = \begin{bmatrix}
+    a&\frac{d}{2}&\frac{e}{2}\\
+    \frac{d}{2}&b&\frac{f}{2}\\
+    \frac{e}{2}&\frac{f}{2}&c
+\end{bmatrix} = \begin{bmatrix}
+    2&3&\frac{-3}{2}\\
+    3&-1&0\\
+    \frac{-3}{2}&0&5
+\end{bmatrix}$$.

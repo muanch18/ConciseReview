@@ -1,0 +1,213 @@
+\setcounter{chapter}{11}
+\chapter{Infinite Sequences and Series}
+
+\section{Sequences}
+A \textbf{sequence} can be thought of as a list of numbers written in a definite order:
+$$a_1, a_2, a_3, a_4, \dots, a_n, \dots$$
+A sequence $\{a_n\}$ has the \textbf{limit} $L$ and we write $$\lim_{n\rightarrow\infty}a_n = L$$
+If $\lim_{n\rightarrow\infty}a_n$ exists, we say that the sequence \textbf{converges}, otherwise we say that the sequence \textbf{diverges}.
+\subsection*{Properties of convergent sequences}
+\begin{enumerate}
+    \item $\lim_{n\rightarrow\infty}(a_n + b_n) = \lim_{n\rightarrow\infty}a_n + \lim_{n\rightarrow\infty}b_n$
+    \item $\lim_{n\rightarrow\infty}(a_n - b_n) = \lim_{n\rightarrow\infty}a_n - \lim_{n\rightarrow\infty}b_n$
+    \item $\lim_{n\rightarrow\infty}ca_n = c\lim_{n\rightarrow\infty}a_n\qquad\qquad\lim_{n\rightarrow\infty}c = c$
+    \item $\lim_{n\rightarrow\infty}(a_nb_n) = \lim_{n\rightarrow\infty}a_n\cdot\lim_{n\rightarrow\infty}b_n$
+    \item $\lim_{n\rightarrow\infty}\frac{a_n}{b_n} = \frac{\lim_{n\rightarrow\infty}a_n}{\lim_{n\rightarrow\infty}b_n}$ $\text{if} \lim_{n\rightarrow\infty}b_n\neq 0$
+    \item $\lim_{n\rightarrow\infty}a^p_n = [\lim_{n\rightarrow\infty}a_n]^p$ if $p > 0$ and $a_n > 0$
+\end{enumerate}
+Anither useful fact about limits of sequences is given by the following theorem $$If \lim_{n\rightarrow\infty}|a_n| = 0, then \lim_{n\rightarrow\infty}a_n = 0$$
+
+\subsection*{Example}
+Find $\lim_{n\rightarrow\infty}\frac{n}{n + 1}$
+\subsubsection*{Solution}
+$$\lim_{n\rightarrow\infty}\frac{n}{n + 1} = \lim_{n\rightarrow\infty}\frac{1}{1 + \frac{1}{n}} = \frac{\lim_{n\rightarrow\infty}1}{\lim_{n\rightarrow\infty}1 + \lim_{n\rightarrow\infty}\frac{1}{n}}$$
+$$= \frac{1}{1 + 0} = 1$$
+
+In the previous example, the constant $r$ is defined as 1. The sequence $\{r^n\}$ is convergent if $-1 < r\leq 1$ and divergent for all values of $r$.
+\begin{equation}
+    \lim_{n\rightarrow\infty}r^n = \left\{\begin{cases}[11]
+        0\cr &\text{if} -1 < r < 1\\
+        1\cr& \text{if}  r = 1
+    \end{cases}\right.
+\end{equation}
+
+A sequence $\{a_n\}$ is \textbf{bounded above} if there is a number $M$ such that $a_n\leq M$ \qquad for all $n\geq 1$\\
+It is \textbf{bounded below} if there is a number $m$ such that $$m\leq a_n\qquad \text{for all}\quad n\geq 1$$
+
+\section{Series}
+An infinite sequence $\{a^n\}^\infty_{n=1}$ can be described as a \textbf{series} which is denoted by the symbol
+$$\sum^\infty_{n = 1}a_n$$
+Given a series $\textstyle\sum^\infty_{n = 1} a_n$, let $s_n$ denote its $nth$ partial sum:
+$$s_n =sum^n_{i = 1}a_i = a_` + a_2 + \dots + a_n$$
+If the sequence $\{s_n\}$ is convergent and $\lim_{n\rightarrow\infty}s_n = s$ exists as a real number, then the series $\textstyle\sum a_n$ is called convergent and we write
+$$\sum^\infty_{n = 1}a_n = s$$ The number $s$ is called the \textbf{sum} of the series. Otheriwse, it's called \textbf{divergent}.\\*
+The \textbf{geometric series} $$\sum^\infty_{n = 1}ar^{n-1} = a + ar + ar^2 + \dots$$ is convergent if $\lvert r\vert < 1$ and its sum is 
+$$\sum^\infty_{n = 1}ar^{n - 1} = \frac{a}{1 - r}\qquad |r| < 1$$ If $|r|\geq 1$, the geometric series is divergent.
+\subsection*{Example}
+Find the sum of the series $\sum^\infty_{n = 1} (\frac{3}{n(n+1)} + \frac{1}{2^n})$
+The series $\textstyle\sum 1/2^n$ is a geometric series with $a = \frac{1}{2}$ and $r = \frac{1}{2}$, so 
+$$\sum^\infty_{n = 1} \frac{1}{2^n} - \frac{\frac{1}{2}}{1 - \frac{1}{2}} = 1$$
+We know that $$\sum^\infty_{n = 1} \frac{1}{n(n+1)} = 1$$
+So, the given series is convergent and 
+$$\sum^\infty_{n = 1}(\frac{3}{n(n+1)} + \frac{1}{2^n}) = 3\sum^\infty_{n = 1}\frac{1}{n(n+1)} + \sum^\infty_{n = 1}\frac{1}{2^n}$$
+$$= 3\cdot 1+ 1 = 4$$
+
+A \textbf{harmonic series} follows the following formula (and is divergent): $$\sum^\infty_{n = 1}\frac{1}{n}$$
+If the series $a_n$ is convergent, then $\lim_{n\rightarrow\infty}a_n = 0$\\*
+\subsection*{Test for Divergence}
+If $\lim_{n\rightarrow\infty}$ does not exist or if $\lim_{n\rightarrow\infty}\neq 0$, then the series $\sum^\infty_{n = 1}a_n$ is divergent.
+\subsection*{Example} 
+Show that the series $\sum^\infty_{n = 1} \frac{n^2}{5n^2 + 4}$ diverges.
+\subsubsection*{Solution}
+$$\lim_{n = \infty} a_n = \lim_{n = \infty} \frac{n^2}{5n^2 + 4} = \lim_{n = \infty} \frac{1}{5 + 4/n^2} = \frac{1}{5}\neq 0$$
+
+\subsection*{Properties of convergent series}
+\begin{enumerate}[i]
+    \item $\sum^\infty_{n = 1} ca_n = c\sum^\infty_{n = 1}a_n$
+    \item $\sum^\infty_{n = 1} (a_n + b_n) = \sum^\infty_{n = 1}a_n + \sum^\infty_{n = 1}b_n$
+    \item $\sum^\infty_{n = 1} (a_n - b_n) = \sum^\infty_{n = 1}a_n - \sum^\infty_{n = 1}b_n$
+\end{enumerate}
+
+\section{The Integral Test and Estimates of Sums}
+\subsection*{The Integral Test}
+Suppose $f$ is a continuous, positive, decreasing function on $[1,\infty)$ and let $a_n = f(n)$. Then the series $\textstyle\sum^\infty_{n = 1}a_n$ is convergent if and only if the improper integral 
+$\int^\infty_1f(x) dx$ is convergent. In other words, 
+(i) If $\int^\infty_1f(x) dx$ is convergent, then $\sum^\infty_{n = 1}a_n$ is convergent.\\
+(ii) If $\int^\infty_1f(x) dx$ is divergent, then $\sum^\infty_{n = 1}a_n$ is divergent.
+
+\subsection*{Example}
+Test the series $\sum^\infty_{n = 1} \frac{1}{n^2 + 1}$ for convergence or divergence.
+\subsubsection*{Solution}
+The function $f(x) = 1/(x^2 + 1)$ is continuous, positive, and decreasing on $[1,\infty)$ so we use the integral test:
+$$\int^\infty_1 \frac{1}{x^2 + 1} dx = \lim_{t\rightarrow\infty}\int^t_1 \frac{1}{x^2 + 1} dx = \lim_{t\rightarrow\infty}\tan^{-1}{x}\Big)^t_1$$
+$$= \lim_{t\rightarrow\infty}(\tan^{-1}{t} - \frac{\pi}{4}) = \frac{\pi}{2} - \frac{\pi}{4} = \frac{\pi}{2}$$
+The $p$-series $\sum^\infty_{n = 1}$ is convergent if $p > 1$ and divergent if $p\leq 1$.
+\textbf{Remainder estimate for the Integral Test}: Suppose $f(k) = a_k$, where $f$ is a continuous, positive, decreasing function for $x\geq n$ and $\sum a_n$ is convergent. If $R_N = s - s_n$, then
+$$\int^\infty_{n + 1} f(x) dx\leq R_n\leq \int^\infty_n f(x) dx$$
+
+\section{Comparison Tests}
+\textbf{The Comparison Test}: Suppose that $\textstyle\sum a_n$ and $\textstyle\sum b_n$ are series with positive terms. 
+\begin{enumerate}[i]
+    \item If $\textstyle\sum b_n$ is convergent and $a_n\leq b_n$, for all $n$, then $\textstyle\sum a_n$ is also convergent.
+    \item If $\textstyle\sum b_n$ is divergent and $a_n\geq b_n$, for all $n$, then $\textstyle\sum a_n$ is also divergent.
+\end{enumerate}
+
+\subsection*{Example}
+Determine whether the series $\sum^\infty_{n = 1} \frac{5}{2n^2 + 4n + 3}$ converges or diverges. \\
+For large $n$ the dominant term in the denominator is $2n^2$ so we compare the given series with the series $\textstyle\sum 5/(2n^2)$. Observe that 
+$$\frac{5}{2n^2 + 4n + 3} < \frac{5}{2n^2}$$
+because the left side has a bigger denominator. We know that $$\sum^\infty_{n = 1}\frac{5}{2n^2} = \frac{5}{2}\sum^\infty_{n = 1}\frac{1}{n^2}$$
+is convergent because it's a constant times a $p$-series with $p = 2 > 1$. Therefore 
+$$\sum^\infty_{n = 1} \frac{5}{2n^2 + 4n + 3}$$
+is convergent by part (i) of the Comparison Test.
+
+\subsection*{The Limit Comparison Test}
+Suppose that $\textstyle\sum a_n$ and $\textstyle\sum b_n$ are series with positive terms. If $$\lim_{n\rightarrow\infty} \frac{a_n}{b_n} = c$$ 
+where c is a finite number and $c > 0$ , then either both series converge or both series diverge.
+\subsection*{Example}
+Test the series $\sum^\infty_{n = 1} \frac{1}{2^n - 1}$ for convergence or divergence.
+We use the Limit Comparison Test with $$a_n = \frac{1}{2^n - 1}\qquad b_n = \frac{1}{2^n}$$
+and obtain $$\lim_{n\rightarrow\infty} \frac{a_n}{b_n} = \lim_{n\rightarrow\infty}\frac{1/(2^n - 1)}{1/2^n} = \lim_{n\rightarrow\infty}\frac{2^n}{2^n - 1} = \lim_{n\rightarrow\infty}\frac{1}{1-1/2^n} = 1 > 0$$
+Since this limi t exists, and $\textstyle\sum 1/2^n$ is a convergent geometric series, the given series converges by the Limit Comparison Test.
+\section{Alternating Series}
+An \textbf{alternating series} is a series whose terms are alternately positive and negative.
+\subsection*{Alternating Series Test} If the alternating series 
+$$\sum^\infty_{n = 1} (-1)^{n-1}b_n = b_1 - b_2 + b_3 - b_4 + b_5 - b_6 + \dots\qquad (b_n > 0)$$
+satisfies
+\begin{enumerate}
+    \item $b_{n + 1}\leq b_n$\qquad for all $n$
+    \item $\lim_{n\rightarrow\infty}b_n = 0$
+\end{enumerate} then the series is convergent. 
+\subsection*{Example} The alternating harmonic series $$1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \dots = \sum^\infty_{n = 1}\frac{(-1)^{n-1}}{n}$$
+satisfies 
+\begin{enumerate}
+    \item $b_{n + 1}\leq b_n$\qquad because $\frac{1}{n+1} < \frac{1}{n}$
+    \item $\lim_{n\rightarrow\infty}b_n = \lim_n{n\rightarrow\infty}\frac{1}{n} = 0$
+\end{enumerate} then the series is convergent by the Akternating Series Test. 
+
+\section{Absolute Convergence and the Ratio and Root Tests}
+A series $\textstyle\sum a_n$ is called \textbf{absolutely convergent} if the series of absolute values $\textstyle\sum |a_n|$ is convergent. 
+A series $\textstyle\sum a_n$ is called \textbf{conditionally convergent} if it is convergent but not absolutely convergent.
+\subsection*{The Ratio Test}
+\begin{enumerate}
+    \item If $\lim_{n\rightarrow\infty}|\frac{a_{n+1}}{a_n}| = L < 1$, then the series $\sum^\infty_{n = 1}a_n$ is absolutely convergent, and therefore convergent.
+    \item If $\lim_{n\rightarrow\infty}|\frac{a_{n+1}}{a_n}| = L > 1$, or $\lim_{n\rightarrow\infty}|\frac{a_{n+1}}{a_n}| = \infty$, then the series $\sum^\infty_{n = 1}a_n$ is divergent.
+    \item If $\lim_{n\rightarrow\infty}|\frac{a_{n+1}}{a_n}| = 1$, the ratio test is inconclusive.
+\end{enumerate}
+\subsection*{Example}
+Test the series $\sum^\infty_{n = 1} (-1)^n\frac{n^3}{3^n}$ for absolute convergence.
+\subsubsection*{Solution}
+We use the Ratio test with $a_n = (-1)^n n^3/3^n$: 
+$$|\frac{a_{n+1}}{a_N}| = \lvert\frac{\frac{(-1)^{n + 1}(n + 1)^3}{3^{n + 1}}}{\frac{(-1)^nn^3}{3^n}}\rvert = \frac{(n+1)^3}{3^{n + 1}\cdot\frac{3^n}{n^3}}$$
+$$= \frac{1}{3}(\frac{n + 1}{n})^3 = \frac{1}{3}(1 + \frac{1}{n})^3\rightarrow \frac{1}{3} < 1$$
+
+\subsection*{Root Test}
+\begin{enumerate}
+    \item If $\lim_{n\rightarrow\infty}\sqrt[n]{|a_n|} = L < 1$, then the series $\sum^\infty_{n = 1}a_n$ is absolutely convergent.
+    \item If $\lim_{n\rightarrow\infty}\sqrt[n]{|a_n|} = L > 1$, or $\lim_{n\rightarrow\infty}\sqrt[n]{|a_n|} = \infty$, then the series $\sum^\infty_{n = 1}a_n$ is divergent.
+    \item If $\lim_{n\rightarrow\infty}\sqrt[n]{|a_n|} = 1$, the Root Test is inconclusive.
+\end{enumerate}
+
+\subsection*{Example}
+Test the convergence of the series $\sum^\infty_{n = 1} (\frac{2n + 3}{3n + 2})^n$.
+\subsubsection*{Solution}
+$$a_n = (\frac{2n + 3}{3n + 2})^n$$ $$\sqrt[n]{|a_n|} = \frac{2n + 3}{3n + 2} = \frac{2 + \frac{3}{n}}{3 + \frac{2}{n}}\rightarrow \frac{2}{3} < 1$$
+
+\section{Strategy for Testing Series}
+\begin{enumerate}
+    \item If the series is of the form $\textstyle\sum 1/n^p$, it is a $p$-series, which we know to be convergent if $p > 1$ and divergent if $p\leq 1$.
+    \item If the series has the form $\textstyle\sum ar^{n - 1}$ or $\textstyle\sum ar^n$, it is a geometric series, we converges if $|r| < 1$ and diverges if $|r|\geq 1$
+    \item If the series has a form that is similar to a $p$-series or a geometric series, then one of the comparison tets should be considered. In particular, if $a_n$ is a rational/algebraic function of $n$, then the series should be compared with a $p$-series. The comparison tests apply only to series with positive terms, but if $\textstyle\sum a_n$ has some negative terms, then we can apply the conmparison test to $\textstyle\sum a_n$ and test for absolute convergence.
+    \item If you see that $\lim_{n\rightarrow\infty}a_n\neq 0$, then the Test for Divergence should be used. 
+    \item If the series is of the form $\textstyle\sum (-1)^{n - 1}b_n$ or $\textstyle\sum (-1)^{n}b_n$, then the Alternating Series Test is an obvious possibility. 
+    \item Series that involve factorials or other products are often conveniently tested using the Ratio Test. 
+    \item If $a_n$ is of of the form $(b_n)^n$, then the Root Test may be useful.
+    \item If $a = f(n)$, where $\int^\infty_1 f(x) dx$ is easily evaluated, then the Integral Test is effective
+\end{enumerate}
+
+\section{Power Series}
+A \textbf{power series} is a series of the form $$\sum^\infty_{n = 0}c_nx^n = c_0 + c_1x + c_2x^2 + c_3x^3 + \dots$$
+where $x$ is a variable and the $c_n$'s are constants called the \textbf{coeffeicients} of the series.\\
+For a given power series $\sum^\infty_{n = 0}c_n(x - a)^n$ there are only three possibilites:
+\begin{enumerate}
+    \item The series converges only when $x = a$.
+    \item The sereis converges for all $x$.
+    \item There is a positive number $R$ such that the sereis converges if $|x - a| < R$ and diverges if $|x - a| > R$.
+\end{enumerate}
+The number $R$ is called the \textbf{radius of convergence} of the power series. The \textbf{interval of convergence} of a power series is the interval that consists of all values of $x$ for which the series converges.
+Below is a summarization of the radius and interval of convergence for each of the examples considered in this section.\\
+%includegraphics
+
+\section{Representations of Functions as Power Series}
+\subsection*{Example}
+Find a power series representation $1/(x + 2)$.
+\subsubsection*{Solution} In order to put this function in the form of the left side, we first factor a 2 from the denominator:
+$$\frac{1}{2 + x} = \frac{1}{2(1 + \frac{x}{2})} = \frac{1}{2[1 - (-\frac{x}{2})]}$$ 
+$$= \frac{1}{2}\sum^\infty_{n = 0}(-frac{x}{2})^n = \sum^\infty_{n = 0}\frac{(-1)^n}{2^{n + 1}}x^n $$
+The series converges when $|-x/2| < 1$, that is $|x| < 2$. So the interval of convergence is $(-2,2)$.\\*
+We would like to be able to differentiate and integrate such functions, and the following theorem will help. This is called \textbf{term-by-term differentiation and integration}.
+If the power series $\textstyle\sum c_n(x-a)^n$ has radius of convergence $R > 0$, then the function $f$ defined by
+$$f(x) = c_0 + c_1(x - a) + c_2(x - a)^2 + \dots = \sum^\infty_{n = 0}c_n(x - a)^n$$ is differentiable on the interval $(a - R, a + R)$ and
+(i) $f(x) = c_1 + 2c_2(x - a) + 3c_3(x - a)^2 + \dots = \sum^\infty_{n = 0}nc_n(x-a)^{n - 1}$\\
+(ii)$\int f(x) dx = C + c_0(x - a) + c_1\frac{(x-a)^2}{2} + c_2\frac{(x-a)^3}{3} + \dots = C + \sum^\infty_{n = 0} c_n\frac{(x-a)^{n + 1}}{n + 1}$
+
+\section{Taylor and Maclaurin Series}
+If $f$ has a power series expansion at $a$, then it must be of the following form.
+\begin{equation}
+    f(x) = \sum^\infty_{n = 0} \frac{f^(n)(a)}{n!}(x-a)^n\\
+         = f(a) + \frac{f^\prime(a)}{1!}(x - a) + \frac{f^{\prime\prime}(a)}{2!}(x - a)^2 + 
+         \frac{f^{\prime\prime\prime}(a)}{3!}(x - a)^3 + \dots
+\end{equation}
+For the special case $a = 0$, the Taylor series becomes
+$$f(x) = \sum^\infty_{n = 0} \frac{f^(n)(0)}{n!}x^n = f(0) + \frac{f^\prime(0)}{1!}x + \frac{f^{\prime\prime}(0)}{2!}x^2 + \dots$$
+Below are some important Maclaurin series that have been derived in this section and the preceding one. 
+
+\subsection*{Example}
+Find the Taylor series for $f(x) = e^x$ at $a = 2$.
+\subsubsection*{Solution}
+We have $f^(n)(2) = e^2$ and so, putting $a = 2$ in the definition of a Taylor series, we get 
+$$\sum^\infty_{n = 0}\frac{f^(n)(2)}{n!} (x - 2)^n = \sum^\infty_{n = 0} \frac{e^2}{n!}(x - 2)^n$$
+We see that radius of convergence is $R = \infty$.
+
+
+
