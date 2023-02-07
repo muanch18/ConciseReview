@@ -1,0 +1,87 @@
+\setcounter{chapter}{1}
+\chapter{Axioms of Probability}
+\section{Sample Space and Events}
+\begin{definition}[Sample Space]
+The set of all possible outcomes of an experiment is known as the \textbf{sample space}, S of the experiment.
+\end{definition}
+\begin{definition}[Event]
+Any subset E of the sample space is known as an \textbf{event}. If the outcome of the experiment is contained in E, then we say that E has occurred. 
+\end{definition}
+\begin{definition}[Union]
+The event $E\cup F$ is called the \textbf{union} of the event E and the event F.
+\end{definition}
+\begin{definition}[Intersection]
+    For any two events E and F, we can define EF as the \textbf{intersection} of E and F, consisting of all outcomes that are both in E and F.
+\end{definition}
+\begin{definition}[Complement]
+    We define the new event $E^c$ as the \textbf{complement} of E, consisting of all the outcomes in the sample space S that are not in E. $E^c$ will occur if and only if E does not occur. 
+\end{definition}
+\begin{definition}
+    For any two events E and F, if all of the outcomes in E are also in F then we say that E is contained in F or is a subset of F and write $E\subset F$/.
+\end{definition}
+\subsection{Operations}
+\begin{enumerate}
+    \item The \textit{commutative law} is defined as \[E\cup F = F\cup E\qquad EF = FE\]
+    \item The \textit{associative law} is defined as \[(E\cup F)\cup G = E\cup (F\cup G)\qquad (EF)G=E(FG)\]
+    \item The \textit{distributive law} is defined as \[(E\cup F)G=EG\cup FG\qquad EF\cup G = (E\cup G)(F\cup G)\]
+\end{enumerate}
+\begin{theorem}[DeMorgan's Laws]
+\[(E\cup F)^c = E^cF^c\qquad (EF)^c = E^c\cup F^c\]
+\end{theorem}
+\section{Axioms of Probability}
+$$P(E) = lim_{n\rightarrow\infty} \frac{n(E}{n}$$
+where $n(E)$ is the number of times in the first n repetitions of the experiment that the event E occurs. We can say that $\frac{n(E)}{n}$ converges to a constant limiting value is an assumption, or an \textit{axiom} of the system. \\
+The three axioms of probability:
+\begin{enumerate}
+    \item $0\leq P(E)\leq 1$
+    \item $P(S) = 1$
+    \item For any sequence of mutually exclusive events $E_1, E_2, \dots$ (that is, events for which $E_iE_j = \emptyset$ when $i\neq j$, \[P\left(\bigcup_{i=1}^\infty E_i\right) = \sum_{i=1}^\infty P(E_i)\]
+\end{enumerate}
+\section{Some Simple Propositions}
+Since $E$ and $E^c$ are mutually exclusive and since $E\cup E^c = S$, we say that \[1 = P(S) = P(E\cup E^c) = P(E)+P(E^c)\] \[P(E^c) = 1-P(E)\]
+If $E\subset F$, then $P(E)\leq P(F)$
+\begin{definition}[Probability of the Union/Intersection of Two Events]
+    \[P(E\cup F) = P(E)+P(F)-P(EF)\]
+\end{definition}
+\subsection*{Example}
+J is taking two books along on her holiday vacation. With probability .5, she will
+like the first book; with probability .4, she will like the second book; and with
+probability .3, she will like both books. What is the probability that she likes
+neither book?\\
+Let $B_i$ denote the event that J likes book $i, i = 1,2$ Then the probability that she
+likes at least one of the books is \[P(B_1\cup B_2) = P(B_1)+P(B_2) - P(B_1B_2) = .5 + .4 -.3 = .6\]
+Because the event that J likes neither book is the complement of the event that
+she likes at least one of them, we obtain the result \[P(B_1^cB_2^c) = P((B_1\cup B_2)^c) = 1 - P(B_1\cup B_2) = .4\]
+\begin{definition}[Inclusion-Exclusion Identity]
+    The probability of the union of n events equals the sum of the probabilities of these events taken one at a time, minus the sum of the possibilities of these events taken two at a time, plus the sum of the probabilities of these events taken three at a time, etc. \[P(\cup^n_{i=1} E_i) = \sum^n_{r=1} (-1)^{r+1} \sum_{i_1 < \cdots < i_r} P(E_{i_1}\cdots E_{i_r})\]
+\end{definition}
+\begin{definition}[Boole's Inequality]
+    The next inclusion-exclusion inequality is now obtained by fixing i such that
+    \[P(\cup^n_{i=1} \leq \sum^n_{i=1} P(E_i)\]
+\end{definition}
+\section{Sample Spaces and Outcomes}
+$$P(E) = \frac{\text{number of outcomes in }E}{\text{number of outcomes in }S}$$
+\subsection*{Example}
+A 5-card poker hand is said to be a full house if it consists of 3 cards of the same
+denomination and 2 other cards of the same denomination (of course, different
+from the first denomination). Thus, a full house is three of a kind plus a pair. What
+is the probability that one is dealt a full house?
+\subsection*{Solution}
+Again, we assume that all $52\choose 5$ possible hands are equally likely. To determine
+the number of possible full houses, we first note that there are ${4\choose 2}{4\choose 3}$ different
+combinations of, say, 2 tens and 3 jacks. Because there are 13 different choices
+for the kind of pair and, after a pair has been chosen, there are 12 other choices
+for the denomination of the remaining 3 cards, it follows that the probability of a
+full house is \[\frac{13\cdot 12\cdot {4\choose 2}{4\choose 3}}{{52\choose 5}}\approx .0014\]
+\subsection*{Example}
+Refer to the Matching Problem.
+\subsection*{Example - Probability as a Measure of Belief}
+Suppose that in a 7-horse race, you believe that each of the first 2 horses has a
+20 percent chance of winning, horses 3 and 4 each have a 15 percent chance,
+and the remaining 3 horses have a 10 percent chance each. Would it be better
+for you to wager at even money that the winner will be one of the first three
+horses or to wager, again at even money, that the winner will be one of the
+horses 1, 5, 6, and 7?\\
+On the basis of your personal probabilities concerning the outcome of the race,
+your probability of winning the first bet is $.2+.2+.15 = .55$ whereas it is $.2+.1+.1+.1 = .5$
+for the second bet. Hence, the first wager is more attractive.

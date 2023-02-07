@@ -1,0 +1,249 @@
+\setcounter{chapter}{5}
+\chapter{Jointly Distributed Random Variables}
+\section{Joint Distribution Functions}
+We can define for any two variables $X$ and $Y$, the \textit{joint cumulative probability distribution function} of $X$ and $Y$ is \[F(a,b) = P\{X\leq a, Y\leq b\}\]
+
+When $X$ and $Y$ are discreete random variables, with $X$ taking on one of the values $x_i, i\geq 1$, and $Y$ one of the values $y_j, j\geq 1$, it is convenient to define the \textit{joint probability mass function} of $X$ and $Y$ by \[p(x,y) = P(X = x, Y = y)\]
+Using the event $\{X = x\}$ is the union of the mutually exclusive events $\{X = x, Y= y_j\}$, it follows that the probability mass function of $X$ can be obtained from the joint probability mass function by 
+\begin{equation*}
+    \begin{split}
+        p_X(x) &= P\{X = x\}\\
+        &= P(\cup_j \{X = x, Y= y_j\}\\
+        &= \sum_j P(X = x, Y = y_j)\\
+        &= \sum_j p(x,y_j)
+    \end{split}     
+\end{equation*}
+The probability mass function of $Y$ is obtained from \[p_Y(y) = \sum_i p(x_i, y)\]
+\subsection*{Example}
+The joint density function of $X$ and $Y$ is given by 
+\begin{equation*}
+    f(x,y) =
+    \left\{
+        \begin{array}{lr}
+            2e^{-x}e^{-2y}\qquad 0 < x < \infty, 0 < y < \infty\\
+            0 \text{ otherwise}
+        \end{array}
+    \right\}
+\end{equation*}
+Compute (a) $P\{X > 1 , Y < 1\}$, (b) $P\{X < Y\}$ and (c) $P\{X < a\}$
+\subsubsection*{Solution}
+\begin{enumerate}[a. ]
+    \item \[P(X > 1, Y < 1) = \int^1_0 \int^\infty_1 2e^{-x}e^{-2y} dx dy\] Now, \[\int^\infty_1 e^{-x} dx = -e^{-x} \big|^\infty_1 = e^{-1}\] Giving \[P(X > 1, Y < 1)  = e^{-1} \int^1_0 2e^{-2y} dy = e^{-1} (1 - e^{-2}\] 
+    \item \begin{equation*}
+        \begin{split}
+            P\{X < Y\} &= \int\int  2e^{-x}e^{-2y} dx dy\\
+            &= \int^\infty_0 \int^y_0  2e^{-x}e^{-2y} dx dy\\
+            &= \int^\infty_0 2e^{-2y}(1-e^{-y}) dy\\
+            &= \int^\infty_o 2e^{-2y} dy - \int^\infty_0 2e^{-3y} dy\\
+            &= 1 - \frac{2}{3}\\
+            &= \frac{1}{3}
+        \end{split}
+    \end{equation*}
+    \item \begin{equation*}
+        \begin{split}
+            P\{X < a\} &= \int^a_0 \int^\infty_0 2e^{-2y} e^{-x} dy dx\\
+            &= \int^a_0 e^{-x} dx\\
+            &= 1 - e^{-a}
+        \end{split}
+    \end{equation*}
+\end{enumerate}
+\subsection*{Example}
+The joint density of $X$ and $Y$ is given by 
+\begin{equation*}
+    f(x,y) =
+    \left\{
+        \begin{array}{lr}
+            e^{-(x + y)} \qquad 0 < x < \infty, 0 < y < \infty\\
+            0 \text{ otherwise}
+        \end{array}
+    \right\}
+\end{equation*}
+Find the density function of the random variable $X/Y$.
+\subsubsection*{Example}
+We start by computing the distribution function of $X/Y$. For $a > 0$, 
+\begin{equation*}
+    \begin{split}
+        F_{X/Y}(a) &= P\{\frac{X}{Y}\leq a\}\\
+        &= \int\int_{x/y\leq a} e^{-(x + y)}\\
+        &= \int^\infty_0 \int^{ay}_0 e^{-(x + y)} dx dy\\
+        &= \int^\infty_0 (1 - e^{-ay})e^{-y} dy\\
+        &= \{-e^{=y} + \frac{e^{-(a+1)y}}{a + 1}\}\big |^\infty_0\\
+        &= 1 - \frac{1}{a + 1}
+    \end{split}
+\end{equation*}
+Differentiation shows that the density function of $X/Y$ is given by \[f_{X/Y}(a) = 1/(a+1)^2\, , 0 < a < \infty\]
+\section{Independent Random Variables}
+The random $X$ and $Y$ are said to be \textit{independent} if for any two sets of real numbers $A$ and $B$, \[P\{X\in A, Y\in B\} = P\{X\in A\}P\{Y\in B\}\]
+\textbf{Proposition 2.1}
+The continuous (discrete) random vraibles $X$ and $Y$ are independent if and only if their joint probability density (mass) function can be expressed as \[f_{X,Y}(x,y) - h(x)g(y)\qquad -\infty < x < \infty, -\infty < y < \infty\]
+\subsection*{Example}
+Let $X,Y,Z$ be independent and uniformly distributed over $(0,1)$. Compute $P\{X\geq YZ\}$.
+\subsubsection*{Solution}
+Since \[f_{X,Y,Z}(x,y,z) = f_X(x)f_Y(y)f_Z(z)\] \[1\qquad 0\leq x\leq 1, 0\leq y\leq 1, 0\leq z\leq 1\] we have 
+\begin{equation*}
+    \begin{split}
+        P\{X\geq YZ\} &= \int\int\int f_{X,Y,Z}(x,y,z) dx dy dz\\
+        &= \int^1_0 \int^1_0 \int^1_YZ dx dy dz\\
+        &= \int^1_0 \int^1_0 (1-yz) dy dz\\
+        &= \int^1_0 (1- \frac{z}{2}) dz\\
+        &= \boxed{\frac{3}{4}}
+    \end{split}
+\end{equation*}
+\section{Sums of Independent Random Variables}
+It is often important to calculate the distribution of $x + Y$ from the distribution of $X$ and $Y$ when $X$ and $Y$ are independent. The cumulative distribution function of $X + Y$ is obtained as follows:
+\begin{equation*}
+    \begin{split}
+        F_{X + Y} &= P\{X + Y\leq a\}\\
+        &= \int\int_{x+y\leq a} f_X(x)f_Y(y) dx dy\\
+        &= \int^\infty_{-\infty} \int^{a-y}_{-\infty} f_X(x)f_Y(y) dx dy\\
+        &= \int^\infty_{-\infty} \int^{a-y}_{-\infty} f_X(x) dx f_Y(y) dy\\
+        &= \int^\infty_{-\infty} f_X(a-y)f_Y(y) dy\\
+    \end{split}
+\end{equation*}
+The cumulative distribution function is called the \textit{convolution} of the distributions $F_X$ and $F_Y$\\
+\textbf{Proposition 3.2}
+If $X_i, i = 1,\dots, n$ are independent random variables that are normally distributed with respective parameters $\mu_i, \sigma^2_i,i = 1, \dots, n,$ then $\sum^n_{i=1} X_i$ is normally distributed with parameters $\sum^n_{i = 1} \mu_i$ and $\sum^n_{i = 1} \sigma^2_i$
+\subsection*{Example}
+A basketball team will play a 44-game season. Twenty-six of these games are
+against class A teams and 18 are against class B teams. Suppose that the team
+will win each game against a class A team with probability .4 and will win each
+game against a class B team with probability .7. Suppose also that the results of
+the different games are independent. Approximate the probability that
+\begin{enumerate}[a. ]
+    \item the team wins 25 games or more;
+    \item the team wins more games against class A teams than it does against B teams
+\end{enumerate}
+\subsubsection*{Solution}
+Let $X_A$ and $X_B$ respectively denote the number of games the team wins againtz class A and against class B teams. Note that $X_A$ and $X_B$ are independet binomial random variables and \[E[X_A] = 26(.4) = 10.4\, Var(X_A) = 26(.4)(.6) = 6.24\] \[E[X_A] = 18(.7) = 12.6\, Var(X_A) = 18(.7)(.3) = 3.78\]
+By \textbf{the normal approximation to the binomial}, $X_A$ and $X_B$ will have approximately the same distribution as would indepenet normal random variables with the preceding expected values and variances. Hence, by the previous proposition, $X_A$ and $X_B$ will have approximately a normal distribution with mean 23 and variance 10.02. Therefore, letting $Z$ denote a standard normal random variable, we have 
+\begin{equation*}
+    \begin{split}
+        P\{X_A + X_B\geq 25\} &= P\{X_A + X_B\geq 24.5\}\\
+        &= P\{\frac{X_A + X_B - 23}{\sqrt{10.02}}\geq\frac{24.5-23}{\sqrt{10.02}}\}\\
+        &\approx P\{Z\geq \frac{1.5}{\sqrt{10.02}}\}\\
+        &\approx 1 - P\{Z < .4739\}\\
+        &\approx .3178
+    \end{split}
+\end{equation*}
+For b), we note that $X_A - X_B$ will have approximately a normal distribution with mean $-2.2$ and variance $10.02$. Hence, 
+\begin{equation*}
+    \begin{split}
+        P\{X_A - X_B\geq 1\} &= P\{X_A - X_B\geq .5\}\\
+        &= P\{\frac{X_A - X_B + 2.2}{\sqrt{10.02}}\geq\frac{.5 + 2.2}{\sqrt{10.02}}\}\\
+        &\approx P\{Z\geq\frac{2.7}{\sqrt{10.02}}\}\\
+        &\approx 1 - P\{Z < .8530\}\\
+        &\approx .1968
+    \end{split}
+\end{equation*}
+Therefore, there is approximately at 31.78 percent change that the team will win at least 25 games and approximately a 19.68 percent change that it wil win more games against class A teams than against class B teams. 
+\subsection*{Example}
+Starting at some fixed time, let $S(n)$ denote the price of a certain security at the end of $n$ additional weeks, $n\geq 1$. A popular model for the evolution of these prices assumes that the price ratios $S(n)/S(n-1), n\geq 1$ are independent and identially distributed lognormal randomv ariables. Assuming this model, with parameters $\mu = .0165, \sigma = .0730$, what is the probability that \begin{enumerate}[a. ]
+    \item the price of the security increases over each of the next two weeks?
+    \item the price at the end of two weeks is higher than it is today?
+\end{enumerate}
+\subsubsection*{Solution}
+Let $Z$ be a standard normal random variable. To solve part (a), we use the fact that log increases in $x$ to conclude that $x > 1$ if and only if $log(x) > log(1) = 0$. As a result, we have
+\begin{equation*}
+    \begin{split}
+        P\{\frac{S(1)}{S(0)} > 1\} &= P\{log\left(\frac{S(1)}{S(0)}\right) > 0\}\\
+        &= P\{Z > \frac{-.0165}{.0730}\}\\
+        &= P\{Z < .2260\}\\
+        &= .5894
+    \end{split}
+\end{equation*}
+In other words, the probability that the price is up after one week is .5894. Since
+the successive price ratios are independent, the probability that the price
+increases over each of the next two weeks is
+To solve part (b), we reason as follows:
+\begin{equation*}
+    \begin{split}
+        P\{\frac{S(2)}{S(0)} > 1\} &= P\{\frac{S(2)}{S(1)}\frac{S(1)}{S(0)} > 0\}\\
+        &= P\{log\left(\frac{S(2)}{S(1)}\right) + log\left(\frac{S(1)}{S(0)}\right) > 0\}
+    \end{split}
+\end{equation*}
+However, $log\left(\frac{S(2)}{S(1)}\right)$ and $log\left(\frac{S(1)}{S(0)}\right)$ being the sum of two independent normal
+random variables with a common mean .0165 and a common standard deviation
+.0730, is a normal random variable with mean .0330 and variance
+Consequently,
+\begin{equation*}
+    \begin{split}
+         P\{\frac{S(2)}{S(0)} > 1\} &= P\{Z > \frac{-.0330}{.0730\sqrt{2}}\}\\
+         &= P\{Z < .31965\}\\
+         &= .6254
+    \end{split}
+\end{equation*}
+Although it is a good exericse to derive the distributions, we note them for sample cases here. Consider $X$ and $Y$ to be independent Poisson random variables with repsective parameters, $\lambda_1$ and $\lambda_2$, the distribution of $X + Y$ can be computed as \[\frac{e^{-(\lambda_1 + \lambda_2}}{n!}(\lambda_1 + \lambda_2)^n\]
+Let $X$ and $Y$ be independent binomial random variables with respective parameters $(n,p)$ and $(m,p)$. The distribution of $X + Y$. \[P\{X + Y = k\} = p^kq^{n+m-k}\sum^n_{i = 0} {n\choose i}{m\choose (k-1)}\]
+\section{Conditional Distributions: Discrete Case}
+Recall that for any two events $E$ and $F$, the conditional probability of $E$ given $F$ is defined only if $P(F) > 0$ by \[P(E|F) = \frac{P(EF)}{P(F)}\]
+So, if $X$ and $Y$ are discrete randomv ariables, it is antural to deifned the conditional probability mass fucntion of $X$ given that $Y = y$ by 
+\begin{equation*}
+    \begin{split}
+        p_{X | Y}(x\big | y) &= P\{X = x | Y = y\}\\
+        &= \frac{P\{X = x, Y = y\}}{P\{Y = y\}}\\
+        &= \frac{p(x,y)}{p_Y(y)}
+    \end{split}
+\end{equation*}
+The conditional probability distribution function of $X$ given that $Y = y$ is \begin{equation*}
+    \begin{split}
+        F_{X|Y}(x\big | y) &= P\{X\leq x|Y = y\}\\
+        &= \sum){a\leq x}p_{X|Y}(a\big | y)
+    \end{split}
+\end{equation*}
+\subsection*{Example}
+Suppose that $p(x,y)$, the joint probability mass function of $X$ and $Y$ is given by \[p(0,0) = .4\, p(0,1) = .2\, p(1,0) = .1\, p(1,1) = .3\] Calculate the probability mass function of $X$ given that $Y = 1$
+\subsubsection*{Solution}
+Note that \[p_Y(1) = sum_x p(x,1) = p(0,1) + p(1,1) = .5\]Then, \[p_{X|Y}(0|1) = \frac{p(0,1)}{p_Y(1)} = \frac{2}{5}\] \[p_{X|Y}(1|1) = \frac{p(1,1)}{p_Y(1)} = \frac{3}{5}\]
+\section{Conditional Distributions: Continuous Case}
+For the continupous case, we can define the conditional probability density function of $X$ given that $Y = y$ as \[f_{X|Y}(x|y) = \frac{f(x,y)}{f_Y(y)}\]
+\subsection*{Example}
+Suppose that the joint density of $X$ and $Y$ is given by 
+\begin{equation*}
+    f(x,y) =
+    \left\{
+        \begin{array}{lr}
+            \frac{e^{-x/y}e^{-y}}{y} \qquad 0 < x < \infty, 0 < y < \infty\\
+            0 \text{ otherwise}
+        \end{array}
+    \right\}
+\end{equation*}
+Find  $P\{X > 1|Y = y\}$.
+\subsubsection*{Solution}
+We first obtain the conditional density of $X$ given that $Y = y$,
+\begin{equation*}
+    \begin{split}
+        f_{X|Y}(x\big | y) &= \frac{f(x,y)}{f_Y(y)}\\
+        &= \frac{e^{-x/y}e^{-y}}{e^{-y}\int^\infty_0 (1/y)e^{-x/y} dx}\\
+        &= \frac{1}{y}e^{-x/y}
+    \end{split}
+\end{equation*}
+Hence, 
+\begin{equation*}
+    \begin{split}
+        P\{X > 1|Y = y\} &= \int^\infty_1 \frac{1}{y}e^{-x/y} dx\\
+        &= -e^{-x/y}|^\infty_1\\
+        &= e^{-1/y}
+    \end{split}
+\end{equation*}
+\section{Order Statistics}
+\section{Joint Probability Distribution of Functions of Random Variables}
+Let $X_1$ and $X_2$ be jointly continuous random variables with joint probability density function $f_{X_1,X_2}$. It is sometimes necessary to obtain the joitn distribution of the random variables $Y_2$ and $Y_2$ which arise of $X_1$ and $X_2$. Suppose that $Y_1 = g_1(X_1, X_2)$ and $Y_2 = g_2(X_1,X_2)$ for some functions $g_1, g_2$.
+Assume that the functions $g_1$ and $g_2$ satisfy the following conditions:
+\begin{enumerate}
+    \item The equations $y_1 = g_1(x_1,x_2)$ and $y_2 = g_2(x_1,x_2)$ can be uniquely solved for $x_1$ and $x_2$ in terms of $y_1$ and $y_2$, with solutions given by, say, $x_1 = h_1(y_1,y_2)$, $x_2 = h_2(y_1,y_2)$.
+    \item The functions $g_1$ and $g_2$ have continuous partial deriatives at all points $(x_1,x_2)$ and are such that the $2\cross 2$ determinant \[\mathcal{J} (x_1, x_2) = det\begin{pmatrix}\frac{\partial g_1}{\partial x_1} & \frac{\partial g_1}{\partial x_2}\\ \frac{\partial g_2}{\partial x_1} & \frac{\partial g_2}{\partial x_2}\end{pmatrix}\]
+\end{enumerate}
+Following these two conditions, it can be shown that the random variables $Y_1$ and $Y_2$ are jointly continupous with joitn density function by \[f_{Y_1Y_2}(y_1, y_2) = f_{X_1, X_2} (x_1, x_2)\, |\mathcal{J} (x_1,x_2)|^{-1}\]
+\subsection*{Example}
+Let $X_1$ and $X_2$ be jointly contnuous random variablres with probabilty desnity function $F_{X_1,X_2}$. Let $Y_1 = X_1 + X_2, Y_2 = X_1 - X_2$. Find the joint density function of $Y_1$ and $Y_2$ in terms of $f_{X_1,X_2}$.
+\subsubsection*{Solution}
+Let $g_1(x_1,x_2) = x_1 + x_2$ and $g_2(x_1,x_2) = x_1 - x_2$. Then \[\mathcal{J}(x_1,x_2) = \det\mdet{1&1\\1&-1\\} = -2\]
+Since the equations $y_1 = x_1 + x_2, y_2 = x_1 - x_2$ have $x_1 = (y_1 + y_2)/2, x_2 = (y_1 - y_2)/2,$ as their solution, then we can say that the desired density is \[f_{Y_1,Y_2}(y_1,y_2) = \frac{1}{2}f_{X_1.X_2}\left(\frac{y_1+y_2}{2}. \frac{y_1-y_2}{2}\right)\]
+Finally, if $X_1$ and $X_2$ are independent standard normal random variables, then 
+\begin{equation*}
+    \begin{split}
+        f_{Y_1,Y_2}(y_1,y_2) &= \frac{1}{4\pi}e^{-[(y_1+y_2)^2/8 + (y_1-y_2)^2/8]}\\
+        &= \frac{1}{4\pi}e^{-(y^2_1+y^2_2)/4}\\
+        &= \frac{1}{\sqrt{4\pi}}e^{-y^2_1/4}\, \frac{1}{\sqrt{4\pi}}e^{-y^2_2/4}
+    \end{split}
+\end{equation*}

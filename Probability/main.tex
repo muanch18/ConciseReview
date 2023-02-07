@@ -1,0 +1,77 @@
+\documentclass{report}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+\usepackage{enumerate}
+\usepackage{tocloft}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{physics}
+\usepackage{multicol}
+\usepackage{esint}
+\usepackage{amsthm}
+\usepackage{soul}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}{Corollary}[theorem]
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newenvironment{amatrix}[1]{%
+\left(\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+\end{array}\right)}
+\graphicspath{Probability/images/}
+\cftsetindents{section}{1em}{3em}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\newcommand{\ihat}{\:\boldsymbol{\hat{\textbf{i}}}}
+\newcommand{\jhat}{\:\boldsymbol{\hat{\textbf{j}}}}
+\newcommand{\khat}{\:\boldsymbol{\hat{\textbf{k}}}}
+\newcommand{\compcent}[1]{\vcenter{\hbox{$#1\circ$}}}
+
+
+\newcommand{\comp}{\mathbin{\mathchoice
+  {\compcent\scriptstyle}{\compcent\scriptstyle}
+  {\compcent\scriptscriptstyle}{\compcent\scriptscriptstyle}}}
+
+
+\title{Probability}
+\author{am10675 }
+\date{January 2023}
+
+\begin{document}
+
+\title{\Large{\textbf{Probability}}}
+\author{Anush Musthyala}
+\date{June 2023}
+
+\pagenumbering{roman}
+\maketitle
+\tableofcontents
+
+\clearpage
+\pagenumbering{arabic}
+
+\input{"ch1.tex"}
+\input{"ch2.tex"}
+\input{"ch3.tex"}
+\input{"ch4.tex"}
+\input{"ch5.tex"}
+\input{"ch6.tex"}
+\input{"ch7.tex"}
+\input{"ch8.tex"}
+\input{"ch9.tex"}
+\end{document}

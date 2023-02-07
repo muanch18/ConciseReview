@@ -1,0 +1,86 @@
+\setcounter{chapter}{0}
+\chapter{Combinatorial Analysis}
+
+\section{Introduction}
+\begin{definition}[Combinatorial Analysis]
+The mathematical theory of counting; an effective method for counting the number of ways that things can occur.
+\end{definition}
+
+\section{The Basic Principle of Counting}
+\begin{definition}[The Basic Principle of Counting]
+If $r$ experiments that are to be performed are such that the first one may result in any of $n_1$ possible outcomes; and if, for each of these $n_1$ possible outcomes there are $n_2$ possible outcomes of the second experiment, ... and for the total of $n_1\cdot n_2\ldots n_r$ possible outcomes of the $r$ experiments.
+\end{definition}
+\subsection*{Example}
+A college planning committee consists of 3 freshmen, 4 sophomores, 5 juniors, and 2 seniors. A subcommittee of 4, consisting of 1 person from each class, is to be chosen. How many different subcommittees are possible?
+\[3\cross 4\cross 5\cross 2 = 120\,\text{possible subcommittees}\]
+\section{Permutations}
+\begin{definition}[Permutations]
+The possible arrangements of a set. Suppose now that we have $n$ objects. We have $n!$ different permutations of the n objects, where $n!$ is defined as
+\[n(n-1)(n-2)\ldots = n!\]
+\end{definition}
+\subsection*{Example}
+A class in probability theory consists of 6 men and 4 women. An examination is given, and the students are ranked according to their performance. Assume that no two students obtain the same score.
+\begin{enumerate}[a. ]
+    \item How many different rankings are possible?
+    \item If the men are ranked just among themselves and the women just among
+themselves, how many different rankings are possible?
+\end{enumerate}
+\subsection*{Solution}
+\begin{enumerate}[a. ]
+    \item Each ranking corresponds to a particular ordered arrangement. \[10! = 3,628,800\]
+    \item There are $6!$ rankings of the men among themselves and $4!$ rankings of the women among themselves. From the basic principle of counting, we have \[(6!)(4!) = (720)(4) = 17,280\] possible rankings.
+\end{enumerate}
+\subsection*{Example}
+In the case that order matters, we have
+\[\frac{n!}{n_1!n_2!\ldots n_r!}\]
+different permutations of $n$ objects, of which $n_1$ are alike, $n_2$ are alike, \dots, $n_r$ are alike.\\
+A chess tournament has 10 competitors, of which 4 are Russian, 3 are from the United states, 2 are from Great Britain, and 1 is from Brazil. If the tournament result lists just the nationalities of the players in the order in which they placed, how many outcomes are possible?
+\[\frac{10!}{4!3!2!1!} = 12,600\] possible outcomes
+
+\section{Combinations}
+\begin{definition}[Combination]
+We define $\binom{n}{r}$ for $r\leq n$ by \[{\binom{n}{r}} = \frac{n!}{(n-r)!r!}\]
+and say that $\binom{n}{r}$ reads as "n choose r" representing the number of possible combinations of n objects taken r at a time.
+\end{definition}
+\subsection*{Example}
+A committee of 3 is to be formed from a group of 20 people. How many different
+committees are possible?
+\[20\choose 3 = \frac{20\cdot 19\cdot 18}{3\cdot 2\cdot 1} = 1140\] possible committees.
+\subsection{Example}
+From a group of 5 women and 7 men, how many different committees consisting
+of 2 women and 3 men can be formed? What if 2 of the men are feuding and
+refuse to serve on the committee together?
+\begin{enumerate}
+    \item $5\choose 2$ possible groups of 2 women, $7\choose 3$ possible groups of 3 men. By the basic principle of counting, \[{5\choose 2}{7\choose 3} = 350\] possible committees of 2 women and 3 men.
+    \item Suppose that 2 of the men refuse to serve together. Because a total ${2\choose 2}{5\choose 1} = 5$ out of the possible $7\choose 3 = 35$ possible groups of 3 men contain both of the feuding men, it follows that there are 35-5= 30 possible groups that do not contain the 2 feuding men. Because there are still $5\choose 2 = 10$ ways to choose the 2 women, there are $30*10 = 300$ possible committees in this case. 
+\end{enumerate}
+\begin{definition}[Pascal's Identity]
+\[{{n}\choose {r}} = {{n-1}\choose {r-1}} + {{n-1}\choose {r}}\qquad 1\leq r\leq n\]
+Consider a group of n objects, and fix attention on some particular one of these objects. Now there are ${n-1}\choose {r-1}$ groups of size r that contain this object (since each group is formed by selecting r-1 from the remaining n-1 objects). Also, there are ${n-1}\choose r$ groups of size r that do not contain this object. 
+\end{definition}
+\begin{theorem}[Binomial Theorem]
+Extending the Pascal Identity where we have a total of $n\choose r$ groups of size r,
+\[(x+y)^n = \sum_{k=0}^n {n\choose k} x^ky^{n-k}\]
+\end{theorem}
+\section{Multinomial Coefficients}
+\begin{theorem}[Multinomial Theorem]
+    \[(x_1+x_2+\ldots+x_r)^n = \] \[\sum_{(n_1,...,n_r):} {n\choose{n_1,...,n_r}} x_1^{n_1}x_2^{n_2}\ldots x_r^{n_r}\]
+    That is, the sum is overall all nonnegative integer-valued vectors $(n_1, n_2, \dots n_r)$ such that $n_1+n_2+\dots + n_r = n$.
+\end{theorem}
+The numbers ${n\choose{n_1,...,n_r}}$ are known as \textbf{multinomial coefficients}.
+\subsection*{Example}
+In the first round of a knockout tournament involving $n=2^m$ players, the n players are divided into $n/2$ pairs with each of these pairs then playing a game.
+The losers of the games are eliminated while the winners go on to the next
+round, where the process is repeated until only a single player remains. Suppose
+we have a knockout tournament of 8 players.
+\begin{enumerate} [a. ]
+    \item How many possible outcomes are there for the initial round? (For instance, one outcome is that 1 beats 2, 3 beats 4, 5 beats 6, and 7 beats 8.)
+    \item How many outcomes of the tournament are possible, where an outcome gives complete information for all rounds?
+\end{enumerate}
+\subsection*{Solution}
+\begin{enumerate}
+    \item Determine the number of possible pairings for that specific round. Note that the number of ways to divide the 8 players into a \textit{first} pair, \textit{second} pair, a \textit{third} pair, and a \textit{fourth} pair is ${8\choose (2,2,2,2)} = \frac{8!}{2^4}$. Thus, the number of possible pairings
+when there is no ordering of the pairs is $\frac{8!}{4!2^4}$. For each such pairing, there are
+2 possible choices from each pair as to the winner of that game, showing that there are $\frac{8!2^4}{4!2^4}$ possible results of round 1. \\Similarly, for each result of round there are $\frac{4!}{2!}$ possible outcomes of round 2, and for each of the outcomes of the first two rounds, there are $\frac{2!}{1!}$. Generalized by the basic principle of counting, there are $\frac{8!}{4!}\frac{4!}{2!}\frac{2!}{1!} = 8!$ possible outcomes of the tournament. 
+    \item To obtain such a correspondence, rank the players as follows for any tournament result: Give the tournament winner rank and give the final-round loser rank For the two players who lost in the next-to-last round, give rank 3 to the one who lost to the player ranked 1 and give rank 4 to the one who lost to the player ranked 2 For the four players who lost in the second-to-last round, give rank 5 to the one who lost to player ranked 1, rank 6 to the one who lost to the player ranked 2, rank 7 to the one who lost to the player ranked 3. and rank 8 to the one who lost to the player ranked 4. Continuing on in this manner gives a rank to each player. In this manner, the result of the tournament can be represented by a permutation $i_1,i_2,\dots,i_n$ where $i_j$ is the player who was given rank j. Because different tournament results give rise to different permutations, and because there is a tournament result for each permutation, it follows that there are the same number of possible tournament results as there are permutations of $1,\dots, n$
+\end{enumerate}

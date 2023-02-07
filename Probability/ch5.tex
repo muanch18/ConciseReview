@@ -1,0 +1,194 @@
+\setcounter{chapter}{4}
+\chapter{Continuous Random Variables}
+\section{Introduction}
+\begin{definition}[Continuous Random Variables]
+Random variables who set of possible values are countably infinite. 
+\end{definition}
+The \textbf{probability density function} can be defined as \[P\{X\in B\} = \int_B f(x) dx\]
+The \textbf{cumulative density function} has a continuous relationship defined with the PDF. 
+\[P\{X < a\} = P\{X\leq a\} = F(a) = \int^a_{-\infty} f(x) dx\]
+\subsection*{Example}
+The amount of time in hours that a computer functions before breaking down is a continouous random variable with probabiltiy density function given by 
+\begin{equation*}
+f(x) 
+\left\{
+    \begin{array}{lr}
+        \lambda e^{-x/100} x\geq 0\\
+        0 x < 0
+    \end{array}
+\right\}
+\end{equation*}
+What is the probability that 
+\begin{enumerate}[a. ]
+    \item a computer will function between 50 and 150 hours before breaking down?
+    \item it will function for fewer than 100 hours?
+\end{enumerate}
+\subsubsection*{Solution}
+Since \[1 = \int^\infty_{-\infty} f(x) dx = \lambda\int^\infty_0 e^{-x/100} dx\]
+we have \[1 = -\lambda(100)e^{-x/100}\big|^\infty_0 = 100\lambda\text{ or } \lambda = \frac{1}{100}\]
+Then the probability that a computer will function between 50 and 150 hours before breaking down is given by 
+\[P\{50 > x > 150\} = \int^150_50 \frac{1}{100}e^{-x/100} dx = -e^{-x/100}\big|^150_50\]
+\[=e^{-1/2} - e^{-3/2}\approx .383\]
+Similarily, 
+\[P\{X < 100\} = \int^100_0 \frac{1}{100}e^{-x/100} dx = -e^{-x/100}\big|^100_0 = 1 - e^{-1}\approx .632\]
+$63.2\%$ of the time a computer will fail before registering 100 hours of use. 
+\section{Expectation and Variance of Continuous Random Variables}
+Suppose $X$ is a continuous random variable. Then the expected value of $X$ is defined by 
+\[E[X] = \int^\infty_{-\infty} xf(x) dx\]
+\subsection*{Example}
+The density function of $X$ is given by
+\begin{equation*}
+f(x) =
+\left\{
+    \begin{array}{lr}
+        1 \text{ if } 0\leq x\leq 1\\
+        0 \text{ otherwise}
+    \end{array}
+\right\}
+\end{equation*}
+Find $E[e^X]$. \\
+Let $Y = e^X$. We start by determining $F_Y$, the CDF of $Y$. For $1\leq x\leq e$,
+\begin{equation*}
+    \begin{split}
+        F_Y(x) &= P\{Y\leq x\}\\
+        &= P\{e^x\leq x\}\\
+        &= P{X\leq log(x)}\\
+        &= \int^{log(x)}_0 f(y) dy\\
+        &= log(x)
+    \end{split}
+\end{equation*}
+By differentiating $F_Y(x)$ we can say that the PDF of $Y$ is given by \[f_Y(x) = \frac{1}{x}\qquad 1\leq x\leq e\]
+Then, 
+\begin{equation*}
+    \begin{split}
+        E[e^x] = E[Y] &= \int^\infty_{-\infty} xf_Y(x) dx\\
+        &= \int^e_1 dx\\
+        &= \boxed{e - 1}
+    \end{split}
+\end{equation*}
+\begin{lemma}
+For a nonnegative random variable $Y$, \[E[Y] = \int^\infty_0 P\{Y > y\} dy\]
+\end{lemma}
+\begin{corollary}
+If a and b are constants, then \[E[aX+b] = aE[X] + b\]
+\end{corollary}
+\section{Uniform Random Variable}
+\begin{definition}[Uniform Random Variable]
+    A random variable is said to be \textbf{uniformly distributed} over the interal $(\alpha,\beta)$ if its probability density function is given by 
+    \begin{equation*}
+        f(x) =
+        \left\{
+            \begin{array}{lr}
+                \frac{1}{\beta - \alpha} \text{ if } 0 < x < 1\\
+                0 \text{ otherwise}
+            \end{array}
+        \right\}
+    \end{equation*}
+\end{definition}
+To find the variance and expected value of the uniform random variable, we have 
+\begin{equation*}
+    \begin{split}
+        E[X] &= \int^\infty_{-\infty} xf(x) dx\\
+        &= \int^\beta_\alpha \frac{x}{\beta - \alpha} dx\\
+        &= \frac{\beta^2 - \alpha^2}{2(\beta - \alpha)}\\
+        &= \frac{\beta + \alpha}{2}
+    \end{split}
+\end{equation*}
+In other words, the expected value is the midpoint of that interval. 
+For the variance, we calculate $E[X^2]$ first. 
+\begin{equation*}
+    \begin{split}
+        E[X^2] &= \int^\beta_\alpha \frac{1}{\beta - \alpha}x^2 dx\\
+        &= \frac{\beta^3 - \alpha^3}{3(\beta - \alpha)}\\
+        &= \frac{\beta^2 + \alpha\beta + \alpha^2}{3}
+    \end{split}
+\end{equation*}
+So, we have 
+\begin{equation*}
+    \begin{split}
+        Var(X) &= \frac{\beta^2 + \alpha\beta + \alpha^2}{3} - \frac{(\alpha + \beta)^2}{4}\\
+        &= \frac{(\beta - \alpha)^2}{12}
+    \end{split}
+\end{equation*}
+\subsection*{Example}
+Buses arrive at a specified stop at 15-minute intervals starting at 7. That is,
+they arrive at 7, 7:15, 7:30, 7:45, and so on. If a passenger arrives at the stop at
+a time that is uniformly distributed between 7 and 7:30, find the probability that he
+waits
+\begin{enumerate}[a. ]
+    \item less than 5 minutes for a bus;
+    \item more than 10 minutes for a bus. 
+\end{enumerate}
+\subsubsection*{Solution}
+Let $X$ denote the number of minutes past 7 that the passenger arrives at the stop.
+Since $X$ is a uniform random variable over the interval (0, 30), it follows that the
+passenger will have to wait less than 5 minutes if (and only if) he arrives between
+7:10 and 7:15 or between 7:25 and 7:30. Hence, the desired probability for part
+(a) is \[P\{10 < X < 15\} + P\{25 < X < 30\} = \int^15_10 \frac{1}{30} dx + \int^30_25 \frac{1}{30} dx = \frac{1}{3}\]
+Similarly, he would have to wait more than 10 minutes if he arrives between 7
+and 7:05 or between 7:15 and 7:20, so the probability for part (b) is 
+\[P\{0 < X < 5\} + P\{15 < X < 20\} = \frac{1}{3}\]
+\section{Normal Random Variable}
+\begin{definition}[Normal Random Variable]
+    We say that $X$ is a normally distributed r.v. with parameters $\mu$ and $\sigma^2$ if the density of $X$ is given by
+    \[f(x) = \frac{1}{\sqrt{2\pi}\sigma}e^{-(x-\mu)^2/2\sigma^2}\]
+    The density function is a bell shaped curve that is symmetric about $\mu$. The expected value is 0 with variance 1. 
+\end{definition}
+An important fact about normal random variables is that if $X$ is normally distributed with parameters $\mu$ and $\sigma^2$, then $Y = aX + b$ is normally distributed with parameters $a\mu + b$ and $a^2\sigma^2$.\\
+The cumulative distribution function is often represented by $\phi(x)$
+\[\phi(x) - \frac{1}{\sqrt{2\pi}}\int^x_{-\infty} e^{-y^2/2} dy\]
+\begin{theorem}[The DeMoivre - Laplace Limit Theorem]
+If $S_n$ denotes the number of successes that occur when $n$ independent trials each resulting in a success with probability $p$, are performed, then, for any $a < b$, \[P\{a\leq \frac{S_n - np}{\sqrt{np(1-p)}}\leq b\}\rightarrow \phi(b) - \phi(a)\]
+as $n\rightarrow\infty$.
+\end{theorem}
+When $n$ is large, a binomial random variable with parameters n and p will have approximately the same distribution as a normal random variable with the same mean and variance as the binomial. 
+\section{Exponential Random Variables}
+\begin{definition}[Exponential Random Variables]
+    A continuous random variable whose probability density function is given for some $\lambda > 0$ by
+    \begin{equation*}
+        f(x) =
+        \left\{
+            \begin{array}{lr}
+                \lambda e^{-\lambda x} \text{ if } x\geq 0\\
+                0 \text{ if } x < 0
+            \end{array}
+        \right\}
+    \end{equation*}
+    is said to be an \textbf{exponential} random variable. The CDF $F(a)$ is given by \[1- e^{-\lambda a}\, a\geq 0\]. The expected value and variance are \[E[X] = \frac{1}{\lambda}\qquad Var(X) = \frac{1}{\lambda^2}\]
+\end{definition}
+\section{Gamma Distribution}
+A random variable is said to have a gamma distribution with parameters $(\alpha, \lambda), \lambda > 0, \alpha > 0$ if its density function is given by 
+\begin{equation*}
+    f(x) =
+    \left\{
+        \begin{array}{lr}
+            \frac{\lambda e^{-\lambda x}(\lambda x)^{\alpha -1}}{\Gamma(\alpha)}\qquad x\geq 0\\
+            0 \qquad x < 0
+        \end{array}
+    \right\}
+\end{equation*}
+where $\Gamma (\alpha)$, the \textit{gamma function} is defined as \[\Gamma(\alpha) = \int^\infty_0 e^{-y}y^{\alpha-1} dy\]
+It follows that the density function is \[f(t) = \frac{\lambda e^{-\lambda t}(\lambda t)^{n-1}}{(n-1)!}\] and the expected value with variance is given as \[E[X] = \frac{\alpha}{\lambda}\qquad Var(X) = \frac{\alpha}{\lambda^2}\]
+
+\section{The Distribution of a Function of a Random Variable}
+Often, we know the probability distribution of a random variable and are interested in determining the distribution of some function of it. For instance, suppose that we know the distribution of $X$ and want to find the distribution of $g(X)$. We then need to express the event that $g(X)\leq y$ in terms of $X$ being a set. 
+\begin{theorem}
+    Let $X$ be a continuous random variable having probability density function $f_x$. Suppose that $g(x)$ is stricitly monotonic, differentiable function of $x$. Then the random variable $Y$ defined by $Y = g(X)$ has a probability density function given by 
+    \begin{equation*}
+        f_Y(y) =
+        \left\{
+            \begin{array}{lr}
+                f_X[g^{-1}(y)]\left|\frac{d}{dy}g^{-1}(y)\right| \, \text{ if } y = g(x) \text{ for some } x\\
+                0 \text{ if } y\neq g(x) \text{ for all } x
+            \end{array}
+        \right\}
+    \end{equation*}
+    wehre $g^{-1}(y)$ is defined to equal the value of x such that $g(x) = y$.
+\end{theorem}
+\subsection*{Example}
+Let $X$ be a continuous nonnegative random variable with density function $f$, and let $Y = X^n$. Find $f_Y$, the probability density function of $Y$.
+\subsubsection*{Solution}
+if $g(x) = x^n$, then \[g^{-1}(y) = y^{1/n}\] and \[\frac{d}{dy}\{g^{-1})(y)\} = \frac{1}{n}y^{1/n-1}\]
+We obtain for $y\geq 0$ \[f_Y(y) = \frac{1}{n}y^{1/n-1}f(y^{1/n})\]
+\subsection*{The Lognormal Distribution}
+If $X$ is a normal random variable with mean $\mu$ and variance $\sigma^2$, then the random variable \[Y = e^x\] is said to be a \textit{lognormal} random variable with parameters $\mu$ and $\sigma^2$. The lognormal is often used as the distribution of the ratio of a price of a security at the end of one day to its price at the end of the prior day.  That is, if $S_n$ is the price of some security at the end of the day $n$, then it is often supposed that $\frac{S_n}{S_n - 1}$ is normal. Thus, to assume that fraction is lognormal is to assume that \[S_n = S_{n-1}e^x\] where $X$ is normal. 

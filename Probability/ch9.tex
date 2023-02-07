@@ -1,0 +1,48 @@
+\setcounter{chapter}{8}
+\chapter{Additional Topics in Probability}
+\section{The Poisson Process}
+The collection of random variables $\{N(t), t\geq 0\}$ is said to be a \textit{Poisson process having rate $\lambda, \lambda > 0$} if 
+\begin{enumerate}[i. ]
+    \item $N(0) = 0$
+    \item The numbers of events that occur in disjoint time intervals are independent.
+    \item The distribution that the number of events that occur in a given interval depends only on the length of that interval and not on its location.
+    \item $P\{N(h) = 1\} = \lambda h + o(h)$
+    \item $P\{N(h)\geq 2\} = o(h)$
+\end{enumerate}
+The first condition states that $i = 0$. The second condition, the \textit{independent increment} assumption states that the number of events that occur by time $t$, that is $N(t)$ is independent of the number of events that occur between $t$ and $t + s$ that is $N(t + s) - N(t)$. The third condition states that the probability distribution of $N(t + s) - N(t)$ is the same for all values of $t$. 
+\begin{lemma}
+For a Poisson process with rate $\lambda$, \[P\{N(t) = 0\} = e^{-\lambda t}\]
+\end{lemma}
+For a Poisson process, let $T_1$ denote the time that the first event occurs. For $n > 1$, let $T_n$ denote the time elapsed between the $(n-1)$ and the $n$th event. The sequence $\{T_n, n = 1,2,\dots\}$ is called the sequence of \textit{interarrival times}. 
+\begin{remark}
+$T_1,T_2,\cdots $ are independent exponential random variables, each with mean $1/\lambda$. 
+\end{remark}
+Another relevant quantity is the arrival time of the $n$th event, also called the \textit{waiting time}. It can be shown that \[S_n = \sum^n_{i = 1}T_i\qquad n\geq 1\]
+\begin{theorem}[Poisson Process]
+    For a Poisson process with rate $\lambda$, \[P\{N(t) = 0\} = \frac{e^{-\lambda t}(\lambda t)^n}{n!}\]
+\end{theorem}
+\section{Markov Chains}
+\begin{definition}[Markov Chain]
+    The sequence of random variables is said to form a \textbf{Markov Chain} if, each time the system is in state $i$, there is a fixed probability, $P_{ij}$, that the system will next be in state $j$. For all, $i_0, \dots, i_{n- 1}, i, j$, \[P\{X_{n + 1} = j|X_n = i, X_{n-1} = i_{n-1}, \dots, X_1 = i_1, X_0 = i_0\} = P_{ij}\]
+\end{definition}
+The values $P_{ij}, 0\leq i\leq M, 0\leq j\leq N$ are called the \textit{transition probabilities} of the Markov Chain. 
+\[P_{ij}\geq 0\qquad \sum^M_{j = 0} P_{ij} = 1\, i = 0,1,\dots, M\]
+It is conveninet to arrange the transition probabilites $P_{ij}$ in a square array as 
+\[\begin{bmatrix}
+P_{00} & P_{01} & \cdots & P_{0M}\\
+P_{10} & P_{11} & \cdots & P_{1M}\\
+\vdots & & & \\
+P_{M0} & P_{M1} & \ldots & P_{MM}\\
+\end{bmatrix}\]
+\subsection*{Example}
+Consider a gambler who either wins 1 unit with probability $p$ or loses 1 unit with probability $1 - p$ at each play of the game. If we suppose that the gambler will quit playing when his fortune hits either 0 or $M$, then the gambler’s sequence of fortunes is a Markov chain having transition probabilities
+\begin{equation*}
+    \begin{split}
+        P_{i, j+1} &= p = 1 - p_{i,i - 1}\qquad i = 1,\dots, M - 1\\
+        P_{00} &= P_{MM} = 1
+    \end{split}
+\end{equation*}
+Markoov chains that satisfy the following equation \[P^{(n)}_{ij} > 0 \text{ for all } i,j = 0,1,\dots, M\] are \textit{ergodic}.
+\begin{theorem}[Ergodic Markov Chain]
+    For an ergodic Markov chain, \[\pi_j = \lim_{n\rightarrow\infty} P_{ij}^(n)\] exists and the $\pi_j, 0\leq j\leq M$ are the unique nonnegative solutions of \[\pi_j = \sum^M_{k = 0} \pi_k P_{kj}\] \[\sum^M_{j = 0} \pi_j = 1\]
+\end{theorem}

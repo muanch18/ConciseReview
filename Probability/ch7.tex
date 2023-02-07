@@ -1,0 +1,260 @@
+\setcounter{chapter}{6}
+\chapter{Properties of Expectation}
+\section{Review}
+For discrete, \[E[X] = \sum_x xp(x)\]. For continuous, \[E[X] = \int^\infty_{\infty} xf(X) dx\]
+Since $E[X$ is a weighted average of the possibole values of $X$, it follows that if $X$ must lie between $a$ and $b$, then so must its expected value. That is, if \[P\{a\leq X\leq b\} = 1\] then \[a\leq E[X]\leq b\]
+\section{Expectation of Sums of Random Variables}
+If $X$ and $Y$ have a joint probability mass function $p(x,y)$, then \[E[g(X,Y) = \sum_y\sum_x g(x,y)p(x,y)\]
+If $X$ and $Y$ have a joint probability density function $f(x,y)$, then \[E[g(X,Y) = \int^\infty_{-\infty} \int^\infty_{-\infty} g(x,y)f(x,y) dx dy\]
+\subsection*{Example}
+An accident occurs at a point that is uniformly distributed on a road of length $L$. At the time of the accident, an ambulance is at a location $Y$ that is also uniformly distributed on the road. Assuming that $X$ and $Y$ are independent, find the
+expected distance between the ambulance and the point of the accident.
+\subsubsection*{Solution}
+We need to compute $E[|X-Y|]$. Since the joint density function of $X$ and $Y$ is \[f(x,y) = \frac{1}{L^2}\, 0 < x < L\, , 0 < y < L\]
+It follows from the previous notes that \[E[|X - Y|] = \frac{1}{L^2}\int^L_0 \int^L_0 |x - y| dy dx\]
+Then, \begin{equation*}
+    \begin{split}
+        \int^L_0 |x - y| dy &= \int^x_0 (x - y) dy + \int^L_x (y - x) dy\\
+        &= \frac{x^2}{2} + \frac{L^2}{2} - \frac{x^2}{2} - x(L - x)\\
+        &= \frac{L^2}{2} + x^2 - xL
+    \end{split}
+\end{equation*}
+Therefore, \begin{equation*}
+    \begin{split}
+        E[|X - Y|] &= \frac{1}{L^2}\int^L_0 (\frac{L^2}{2} + x^2 - xL) dx\\
+        &= \frac{L}{3}
+    \end{split}
+\end{equation*}
+\section{Moments of the Number of Events that Occur}
+Suppose we are interested in the number of \textit{pairs} of events that occur. Because $I_iI_j$ will equal $1$ if both $A_i$ and $A_j$ occur and will equal 0 otherwise, it follows that the number of paris is equal to $\sum_{i<j} I_iI_j$. But because $X$ is the number ofe vents that occur, it also follows that the number of paors of events that occur is ${X\choose 2}$.
+Then, \[{X\choose 2} = \sum_{i < j} I_iI_j\] when there are $n\choose 2$ terms in the summation. Taking expectations yields \[E\left[{X\choose 2}\right] = \sum_{i < j} E[I_iI_j] = \sum_{i < j} P(A_iA_j)\] or \[E\left[\frac{X(X-1)}{2}\right] = \sum_{i < j} P(A_iA_j)\] giving \[E[X^2] - E[X] = 2\sum_{i < j} P(A_iA_j)\] B y considering the number of disctint subset of $k$ evemts that all poccur, we see that \[X\choose k = \sum_{i_1 < i_2 < \cdots < i_k} I_{i_1}I_{i_2}\cdots I_{i_k}\]
+Taking expectations gives the identity\[E\left[{X\choose k}\right] = \sum_{i_1 < i_2 < \cdots < i_k} E[I_{i_1}I_{i_2}\cdots I_{i_k}] = \sum_{i_1 < i_2 < \cdots < i_k} P(A_{i_1}A_{i_2}\cdots A_{i_k})\]
+\section{Covariance, Variance of Sums, and Correlations}
+\textbf{Proposition 4.1}
+If $X$ and $Y$ are independent, then, for any functions $h$ and $g$, \[E[g(x)h(Y) = E[g(X)]E[h(Y)]\]
+\begin{definition}
+The \textbf{covariance} between $X$ and $Y$ denoted by $Cov(X,Y),$ is defined by \[Cov(X,Y) = E[(X-E[X])(Y-E[Y]]\]
+\end{definition}
+Upon expanding the right side of the preceding definition, we see that 
+\begin{equation*}
+    \begin{split}
+        Cov (X,Y) &= E[XY - E[X]Y - XE[Y] + E[Y]E[X]]\\
+        &= E[XY] - E[X]E[Y] - E[X]E[Y] + E[X]E[Y]\\
+        &= E[XY] - E[X]E[Y]
+    \end{split}
+\end{equation*}
+IF $X$ and $Y$ are independent, then $Cov(X,Y) = 0$. Some properties of variance are 
+\begin{enumerate}[i. ]
+    \item $Cov(X,Y) = Cov(Y,X)$
+    \item $Cov(X, X) = Cov(X)$
+    \item $Cov(ax, Y) = a\cdot Cov(X,Y)$
+    \item \[Cov\left(\sum^n_{i = 1} X_i, \sum^m_{j = 1} Y_i \right) = \sum^n_{i = 1}\sum^m_{j = 1} Cov (X_i, Y_j)\]
+\end{enumerate}
+\[Var\left(\sum^n_{i=1} X_i\right) = \sum^n_{i=1} Var(X_i) + 2\sum\sum_{i < j} Cov(X_i,X_j)\]
+If $X_1, \dots, X_n$ are pairwise independent, in that $X_i$ and $X_j$ are independent for $i\neq j$, then
+\[Var\left(\sum^n_{i=1} X_i\right) = \sum^n_{i = 1} Var(X_i)\]
+\begin{definition}[Correlation]
+    The correlation of two random variables $X$ and $Y$, denoted by $\rho (X,Y)$ is defined as long as $Var(X)Var(Y)$ is positive by \[\rho(X,Y) = \frac{Cov(X,Y)}{\sqrt{Var(X)Var(Y)}}\qquad -1\leq \rho(X,Y)\leq 1\]
+    The correlation coefficient is a measure of the degree of linearity between $X$ and $Y$. \begin{enumerate}
+        \item A \textit{positive} value of $\rho(X,Y)$ indicates that $Y$ tends to \textbf{increase} when $X$ does
+        \item A \textit{negative} value of $\rho(X,Y)$ indicates that $Y$ tends to \textbf{decrease} when $X$ does
+        \item If $\rho(X,Y) = 0$, then $X$ and $Y$ are said to be \textbf{uncorrelated}.
+    \end{enumerate}
+\end{definition}
+\section{Conditional Expectation}
+\subsection*{Example}
+If $X$ and $Y$ are independent binomial random variables with identical parameters $n$ and $p$, calculate the conditional expected value of $X$ given that $X + Y = m$.
+\subsubsection*{Solution}
+Let us first calculate the conditional probability mass function of $X$ given that $X + Y = m$. For $k\leq \min(n,m)$, \begin{equation*}
+    \begin{split}
+        P\{X = k | X + Y = m\} &= \frac{P\{X = k, X + Y = m\}}{P\{X + Y = m\}}\\
+        &= \frac{P\{X = k, Y = m - k\}}{P\{X + Y = m\}}\\
+        &= \frac{P\{X = k\}P\{Y = m - k\}}{P\{X + Y = m\}}\\
+        &= \frac{{n\choose k}p^k(1-p)^{n-k}{n\choose(m-k)}p^{m - k}(1 - p)^{n-m+k}}{{2n\choose m}p^m(1-p)^{2n-m}}\\
+        &= \frac{{n\choose k}{n\choose(m-k)}}{{2n\choose m}}
+    \end{split}
+\end{equation*}
+\subsection*{Example}
+Suppose that the joint density of $X$ and $Y$ is given by \[f(x,y) = \frac{e^{-x/y}e^{-y}}{y}\, 0 < x < \infty\, , 0 < y < \infty\] Compute $E[X|Y = y]$. 
+\subsubsection*{Solution}
+We start by computing the conditional density \begin{equation*}
+    \begin{split}
+        f_{X|Y}(x,y) &= \frac{f(x,y)}{f_Y(y)}\\
+        &= \frac{f(x,y)}{\int^\infty_{-\infty} f(x,y) dx}\\
+        &= \frac{(1/y)e^{-x/y}e^{-y}}{\int^\infty_0 (1/y)e^{-x/y}e^{-y} dx}\\
+        &= \frac{(1/y)e^{-x/y}}{\int^\infty_0 (1/y) e^{-x/y} dx}\\
+        &= \frac{1}{y}e^{-x/y}\\
+    \end{split}
+\end{equation*}
+\subsection{Computing Expectations by Conditioning}
+\textbf{The Conditional Expectation Formula}
+\[E[X] = E[E[X|Y]]\] If $Y$ is a discrete random variable, then the previous formula states \[E[X] = \sum_y E[X|Y=y]P\{Y=y\}\] whereas if $Y$ is continuous with density $f_Y(y)$, then the first formula states \[E[X] = \int^\infty_{-\infty} E[X|Y = y]f_Y(y) dy\]
+\subsection*{Example}
+A miner is trapped in a mine containing 3 doors. The first door leads to a tunnel that will take him to safety after 3 hours of travel. The second door leads to a tunnel that will return him to the mine after 5 hours of travel. The third door leads toa  tunnel that will return to the mine after 7 hours. If we assume that the miner is at all times equally likely to choose any one of the doors, what is the expected length of time until he reaches safety?
+\subsubsection*{Solution}
+Let $X$ denote the amount of time (in hours) until the miner reaches safety, and let $Y$ denote the door he initially chooses. Now, 
+\begin{equation*}
+    \begin{split}
+        E[X] &= E[X|Y=1]P\{Y=1\} + E[X|Y=2]P\{Y=2\} + E[X|Y=3]P\{Y=3\}\\
+        &= \frac{1}{3}(E[X|Y=1] + E[X|Y=2] + E[X|Y = 3])\\
+    \end{split}
+\end{equation*}
+However, 
+\[E[X|Y = 1] = 3\] \[E[X|Y = 2] = 5 + E[X]\] \[E[X|Y = 3] = 7 = E[X]\]
+If the miner chooses the second door, he spends 5 hours in the tunnel and then returns to his cell. But once he returns to
+his cell, the problem is as before; thus, his expected additional time until safety is just $E[X]$. Hence, $E[X|Y = 2] = 5 + E[X]$. The argument behind the other equalities is the same. \[E[X] = \frac{1}{3}(3 + 5 + E[X] + 7 + E[X])\] \[E[X] = 15\]
+\subsection{Computing Probabilities by Conditioning}
+\begin{equation*}
+    \begin{split}
+        P(A) &= \sum_y P(A|Y = y)P(Y = Y) \text{ if Y is discrete }\\
+        &= \int^\infty_{-\infty} P(A|Y=Y)f_Y(y) dy \text{ if Y is continuous}
+    \end{split}
+\end{equation*}
+\subsection*{Example}
+Suppose that $X$ and $Y$ are independent continuous random variables. Find the distribution function and the density function of $X + Y$.
+\subsubsection*{Solution}
+By conditioning on the value of $Y$, we obtain 
+\begin{equation*}
+    \begin{split}
+        P\{X + Y < a\} &= \int^\infty_{-\infty} P\{X + Y < a | Y = y\}f_Y(y) dy\\
+        &= \int^\infty_{-\infty} P\{X < a - y\}f_Y(y) dy\\
+        &= \int^\infty_{-\infty} F_x(a - y)f_Y(y) dy
+    \end{split}
+\end{equation*}
+Differentiation yields the density function of $X + Y$:
+\begin{equation*}
+    \begin{split}
+        f_{X+Y}(a) &= \frac{d}{da}\int^\infty_{-\infty} F_X(a - y)f_Y(y) dy\\
+        &= \int^\infty_{-\infty} \frac{d}{da} F_X (a - y)f_Y(y) dy\\
+        &= \int^\infty_{-\infty} f_x(a - y)f_Y(y) dy
+    \end{split}
+\end{equation*}
+\subsection*{Example}
+Suppose that we are to be presented with $n$ distinct prizes, in sequence. After being presented with a prize, we must immediately decide whether to accept it or to reject it and consider the next prize. The only information we are given when
+deciding whether to accept a prize is the relative rank of that prize compared to ones already seen. That is, for instance, when the fifth prize is presented, we learn how it compares with the four prizes we have already seen. Suppose that once a prize is rejected, it is lost, and that our objective is to maximize the probability of obtaining the best prize. Assuming that all $n!$ orderings of the prizes are equally likely, how well can we do?
+\subsubsection*{Solution}
+Fix a value $k\, 0\leq k\leq n$, and consider the strategy that rejects the first $k$ prizes and then accepts the first oen that is better than all of thsoe first $k$. Let $P_k$ \textit{best} denote the probability that the best prize is selected when the strategy is employed. To compute this probability, condition on $X$, the position of the best prize. This gives
+\begin{equation*}
+    \begin{split}
+        P_k(\text{ best }) &= \sum^n_{i = 1} P_k (\text{ best } | X = i)P(X = i)\\
+        &= \frac{1}{n} \sum^n_{i = 1} P_k (\text{ best } | X = i)
+    \end{split}
+\end{equation*}
+If the overall best prize is among the first $k$, then no prize is ever selected under the strategy we consider. That is, 
+\[P_k (\text{ best } | X = i) = 0\qquad \text{ if } i\leq k\]
+If the best prize is in position $i$, where $i > k$, then the best prize will be selected if the best of the first $i - 1$ prizes is among the first $k$ (for then none of hte prizes in positions $k + 1\,, k + 2\,, \dots i - 1$ would be selected). But conditional on the best prize being in position $i$, it is easy to verfiy that all possible orderings of the other prizes remain equally likely, which implies that each of hte first $i - 1$ prizes is equally likely to be the best of that bench. Then we have, 
+\begin{equation*}
+    \begin{split}
+        P_k(\text{ best }) &= \frac{k}{n} \sum^n_{i = k + 1} \frac{1}{i - 1}\\
+        &\approx \frac{k}{n}\int^n_{k + 1} \frac{1}{x - 1} dx\\
+        &= \frac{k}{n}\log\left(\frac{n-1}{k}\right)\\
+        &\approx \frac{k}{n}\log\left(\frac{n}{k}\right)
+    \end{split}
+\end{equation*}
+Now if we consider the function \[g(x) = \frac{x}{n}\log\left(\frac{n}{x}\right)\]
+then \[g\prime(x) = \frac{1}{n}\log\left(\frac{n}{x}\right) - \frac{1}{n}\]
+so \[g\prime(x) = 0\rightarrow\log\left(\frac{n}{x}\right) = 1\rightarrow \boxed{x = \frac{n}{e}}\]
+The best strategty of the type considered is to let the first $n/e$ prizes go by and thena ccpet the first oen to apepar that is better than allo fthose. In addition, since $g(n/e) = 1/e$, the probability that this strategy selects the best prizes iapproximately $1/e\approx .36788$.  
+\subsection{Conditional Variance}
+Conditional Variance of $X$ given that $Y = y$ \[Var(X|Y) = E[(X - E[X|Y])^2|Y\] 
+$Var(X|Y)$ is equal to the (conditional) expected square of the difference between $X$ and its (conditional) mean when the value of $Y$ is given. In other words, $Var(X|Y)$ is exactly analogous to the usual definition of variance, but now all
+expectations are conditional on the fact that $Y$ is known.
+\textbf{The Conditional Variance Formula}
+\[Var(X) = E[Var(X|Y)] + Var(E([X|Y])\]
+\subsection*{Example}
+Suppose that by any time $t$ the number of people who have arrived at a train depot is a Poisson random variable with mean $\lambda t$. If the initial train arrives at the depot at a time (independent of when the passengers arrive) that is uniformly distribute over $(0,T)$, what are the mean and variance of the number of passengers who enter the train?
+\subsubsection*{Solution}
+For each $t\geq 0$, let $N(t)$ denote the number of arrivals by $t$, and let $Y$ denote the time at which the train arrives. The random variable of interest is then $N(Y)$. Conditioning on $Y$ gives \begin{equation*}
+    \begin{split}
+        E[N(Y) = t| Y = t] &= E[N(t)|Y=t]\\
+        &= E[N(t)] \text{by the independence of } Y and \text{ and } N(t)\\
+        &= \lambda t
+    \end{split}
+\end{equation*}
+Hence, \[E[N(Y)|Y] = \lambda Y\] Taking expectation gives \[E[N(Y)] = \lambda E[Y] = \frac{\lambda T}{2}\]
+To obtain $Var(N(Y))$, we use the conditional variance formula:
+\begin{equation*}
+    \begin{split}
+        Var(N(Y)|Y = t) &= Var(N(t)|Y = t)\\
+        &= Var[N(t)] \text{ by independence}\\
+        &= \lambda t
+    \end{split}
+\end{equation*}
+From the conditional variance formula, \begin{equation*}
+    \begin{split}
+        Var(N(Y)) &= E[\lambda Y] + Var(\lambda Y)\\
+        &= \lambda \frac{T}{2} + \lambda^2 \frac{T^2}{12}
+    \end{split}
+\end{equation*}
+where we have used the fact that $Var(Y) = \frac{T^2}{12}$
+\section{Conditional Expectation and Prediction}
+A situation may arise in which the value of a random variable $X$ is observed and then, on the basis of the observed value, an attempt is made to predict the value of a second random variable $Y$. Let $g(X)$ denote the predictor, if $X$ is observed to equal $x$, then $g(x)$ is our prediction for the value of $Y$. We would like to choose $g$ so that $g(X)$ tends to be close to $Y$. One possible criterio for closeness is to choose $g$ to minimize $E[(Y-g(X))^2]$. We shpw that under this criterion, the best possible predictor of $Y$ is $g(X) = E[Y|X]$. \\
+\subsubsection{Proppositon 6.1}
+\[E[(Y-g(X))^2]\geq E[(Y-E[Y|X])^2]\]
+\subsection*{Example}
+Suppose that the son fo a man of height $x$ (in inches) attauins a height that is normally distributed with mean $x + 1$ and variance 4. What is the best prediction of the height at full growth of the son of a man who is $6$ feet tall?
+\subsubsection*{Solution}
+The model can be written as \[Y = X + 1 + e\]
+where $e$ is a normal random variable, indepednent of $X$, having mean $0$ and variance $4$. The $X$ and $Y$ represents the heights of the man and his son respectively. The best prediction $E[Y|X = 72]$ is then equal to 
+\begin{equation*}
+    \begin{split}
+        E[Y|x = 72] &= E[X + 1 + e | X = 72]\\
+        &= 73 + E[e|X = 72]\\
+        &= 73 + E(e) \text{ by independence }\\
+        &= 73
+    \end{split}
+\end{equation*}
+\section{Moment Generation Functions}
+The moment generating function $M(t)$ of the random variable $X$ is defined for all real values of $t$ by \[M(t) = E[e^{tX}]\]
+If $X$ is discrete with mass function $p(x)$, \[\sum_x e^{tX} p(x)\] If $X$ is continuous with density $f(x)$, \[\int^\infty_{-\infty} e^{tX} f(x) dx\]
+$M(t)$ is defined as the moment generationg function ebcause all of the moments of $X$ can be obtained successively differntaiting $M(t)$ and thene valuating the resutl at $t = 0$. In genereal the $n$th derivative of $M(t)$ is given by \[M^n(t) = E[X^ne^{tX}\, n\geq 1\]
+\subsection{Discrete Distributions}
+\begin{tabular}{|l|c|c|c|c|}
+  \hline
+  Distribution & PMF & Moment Generating Function & Mean & Variance \\
+  \hline
+  Binomial & $\binom{n}{k}p^k(1-p)^{n-k}$ & $m_x(t) = (pe^t + (1-p))^n$ & np & np(1-p) \\
+  Geometric & $p(1-p)^k$ & $\frac{pe^t}{1-(1-p)e^t}$ & $\frac{1}{p}$ & $\frac{1-p}{p^2}$ \\
+  Poisson & $\frac{\lambda^k e^{-\lambda}}{k!}$ & $\exp{\lambda(e^t - 1)}$ & $\lambda$ & $\lambda$ \\
+  Negative binomial $(r,p)$ & $\binom{n-1}{r-1}p^r(1-p)^{n-r}$ & $\left[\frac{pe^t}{1-(1-p)e^t}\right]$ & $\frac{r}{p}$ & $\frac{r(1-p)}{p^2}$ \\
+  \hline
+\end{tabular}
+
+\subsection{Continuous Distributions}
+\begin{tabular}{|l|c|c|c|c|}
+  \hline
+  Distribution & PDF & Moment Generating Function & Mean & Variance\\
+  \hline
+  Uniform over $(a,b)$ & $\frac{1}{b-a}$ & $\frac{e^{tb}-e^{ta}}{t(b-a)}$ & $\frac{a+b}{2}$ & $\frac{(b-a)^2}{12}$ \\
+  Normal & $\frac{1}{\sqrt{2\pi \sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$ & $e^{\mu t + \frac{\sigma^2 t^2}{2}}$ & $\mu$ & $\sigma^2$\\
+  Exponential & $\lambda e^{-\lambda x}$ & $\frac{\lambda}{\lambda - t}$ & $\frac{1}{\lambda}$ & $\frac{1}{\lambda^2}$ \\
+  Gamma for $(s,l), l > 0$ & $\frac{\lambda e^{-\lambda x}(\lambda x)^{s-1}}{\Gamma(s)}$ & $\left(\frac{\lambda}{\lambda - t}\right)^s$ & $\frac{s}{\lambda}$ & $\frac{s}{\lambda^2}$\\
+  \hline
+\end{tabular}
+
+\subsection*{Example}
+Suppose that the nyumber of events that occur is a Poisson random variable with mean $\lambda$ and that each event is indepednently counted with probability $p$. Show that the number of counted events and the number of uncounted events are indepednent Poisson random variables with respective means $\lambda p$ and $\lambda (1-p)$/
+\subsubsection*{Solution}
+Let $X$ denote the total number of events, and let $X_c$ denote the number of them that are counted. To compute the joint moment generating function of $X_c$, the number of events the number of events that are counted, and $X - X_c$ are uncounted, start by conditioning on $X$ to obtain
+\begin{equation*}
+    \begin{split}
+        E[e^{SX_c + t(X - X_c}| X = n] &= e^{tn}E[e^{(s-t)X_c}|X = n]\\
+        &= e^{tn}(pe^{s-t} + 1 - p)^n\\
+        &= (pe^s + (1 - p)e^t)^n
+    \end{split}
+\end{equation*}
+which follows because conditional on $X = n, X_c$ is a binomial random variable with parameters $n$ and $p$. Hence, \[ E[e^{SX_c + t(X - X_c}] = (pe^S + (1-p)e^t)^X\]
+Taking expectations of both sides of this equation yields \[E[e^{sX_c} + t(X - X_c)] = E[(pe^s + (1-p)e^t)^X]\]
+Since $X$ is Poisson wth mean $\lambda$, it follows that $E[e^{tx}] = e^{\lambda (e^t-1)}$. Therefore, for any positive value $a$ we see (by letting $a = e^t$) that $E[a^X] = e^{\lambda (a-1)}$. Then, 
+\begin{equation*}
+    \begin{split}
+        E[e^{SX_c + t(X - X_c}] &= e^{\lambda (pe^s + (1-o)e^t - 1)}\\
+        &= e^{\lambda p(e^{s-1}}e^{\lambda(1-p)(e^t - 1)}
+    \end{split}
+\end{equation*}
+As the previous is the joint moment generation function of indepdnent Poisson random variablres with respect means $\lambda p$ and $\lambda (1-p)$, the result is proven. 
+\section{Additional Properties of Normal Random Variables}
+If $X_1,\dots, X_n$ are indepdent and identifally distriburted normal random variables with mean $\mu$ and variance $\sigma^2$, then the sample mean $\bar{X}$ and the sample variance $S^2$ are independent. $\bar{X}$ is a normal random variable with mean $\mu$ and variance $\sigma^2/n$; $(n-1)S^2/\sigma^2$ is a chi-squared random variable with $n-1$ degrees of freedom. 
+\begin{definition}[Multivariate Normal Distribution]
+    If $X_1,\dots, X_m$ are all linear combinations of a finite set of independet standard normal random variables, then they are said to have a \textbf{multivariate normal distribution}. Their joint distribution is specified by the values of $E[X_i], Cov(X_i, X_j), i,j = 1\dots, m$.
+\end{definition}

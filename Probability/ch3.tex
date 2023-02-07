@@ -1,0 +1,174 @@
+\setcounter{chapter}{2}
+\chapter{Conditional Probability and Independence}
+\section{Conditional Probabilities}
+\begin{definition}[Conditional Probability]
+The probability of E given F is considered \textit{conditional probability} represented as \[P(E|F)\]
+\end{definition}
+If the event F occurs, then, in order for E to occur, it is necessary that the actual occurrence be a point both in E and in F; that is, it must be in EF. If $P(F) > 0$, then 
+\[P(E|F) = \frac{P(EF)}{P(F)}\]
+\subsection*{Example}
+Joe is 80 percent certain that his missing key is in one of the two pockets of his
+hanging jacket, being 40 percent certain it is in the left-hand pocket and
+40 percent certain it is in the right-hand pocket. If a search of the left-hand pocket
+does not find the key, what is the conditional probability that it is in the other
+pocket?\\
+If we let $L$ be the event that the key is in the left-hand pocket of the jacket, and $R$ be the event that it is in the right-hand pocket, then the desired probability $P(R|L^c)$ can be obtained as follows
+\begin{equation*} 
+	\begin{split}
+	P(R|L^c) & = \frac{P(RL^c)}{P(L^c)} \\
+	 & = \frac{P(R)}{1-P(L)} \\
+  & = \frac{2}{3}
+	\end{split}
+ \end{equation*}
+\begin{theorem}[The Multiplication Rule]
+\[P(E_1E_2E_3\cdots E_n) = P(E_1)P(E_2|E_1)P(E_3|E_1E_2)\cdots P(E_n|E_1\cdots E_{n-1})\]
+The \textbf{Multiplication Rule} states that the probaiblity that all of the events $E_1E_2E_3\cdots E_n$ occur, is equal to $P(E_1)$, the probability that $E_1$ occurs, multiplied by $P(E_2 | E_1)$, the conditonal probability that $E_2$ occurs given that $E_1$ has occured, and so on. 
+\end{theorem}
+\subsection*{Example}
+An ordinary deck of 52 playing cards is randomly divided into 4 piles of 13 cards each. Compuite the probaibltiy that each pile has exactly 1 ace. \\
+Define events $E_i, i = 1,2,3,4,$ as follows:
+\[E_1 = {\text{the ace of spades is in any one of the piles}}\]
+\[E_2 = {\text{the ace of spades and the ace of hearts are in different piles}}\]
+\[E_3 = {\text{the ace of spades, hearts, and diamonds are all in differnet piles}}\]
+\[E_4 = {\text{all 4 aces are in different piles}}\]
+The desired probability is $P(E_1E_2E_3E_4)$ represented in equation form as
+\[P(E_1E_2E_3E_4) = P(E_1)P(E_2|E_1)P(E_3|E_1E_2)P(E_4|E_1E_2E_3)\]
+Note that \[P(E_1) = 1\] since $E_1$ is the sample space $S$. To find $P(E_2|E_1)$, consider the pile that contains the ace of spaces. Because its remaining 12 cards are equally likely to be any 12 of the remaining 51 cards, the probability that the ace of hearts is among them is $\frac{12}{51}$, so
+\[P(E_2|E_1) = 1 - \frac{12}{51} = \frac{39}{51}\]
+Given that the ace of spaces and hearts are in different piles, it shows that the set of the remainng 24 dards of these piles is eqwually likely to be any of the remaining 50 cards in a set of 24. We can represent this as \[P(E_3|E_1E_2) = 1 - \frac{24}{50} = \frac{26}{50}\]
+The set of the remaining 36 cards of the 3 piles is equally liely to be any set of 36 cards in the remianing 49 cards, so \[P(E_4|E_1E_2E_3) = 1 - \frac{36}{49} = \frac{13}{49}\]
+\[P(E_1E_2E_3E_4)\approx .105\]
+This represents a $10.5\%$ chance that each pile contains an ace. 
+\section{Bayes's Formula}
+Let $E$ and $F$ be events. We can express E as \[E = EF\cup EF^c\]
+In order for an outcome to be in E, it must either be in both $E$ and $F$ or be in $E$ but not in $F$. As $EF$ and $EF^c$ are clearly mutually exclusive, we conclude by Axiom 3, 
+\begin{equation}\label{eqn: Bayes's Formula}
+    \begin{split}
+        P(E) & = P(EF) + P(EF^c)\\
+        & = P(E|F)P(F) - P(E|F^c)P(F^c)\\
+        & = P(E|F)P(F) + P(E|F^c)[1-P(F)]
+    \end{split}\tag{Bayes's Formula}
+\end{equation}
+Its use often enables us to determine the probability of an event by first “conditioning” upon whether or not some second event has occurred. That is, there are many instances in which it is difficult to compute the probability of an event directly, but it is straightforward to compute it once we know whether or not some second event has occurred.
+\begin{theorem}[Bayes's Theorem]
+    
+\end{theorem}
+\subsection*{Example}
+Consider the following game played with an ordinary deck of 52 playing cards:
+The cards are shuffled and then turned over one at a time. At any time, the
+player can guess that the next card to be turned over will be the ace of spades; if
+it is, then the player wins. In addition, the player is said to win if the ace of
+spades has not yet appeared when only one card remains and no guess has yet
+been made. What is a good strategy? What is a bad strategy?
+\subsection*{Solution}
+Every strategy has probability 1/52 of winning! To show this, we will use induction to prove the stronger result that for an n card deck, one of whose cards is the ace of spades, the probability of winning is 1/n no matter what strategy is employed.\\ Since this is clearly true for $n=1$ assume it to be true for an $n-1$ card deck, and now consider an $n$ card deck. Fix any strategy, and let $p$ denote the probability that the strategy guesses that the first card is the ace of spades. Given that it does, the player’s probability of winning is 1/n . \\If, however, the
+strategy does not guess that the first card is the ace of spades, then the
+probability that the player wins is the probability that the first card is not the ace
+of spades, namely $\frac{(n-1)}{n}$, multiplied by the conditional probability of winning
+given that the first card is not the ace of spades. But this latter conditional
+probability is equal to the probability of winning when using an $n-1$ card deck
+containing a single ace of spades; it is thus, by the induction hypothesis, $\frac{1}{n-1}$
+Hence, given that the strategy does not guess the first card, the
+probability of winning is \[\frac{n-1}{n}\cdot\frac{1}{n-1} = \frac{1}{n}\]
+Letting $G$ be the event that the first card is guessed, we have
+\[P\{win\} = P\{win | G\}P(G) + P\{win|G^c\}(1-P(G)) = \frac{1}{n}p + \frac{1}{n}(1-p) = \frac{1}{n}\]
+\subsection*{Example}
+A laboratory blood test is 95 percent effective in detecting a certain disease when
+it is, in fact, present. However, the test also yields a “false positive” result for 1
+percent of the healthy persons tested. (That is, if a healthy person is tested, then,
+with probability .01, the test result will imply that he or she has the disease.) If .5
+percent of the population actually has the disease, what is the probability that a
+person has the disease given that the test result is positive?
+\\
+Let $D$ be the event that the person tested has the disease and the event $E$ that
+the test result is positive. Then the desired probability is
+\begin{equation*}
+    \begin{split}
+        P(D|E) & = \frac{P(DE)}{P(E)}\\
+        & = \frac{P(E|D)P(D)}{P(E|D)P(D) + P(E|D^c)P(D^c}\\
+        & = \frac{(.95)(.005)}{(.95)(.005) + (.01)(.995)}\\
+        & \approx .323
+    \end{split}
+\end{equation*}
+\begin{definition}[Odds]
+    The \textbf{odds} of an event A are defined by \[\frac{P(A)}{P(A^c)} = \frac{P(A)}{P(1-A)}\]
+    The odds of an event tell how much more liekly it is tht the eventoccurs than it is that it does not occur. 
+\end{definition}
+Consider now a hypothesis $H$ that is true with probability $P(H)$ and suppose that new evidence $E$ is introduced. Thjen the conditional probabilites, given the evidence E, that H is true and that H is not true are respectively given by 
+\[P(H|E) = \frac{P(E|H)P(H)}{P(E)}\qquad P(H^c|E) = \frac{P(E|H^c)P(H^c)}{P(E)}\]
+The new odds after the evidence E has been introduced:
+\begin{equation}
+    \frac{P(H|E)}{P(H^c|E)} = \frac{P(H)}{P(H^c)}\frac{P(E|H)}{P(E|H^c)}
+\end{equation}
+\subsection*{Example}
+An urn contains two type \textit{A} coins and one type \textbf{B} coin. When a type \textit{A} coin is
+flipped, it comes up heads with probability $\frac{1}{4}$ whereas when a type \textit{B} coin is
+flipped, it comes up heads with probability $\frac{3}{4}$. A coin is randomly chosen from
+the urn and flipped. Given that the flip landed on heads, what is the probability
+that it was a type \textit{A} coin?
+\subsection*{Solution}
+Let \textit{A} be the event that a type \textit{A} was flipped, and let $B=A^c$ be the event that a type \textit{B} coin was flipped. We want $P(A|heads)$. We have
+\begin{equation*}
+    \begin{split}
+        \frac{P(A|heads)}{P(A^c|heads)} &= \frac{A}{B} \frac{P(heads|A)}{P(heads|B)}\\
+        &= \frac{\frac{2}{3}}{\frac{1}{3}}\cdot\frac{\frac{1}{4}}{\frac{3}{4}}\\
+        &= \frac{2}{3}
+    \end{split}
+\end{equation*}
+The odds are $2/3:1$, which can also be read as the probability being $\frac{2}{5}$ that a type \textit{A} coin was flipped.
+\begin{theorem}[The Law of Total Probability]
+\begin{equation}
+    \begin{split}
+        P(E) & =\sum^n_{i=1} P(EF_i)\\
+        &= \sum^n_{i=1} P(E|F_i)P(F_i)
+    \end{split}
+\end{equation}
+For given eqvents $F_1,F_2,\dots, F_n$ of which one and only one must occur, we can compute $P(E)$ by first conditioning on which one of the $F_i$ occurs. $P(E)$ is equal to a weighted average of $P(E|F_i)$, each term weighted by teh probability of the event on whcih it is conditioned. 
+\end{theorem}
+\subsection*{Example}
+A bin contains 3 types of disposable flashlights. The probability that a type 1
+flashlight will give more than 100 hours of use is .7, with the corresponding
+probabilities for type 2 and type 3 flashlights being .4 and .3, respectively.
+Suppose that 20 percent of the flashlights in the bin are type 1, 30 percent are
+type 2, and 50 percent are type 3.
+\begin{enumerate}[a. ]
+    \item What is the probability that a randomly chosen flashlight will give more
+than 100 hours of use?
+    \item Given that a flashlight lasted more than 100 hours, what is the conditional
+probability that it was a type $j$ flashlight, $j=1,2,3$
+\end{enumerate}
+Let A denote the event that the flashlight chosen will give more than 100 hours of use, and let $F_j$ be the event that a type $j$ flashlight is chosen. To compute $P(A)$, we condition on the type of the flashlight, to obtain
+\begin{equation*}
+    \begin{split}
+        P(A) &= P(A|F_1) + P(A|F_2)P(F_2) + P(A|F_3)P(F_3)\\
+        &= (.7)(.2)+(.4)(.3)+(.3)(.5) = .41
+    \end{split}
+\end{equation*}
+The second probability is obtained using Bayes's formula:
+\begin{equation*}
+    \begin{split}
+        P(F_j|A)&=\frac{P(AF_j)}{P(A)}\\
+        &= \frac{P(A|F_j)P(F_j)}{.41}
+    \end{split}
+\end{equation*}
+Then, 
+\[P(F_1|A) = (.7)(.2)/.41 = 14/41\]
+\[P(F_2|A) = (.4)(.3)/.41 = 12/41\]
+\[P(F_3|A) = (.3)(.5)/.41 = 15/41\]
+Where the initial probability that a type 1 flashlight is chosen only .2, the iofnormation that the flashlight has lasted more than 100 hours raises the probaiblity of this event to $\frac{14}{41}\approx .341$
+\section{Independent Events}
+Since $P(E|F) = \frac{P(EF)}{P(F)}$, it follows that $E$ is independent of $F$ if
+\[P(EF) = P(E)P(F)\]
+\begin{definition}[Independent and Dependent]
+Two events $E$ and $F$ are said to be \textbf{independent} if the equation above holds. Two events that are not independent are said to be \textbf{dependent}.
+\end{definition}
+\begin{lemma}
+If E and F are independent, then so are E and $F^c$.
+\end{lemma}
+\section{P(|F) is a Probability}
+Conditional probabilites satisfy all of the probabilites of ordinary probabilities; they have 3 axioms of a probability. 
+\begin{enumerate}[a. ]
+    \item $0\leq P(E|F)\leq 1$
+    \item $P(S|F) = 1$
+    \item If $E_i, i= 1,2,\dots,$ are \textit{mutually exclusive events}, then \[P\left(\bigcup_{i=1}^\infty E_i|F\right) = \sum^\infty_{i=1} P\left(E_i|F\right)\]
+\end{enumerate}
